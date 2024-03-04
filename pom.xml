@@ -129,7 +129,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.safespot.safespotfx/com.safespot.safespotfx.SafeSpotApplication</mainClass>
+                            <mainClass>com.safespot.safespotfx/com.safespot.fx.SafeSpotApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

@@ -11,6 +11,6 @@ module com.safespot.safespotfx {
     //requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens com.safespot.safespotfx to javafx.fxml;
-    exports com.safespot.safespotfx;
+    opens com.safespot.fx to javafx.fxml;
+    exports com.safespot.fx;
 }

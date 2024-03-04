@@ -1,10 +1,11 @@
 # Safe Spot FX
 ## Requirements
 - Java 17
-- Install JavaFX plugin for Idea IntelliJ (includes Scene Builder Kit)
+- Install JavaFX plugin for IntelliJ IDEA (includes Scene Builder Kit)
 - MySQL (JavaFX app will use the same safe-spot DB created during symfony sprint)
 
 ## Run Locally
+An IntelliJ IDEA run configuration is provided `Safe Spot FX`
 
 ## Additional JavaFX libraries
 - [bootstrapfx](https://github.com/kordamp/bootstrapfx)

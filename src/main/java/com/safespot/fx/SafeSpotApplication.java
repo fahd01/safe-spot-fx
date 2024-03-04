@@ -1,4 +1,4 @@
-package com.safespot.safespotfx;
+package com.safespot.fx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
