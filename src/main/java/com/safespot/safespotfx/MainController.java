@@ -12,10 +12,3 @@ public class MainController {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 }
-
-    git init & \
-        git add . & \
-        git commit -m "Initial commit" & \
-        git branch -M main & \
-        git remote add origin https://github.com/fahd01/safe-spot-fx.git & \
-        git push -u origin main & \
