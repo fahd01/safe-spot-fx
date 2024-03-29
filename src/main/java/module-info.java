@@ -10,6 +10,7 @@ module com.safespot.safespotfx {
     requires org.kordamp.bootstrapfx.core;
     //requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens com.safespot.fx to javafx.fxml;
     exports com.safespot.fx;

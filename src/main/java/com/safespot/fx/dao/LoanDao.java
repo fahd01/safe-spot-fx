@@ -1,0 +1,11 @@
+package com.safespot.fx.dao;
+
+import com.safespot.fx.model.Loan;
+
+import java.sql.SQLException;
+import java.util.List;
+
+public interface LoanDao {
+    public List<Loan> findAll() throws SQLException;
+
+}
