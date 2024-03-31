@@ -62,9 +62,13 @@ public class LoanManagementController implements Initializable {
             Button editButton = new Button("Edit");
             Button bidButton = new Button("Bid");
             TableCell<Loan, Loan> cell = new ButtonGroupTableCell<>(bidButton, editButton, deleteButton);
-            editButton.setOnAction(event -> {
-                new CreateLoanDialog(Optional.of(actions.getTableView().getItems().get(cell.getIndex()))).showAndWait().ifPresent(loan -> list.add(loan));
-            });
+            editButton.setOnAction(event ->
+                new CreateLoanDialog(Optional.of(actions.getTableView().getItems().get(cell.getIndex())))
+                        .showAndWait()
+                        .ifPresent(
+                            loan -> { if(list.contains(loan)) list.set(list.indexOf(loan), loan); else list.add(loan); }
+                        )
+            );
             deleteButton.setOnAction(e -> {
                 Loan loan = actions.getTableView().getItems().get(cell.getIndex());
                 deleteLoan(loan);
