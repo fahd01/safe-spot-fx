@@ -4,17 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e04dda2-a51c-424c-afa9-719494ced631" name="Changes" comment="ADD DatabaseConnection, dao packages">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/BidDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/BidDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Automation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/AutomationRule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/AutomationRuleAttribute.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/AutomationRuleOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Bid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/BidStatus.java" afterDir="false" />
+    <list default="true" id="1e04dda2-a51c-424c-afa9-719494ced631" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/CreateLoanDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/LoanManagementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/utils/ButtonGroupTableCell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/utils/ComponentsUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/application.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/create-loan.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/MainController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/SafeSpotApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/SafeSpotApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/BidDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/BidDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/LoanDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/LoanDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/LoanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/LoanDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Bid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Bid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/BidStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/BidStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/LoanStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/LoanStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +37,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -61,29 +71,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/amirelgayed/Downloads/Fahd/PI/safe-spot-fx&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "Merging main",
+    "last_opened_file_path": "/Users/amirelgayed/Downloads/Fahd/PI/safe-spot-fx",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.safespot.fx" />
       <recent name="com.safespot.fx.dao" />
     </key>
   </component>
@@ -110,15 +122,34 @@
       <option name="project" value="LOCAL" />
       <updated>1711709778644</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added UI for loans list, and create loan">
+      <created>1711888151382</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711888151382</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ADD DatabaseConnection, dao packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD DatabaseConnection, dao packages" />
+    <MESSAGE value="Added UI for loans list, and create loan" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added UI for loans list, and create loan" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

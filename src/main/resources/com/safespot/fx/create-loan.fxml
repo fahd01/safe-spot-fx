@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+
+    <content>
+        <GridPane hgap="5" vgap="5">
+            <Label text="Amount:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="amountTextField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Interest:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="interestTextField" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label text="Term:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="termTextField" prefHeight="26.0" prefWidth="526.0" GridPane.columnIndex="1" GridPane.fillWidth="false" GridPane.rowIndex="2" />
+
+            <Label prefHeight="17.0" prefWidth="66.0" text="Purpose:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextArea fx:id="purposeTextArea" prefHeight="93.0" prefWidth="527.0" GridPane.columnIndex="1" GridPane.fillWidth="false" GridPane.rowIndex="3" />
+
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints hgrow="ALWAYS" />
+            </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+    </content>
+
+    <buttonTypes>
+        <ButtonType fx:id="createLoanSubmitBtn" buttonData="OK_DONE" text="Submit" />
+        <ButtonType buttonData="CANCEL_CLOSE" text="Cancel" />
+    </buttonTypes>
+
+</DialogPane>

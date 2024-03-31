@@ -7,9 +7,9 @@ public class Bid {
     private int id ;
     private BigDecimal amount ;
     private BidStatus status = BidStatus.PENDING;
-  private int bidderId;
-  private int loanId;
-  private int automationId;
+    private int bidderId;
+    private int loanId;
+    private int automationId;
 
     public Bid() {}
 

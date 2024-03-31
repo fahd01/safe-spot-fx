@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.safespot.fx.LoanManagementController">
+    <tabs>
+        <Tab text="Account Area">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+        </Tab>
+        <Tab text="Investment Area">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+        </Tab>
+        <Tab text="P2P Lending Area">
+            <content>
+                <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab text="Loan Management">
+                            <StackPane>
+                                <TableView fx:id="table" layoutX="14.0" layoutY="14.0" prefHeight="280.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <columns>
+                                        <TableColumn fx:id="id" prefWidth="-1.0" text="ID" />
+                                        <TableColumn fx:id="amount" minWidth="75.0" prefWidth="-1.0" text="Amount" />
+                                        <TableColumn fx:id="interest" minWidth="75.0" prefWidth="-1.0" text="Interest" />
+                                        <TableColumn fx:id="term" minWidth="75.0" prefWidth="-1.0" text="Term" />
+                                        <TableColumn fx:id="status" minWidth="75.0" prefWidth="79.0" text="Status" />
+                                        <TableColumn fx:id="purpose" minWidth="196.0" prefWidth="196.0" text="Purpose" />
+                                        <TableColumn fx:id="actions" minWidth="140.0" prefWidth="-1.0" text="Actions" />
+                                    </columns>
+                                    <padding>
+                                        <Insets top="35.0" />
+                                    </padding>
+                                </TableView>
+                                <Button fx:id="createLoanBtn" text="Create Loan" StackPane.alignment="TOP_RIGHT">
+                                    <StackPane.margin>
+                                        <Insets right="5.0" top="5.0" />
+                                    </StackPane.margin>
+                                </Button>
+                            </StackPane>
+                        </Tab>
+                        <Tab text="Bids Management">
+                            <TableView fx:id="bidsTable" layoutX="14.0" layoutY="14.0" prefHeight="280.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                    <TableColumn fx:id="bidId" prefWidth="-1.0" text="ID" />
+                                    <TableColumn fx:id="bidAmount" minWidth="75.0" prefWidth="-1.0" text="Amount" />
+                                    <TableColumn fx:id="bidStatus" minWidth="75.0" prefWidth="-1.0" text="Status" />
+                                    <TableColumn fx:id="bidLoan" minWidth="75.0" prefWidth="-1.0" text="Loan ID" />
+                                    <TableColumn fx:id="bidBidder" minWidth="75.0" prefWidth="79.0" text="Bidder ID" />
+                                    <TableColumn fx:id="bidActions" minWidth="140.0" prefWidth="-1.0" text="Actions" />
+                                </columns>
+                        <padding>
+                           <Insets top="5.0" />
+                        </padding>
+                            </TableView>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </content>
+        </Tab>
+        <Tab text="Reclamation Area">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>

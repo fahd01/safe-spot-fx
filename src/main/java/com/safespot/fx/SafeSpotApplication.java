@@ -18,8 +18,7 @@ import java.sql.SQLException;
 public class SafeSpotApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        System.out.println(new LoanDaoImpl().findAll());
-        FXMLLoader fxmlLoader = new FXMLLoader(SafeSpotApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SafeSpotApplication.class.getResource("application.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
         stage.setTitle("Safe Spot");
         URL faviconUrl = getClass().getResource("/images/favicon.png");

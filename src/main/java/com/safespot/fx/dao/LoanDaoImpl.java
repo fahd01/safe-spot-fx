@@ -11,25 +11,87 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoanDaoImpl implements LoanDao{
+public class LoanDaoImpl implements LoanDao {
     @Override
     public List<Loan> findAll() throws SQLException {
-        List<Loan> loans=new ArrayList<>();
-            Connection connection= DatabaseConnection.getConnection();
-            PreparedStatement ps =connection.prepareStatement("select * from loan");
-            ResultSet rs=ps.executeQuery();
-            while (rs.next()){
-              Loan l= new Loan(
-                        rs.getInt("id"),
-                        rs.getBigDecimal("amount"),
-                        rs.getBigDecimal("interest"),
-                        rs.getInt("term"),
-                        rs.getString("purpose"),
-                        LoanStatus.valueOf(rs.getString("status"))
-                        );
+        List<Loan> loans = new ArrayList<>();
+        Connection connection = DatabaseConnection.getConnection();
+        PreparedStatement ps = connection.prepareStatement("select * from loan");
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Loan l = new Loan(
+                    rs.getInt("id"),
+                    rs.getBigDecimal("amount"),
+                    rs.getBigDecimal("interest"),
+                    rs.getInt("term"),
+                    rs.getString("purpose"),
+                    LoanStatus.valueOf(rs.getString("status"))
+            );
             loans.add(l);
-            }
+        }
 
         return loans;
     }
+
+    @Override
+    public Loan persist(Loan loan) {
+        Connection connection = DatabaseConnection.getConnection();
+        try (
+             PreparedStatement preparedStatement = connection.prepareStatement(
+                     "INSERT INTO loan (amount, interest, term, purpose, status, borrower_id) VALUES (?, ?, ?, ?, ?, ?)",
+                     PreparedStatement.RETURN_GENERATED_KEYS
+             )
+        ) {
+            preparedStatement.setBigDecimal(1, loan.getAmount());
+            preparedStatement.setBigDecimal(2, loan.getInterest());
+            preparedStatement.setInt(3, loan.getTerm());
+            preparedStatement.setString(4, loan.getPurpose());
+            preparedStatement.setString(5, loan.getStatus().toString());
+            // TODO set borrower id to current user
+            preparedStatement.setInt(6, 1);
+            preparedStatement.executeUpdate();
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            rs.next();
+            int lastInsertId = rs.getInt(1);
+            loan.setId(lastInsertId);
+            return loan;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Loan update(Loan loan) {
+        Connection connection = DatabaseConnection.getConnection();
+        try (
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "UPDATE loan SET amount=?, interest=?, term=?, purpose=? WHERE id =?",
+                        PreparedStatement.RETURN_GENERATED_KEYS
+                )
+        ) {
+            preparedStatement.setBigDecimal(1, loan.getAmount());
+            preparedStatement.setBigDecimal(2, loan.getInterest());
+            preparedStatement.setInt(3, loan.getTerm());
+            preparedStatement.setString(4, loan.getPurpose());
+            preparedStatement.setInt(5, loan.getId());
+            preparedStatement.executeUpdate();
+            return loan;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void delete(Loan loan) {
+        Connection connection = DatabaseConnection.getConnection();
+        try (
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM loan WHERE id = ?")
+        ) {
+            preparedStatement.setInt(1, loan.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

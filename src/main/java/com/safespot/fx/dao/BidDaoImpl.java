@@ -24,8 +24,8 @@ public class BidDaoImpl implements BidDao{
               Bid b= new Bid(
                         rs.getInt("id"),
                         rs.getBigDecimal("amount"),
-                      BidStatus.valueOf(rs.getString("status")),
-                      rs.getInt("bidder_id"),
+                        BidStatus.valueOf(rs.getString("status")),
+                        rs.getInt("bidder_id"),
                         rs.getInt("loan_id"),
                         rs.getInt("automation_id")
                       );

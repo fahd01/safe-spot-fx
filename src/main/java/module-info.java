@@ -12,6 +12,7 @@ module com.safespot.safespotfx {
     requires com.almasb.fxgl.all;
     requires java.sql;
 
-    opens com.safespot.fx to javafx.fxml;
+    opens com.safespot.fx to javafx.fxml, javafx.base;
+    opens com.safespot.fx.model to javafx.base;
     exports com.safespot.fx;
 }

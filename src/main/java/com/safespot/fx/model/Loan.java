@@ -10,7 +10,16 @@ public class Loan {
     private String purpose;
     private LoanStatus status = LoanStatus.IN_BIDDING;
 
-public Loan(){}
+    public Loan(){}
+
+    public Loan(BigDecimal amount, BigDecimal interest, int term, String purpose) {
+        this.amount = amount;
+        this.interest = interest;
+        this.term = term;
+        this.purpose = purpose;
+        this.status = LoanStatus.IN_BIDDING;
+    }
+
     public Loan(int id, BigDecimal amount, BigDecimal interest, int term, String purpose, LoanStatus status) {
         this.id = id;
         this.amount = amount;
