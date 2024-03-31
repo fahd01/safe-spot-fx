@@ -4,20 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e04dda2-a51c-424c-afa9-719494ced631" name="Changes" comment="ADD DatabaseConnection, dao packages">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/CreateLoanDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/utils/ComponentsUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/create-loan.fxml" afterDir="false" />
+    <list default="true" id="1e04dda2-a51c-424c-afa9-719494ced631" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/utils/ButtonGroupTableCell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/LoanManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/SafeSpotApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/SafeSpotApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/CreateLoanDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/CreateLoanDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/LoanManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/LoanManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/BidDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/BidDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/LoanDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/LoanDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/LoanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/LoanDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/utils/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/utils/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/application.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Bid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Bid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/BidStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/BidStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/LoanStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/LoanStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/application.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/application.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/create-loan.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/create-loan.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1711709778644</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added UI for loans list, and create loan">
+      <created>1711888151382</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711888151382</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,7 +129,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ADD DatabaseConnection, dao packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD DatabaseConnection, dao packages" />
+    <MESSAGE value="Added UI for loans list, and create loan" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added UI for loans list, and create loan" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

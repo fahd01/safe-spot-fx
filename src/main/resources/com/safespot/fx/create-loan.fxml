@@ -33,7 +33,7 @@
     </content>
 
     <buttonTypes>
-        <ButtonType fx:id="createLoanSubmitBtn" buttonData="OK_DONE" text="Create Loan" />
+        <ButtonType fx:id="createLoanSubmitBtn" buttonData="OK_DONE" text="Submit" />
         <ButtonType buttonData="CANCEL_CLOSE" text="Cancel" />
     </buttonTypes>
 

@@ -61,6 +61,27 @@ public class LoanDaoImpl implements LoanDao {
     }
 
     @Override
+    public Loan update(Loan loan) {
+        Connection connection = DatabaseConnection.getConnection();
+        try (
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "UPDATE loan SET amount=?, interest=?, term=?, purpose=? WHERE id =?",
+                        PreparedStatement.RETURN_GENERATED_KEYS
+                )
+        ) {
+            preparedStatement.setBigDecimal(1, loan.getAmount());
+            preparedStatement.setBigDecimal(2, loan.getInterest());
+            preparedStatement.setInt(3, loan.getTerm());
+            preparedStatement.setString(4, loan.getPurpose());
+            preparedStatement.setInt(5, loan.getId());
+            preparedStatement.executeUpdate();
+            return loan;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void delete(Loan loan) {
         Connection connection = DatabaseConnection.getConnection();
         try (
@@ -72,6 +93,5 @@ public class LoanDaoImpl implements LoanDao {
             throw new RuntimeException(e);
         }
     }
-
 
 }

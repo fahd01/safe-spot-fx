@@ -1,9 +1,12 @@
 package com.safespot.fx;
 
+import com.safespot.fx.dao.BidDaoImpl;
 import com.safespot.fx.dao.LoanDao;
 import com.safespot.fx.dao.LoanDaoImpl;
+import com.safespot.fx.model.Bid;
 import com.safespot.fx.model.Loan;
 import com.safespot.fx.model.LoanStatus;
+import com.safespot.fx.utils.ButtonGroupTableCell;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,6 +23,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LoanManagementController implements Initializable {
@@ -39,7 +43,7 @@ public class LoanManagementController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         createLoanBtn.setOnAction(event -> {
-            new CreateLoanDialog().showAndWait().ifPresent(loan -> list.add(loan));
+            new CreateLoanDialog(Optional.empty()).showAndWait().ifPresent(loan -> list.add(loan));
         });
 
         List<Loan> loans = new ArrayList<>();
@@ -56,15 +60,11 @@ public class LoanManagementController implements Initializable {
         actions.setCellFactory(col -> {
             Button deleteButton = new Button("Delete");
             Button editButton = new Button("Edit");
-            TableCell<Loan, Loan> cell = new TableCell<Loan, Loan>() {
-                @Override
-                public void updateItem(Loan loan, boolean empty) {
-                    super.updateItem(loan, empty);
-                    HBox buttonGroup = new HBox(deleteButton, editButton);
-                    buttonGroup.setSpacing(2.5);
-                    if (empty) { setGraphic(null); } else { setGraphic(buttonGroup);}
-                }
-            };
+            Button bidButton = new Button("Bid");
+            TableCell<Loan, Loan> cell = new ButtonGroupTableCell<>(bidButton, editButton, deleteButton);
+            editButton.setOnAction(event -> {
+                new CreateLoanDialog(Optional.of(actions.getTableView().getItems().get(cell.getIndex()))).showAndWait().ifPresent(loan -> list.add(loan));
+            });
             deleteButton.setOnAction(e -> {
                 Loan loan = actions.getTableView().getItems().get(cell.getIndex());
                 deleteLoan(loan);
@@ -73,6 +73,9 @@ public class LoanManagementController implements Initializable {
         });
 
         table.setItems(list);
+
+        /****/
+        initializeBidsManagementTab();
     }
 
     public void deleteLoan(Loan loan) {
@@ -80,7 +83,35 @@ public class LoanManagementController implements Initializable {
         list.remove(loan);
     }
 
-    public void editLoan(Loan loan) {
+/******************* bids management section move to separate fxml / controller *******************/
+    @FXML private TableView<Bid> bidsTable;
+    @FXML private TableColumn<Bid, Integer> bidId;
+    @FXML private TableColumn<Bid, BigDecimal> bidAmount;
+    @FXML private TableColumn<Bid, LoanStatus> bidStatus;
+    @FXML private TableColumn<Bid, Integer> bidLoan;
+    @FXML private TableColumn<Bid, Integer> bidBidder;
+    @FXML private TableColumn<Bid, Bid> bidActions;
 
+    ObservableList<Bid> bidsList;
+
+    public void initializeBidsManagementTab() {
+        List<Bid> bids = new ArrayList<>();
+        try { bids = new BidDaoImpl().findAll(); } catch (SQLException e) { e.printStackTrace(); }
+        bidsList = FXCollections.observableArrayList(bids);
+
+        bidId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        bidAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        bidStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        bidLoan.setCellValueFactory(new PropertyValueFactory<>("loanId"));
+        bidBidder.setCellValueFactory(new PropertyValueFactory<>("bidderId"));
+
+        bidActions.setCellFactory(col -> {
+            Button deleteButton = new Button("Delete");
+            Button editButton = new Button("Edit");
+            TableCell<Bid, Bid> cell = new ButtonGroupTableCell<>(editButton, deleteButton);
+            return cell ;
+        });
+
+        bidsTable.setItems(bidsList);
     }
 }
