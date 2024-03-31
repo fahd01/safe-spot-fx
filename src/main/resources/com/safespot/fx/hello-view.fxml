@@ -17,7 +17,15 @@
     </Tab>
       <Tab text="P2P Lending Area">
           <content>
-              <SplitPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <SplitPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <items>
+                  <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Loan Managment" />
+                      <Tab text="Bids Managment" />
+                    </tabs>
+                  </TabPane>
+               </items></SplitPane>
           </content>
       </Tab>
       <Tab text="Reclamation Area">
