@@ -5,16 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e04dda2-a51c-424c-afa9-719494ced631" name="Changes" comment="ADD DatabaseConnection, dao packages">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/BidDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/BidDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Automation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/AutomationRule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/AutomationRuleAttribute.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/AutomationRuleOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Bid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/BidStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/CreateLoanDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/utils/ComponentsUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/create-loan.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/LoanManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/SafeSpotApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/SafeSpotApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/LoanDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/LoanDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/LoanDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/LoanDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/model/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/utils/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/utils/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/application.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +31,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -84,6 +88,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.safespot.fx" />
       <recent name="com.safespot.fx.dao" />
     </key>
   </component>

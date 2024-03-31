@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface LoanDao {
     public List<Loan> findAll() throws SQLException;
-
+    public Loan persist(Loan loan);
+    public void delete(Loan loan);
 }

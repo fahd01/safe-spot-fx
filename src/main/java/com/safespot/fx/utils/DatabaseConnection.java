@@ -10,12 +10,11 @@ public class DatabaseConnection {
     private static Connection connection;
     private DatabaseConnection() {
         String url = "jdbc:mysql://localhost:3306/safe-spot";
-        String user = null;
-        String password = null;
+        String user = "root";
+        String password = "root_password";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, password);
-
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
