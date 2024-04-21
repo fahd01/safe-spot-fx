@@ -1,6 +1,7 @@
 package com.safespot.fx.model;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Loan {
     private int id ;
@@ -78,14 +79,26 @@ public class Loan {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Loan loan = (Loan) o;
+        return id == loan.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
     public String toString() {
-        return "Loan{" +
-                "id=" + id +
+        return "[ id=" + id +
                 ", amount=" + amount +
                 ", interest=" + interest +
                 ", term=" + term +
                 ", purpose='" + purpose + '\'' +
                 ", status=" + status +
-                '}';
+                ']';
     }
 }
