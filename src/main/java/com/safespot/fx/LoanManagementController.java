@@ -11,10 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 
@@ -37,6 +34,7 @@ public class LoanManagementController implements Initializable {
     @FXML private TableColumn<Loan, LoanStatus> status;
     @FXML private TableColumn<Loan, Loan> actions;
 
+    private LoanDao loanDao= new LoanDaoImpl();
     ObservableList<Loan> list;
 
     @Override
@@ -47,7 +45,7 @@ public class LoanManagementController implements Initializable {
         });
 
         List<Loan> loans = new ArrayList<>();
-        try { loans = new LoanDaoImpl().findAll(); } catch (SQLException e) { e.printStackTrace(); }
+        try { loans = loanDao.findAll(); } catch (SQLException e) { e.printStackTrace(); }
         list = FXCollections.observableArrayList(loans);
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -80,11 +78,24 @@ public class LoanManagementController implements Initializable {
 
         /****/
         initializeBidsManagementTab();
+
     }
 
     public void deleteLoan(Loan loan) {
-        new LoanDaoImpl().delete(loan);
-        list.remove(loan);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this loan?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            try {
+                loanDao.delete(loan);
+                list.remove(loan);
+            }
+            catch (SQLException e) {
+                new ErrorDialog(e.getMessage());
+                throw new RuntimeException(e);
+            }
+
+        }
     }
 
 /******************* bids management section move to separate fxml / controller *******************/
