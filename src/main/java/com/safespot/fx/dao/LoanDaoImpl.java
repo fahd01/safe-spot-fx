@@ -82,16 +82,12 @@ public class LoanDaoImpl implements LoanDao {
     }
 
     @Override
-    public void delete(Loan loan) {
+    public void delete(Loan loan) throws SQLException {
         Connection connection = DatabaseConnection.getConnection();
-        try (
-             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM loan WHERE id = ?")
-        ) {
-            preparedStatement.setInt(1, loan.getId());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
+        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM loan WHERE id = ?");
+
+        preparedStatement.setInt(1, loan.getId());
+        preparedStatement.executeUpdate();
+    }
 }
