@@ -15,3 +15,6 @@ An IntelliJ IDEA run configuration is provided `Safe Spot FX`
 - [tilesfx](https://github.com/HanSolo/tilesfx): A JavaFX library containing tiles for Dashboards.
 - [ikonli](https://kordamp.org/ikonli/#_introduction): Icons
 - [FXGL](https://github.com/AlmasB/FXGL): Game dev for JavaFX
+
+## Resources
+- [JDBC Workshop](https://gitlab.com/mohamed.hosni.isi/workshopjdbc-3a)
