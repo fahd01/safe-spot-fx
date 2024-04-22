@@ -34,4 +34,25 @@ public class BidDaoImpl implements BidDao{
 
         return bids;
     }
+
+    @Override
+    public List<Bid> findByLoanId(int loanId) throws SQLException {
+        List<Bid> bids=new ArrayList<>();
+        Connection connection= DatabaseConnection.getConnection();
+        PreparedStatement ps =connection.prepareStatement("SELECT * FROM bid WHERE loan_id =?");
+        ps.setInt(1, loanId);
+        ResultSet rs=ps.executeQuery();
+        while (rs.next()){
+            Bid b= new Bid(
+                    rs.getInt("id"),
+                    rs.getBigDecimal("amount"),
+                    BidStatus.valueOf(rs.getString("status")),
+                    rs.getInt("bidder_id"),
+                    rs.getInt("loan_id"),
+                    rs.getInt("automation_id")
+            );
+            bids.add(b);
+        }
+        return bids;
+    }
 }

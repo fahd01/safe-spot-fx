@@ -1,5 +1,6 @@
 package com.safespot.fx;
 
+import com.safespot.fx.dao.BidDao;
 import com.safespot.fx.dao.BidDaoImpl;
 import com.safespot.fx.dao.LoanDao;
 import com.safespot.fx.dao.LoanDaoImpl;
@@ -12,12 +13,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.ProgressBarTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -32,8 +35,10 @@ public class LoanManagementController implements Initializable {
     @FXML private TableColumn<Loan, Integer> term;
     @FXML private TableColumn<Loan, String> purpose;
     @FXML private TableColumn<Loan, LoanStatus> status;
-    @FXML private TableColumn<Loan, Loan> actions;
+    @FXML private TableColumn<Loan, Double> biddingProgress;
 
+    @FXML private TableColumn<Loan, Loan> actions;
+private BidDao bidDao=new BidDaoImpl();
     private LoanDao loanDao= new LoanDaoImpl();
     ObservableList<Loan> list;
 
@@ -52,6 +57,8 @@ public class LoanManagementController implements Initializable {
         amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         interest.setCellValueFactory(new PropertyValueFactory<>("interest"));
         term.setCellValueFactory(new PropertyValueFactory<>("term"));
+        biddingProgress.setCellValueFactory(new PropertyValueFactory<>("biddingProgress"));
+
         purpose.setCellValueFactory(new PropertyValueFactory<>("purpose"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
@@ -73,6 +80,14 @@ public class LoanManagementController implements Initializable {
             });
             return cell ;
         });
+        biddingProgress.setCellFactory(col -> {
+            TableCell<Loan,Double> cell=new ProgressBarTableCell<>();
+            Loan loan = biddingProgress.getTableView().getItems().get(cell.getIndex());
+            List<Bid> bids = bidDao.findByLoanId(loan.getId()) ;
+            ((ProgressBarTableCell) cell).updateItem(0.5 , false);
+            return cell ;
+
+        });
 
         table.setItems(list);
 
@@ -90,6 +105,11 @@ public class LoanManagementController implements Initializable {
                 loanDao.delete(loan);
                 list.remove(loan);
             }
+            catch (SQLIntegrityConstraintViolationException e) {
+                new WarningDialog("You can not delete this loan, it already has assigned bids!");
+                throw new RuntimeException(e);
+            }
+
             catch (SQLException e) {
                 new ErrorDialog(e.getMessage());
                 throw new RuntimeException(e);

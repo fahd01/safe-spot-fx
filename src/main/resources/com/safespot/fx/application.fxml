@@ -29,6 +29,7 @@
                                         <TableColumn fx:id="interest" minWidth="75.0" prefWidth="-1.0" text="Interest" />
                                         <TableColumn fx:id="term" minWidth="75.0" prefWidth="-1.0" text="Term" />
                                         <TableColumn fx:id="status" minWidth="75.0" prefWidth="79.0" text="Status" />
+                                        <TableColumn fx:id="biddingProgress" minWidth="196.0" prefWidth="196.0" text="Progress" />
                                         <TableColumn fx:id="purpose" minWidth="196.0" prefWidth="196.0" text="Purpose" />
                                         <TableColumn fx:id="actions" minWidth="140.0" prefWidth="-1.0" text="Actions" />
                                     </columns>
