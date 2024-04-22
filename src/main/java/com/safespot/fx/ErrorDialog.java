@@ -16,17 +16,15 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class ErrorDialog {
-
-
     public ErrorDialog(String errorMessage) {
 
         Alert alert = new Alert(Alert.AlertType.ERROR, errorMessage, ButtonType.CLOSE);
         alert.showAndWait();
 
-        if (alert.getResult() == ButtonType.YES) {
-            //do stuff
     }
 
 
-    }
+
+
+
 }
