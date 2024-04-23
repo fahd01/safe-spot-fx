@@ -15,4 +15,6 @@ module com.safespot.safespotfx {
     opens com.safespot.fx to javafx.fxml, javafx.base;
     opens com.safespot.fx.model to javafx.base;
     exports com.safespot.fx;
+    exports com.safespot.fx.components;
+    opens com.safespot.fx.components to javafx.base, javafx.fxml;
 }

@@ -1,5 +1,6 @@
 package com.safespot.fx;
 
+import com.safespot.fx.components.LoanProgressTableCell;
 import com.safespot.fx.dao.BidDao;
 import com.safespot.fx.dao.BidDaoImpl;
 import com.safespot.fx.dao.LoanDao;
@@ -7,15 +8,13 @@ import com.safespot.fx.dao.LoanDaoImpl;
 import com.safespot.fx.model.Bid;
 import com.safespot.fx.model.Loan;
 import com.safespot.fx.model.LoanStatus;
-import com.safespot.fx.utils.ButtonGroupTableCell;
+import com.safespot.fx.components.ButtonGroupTableCell;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ProgressBarTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
 
 import java.math.BigDecimal;
 import java.net.URL;
@@ -38,7 +37,7 @@ public class LoanManagementController implements Initializable {
     @FXML private TableColumn<Loan, Double> biddingProgress;
 
     @FXML private TableColumn<Loan, Loan> actions;
-private BidDao bidDao=new BidDaoImpl();
+    private BidDao bidDao=new BidDaoImpl();
     private LoanDao loanDao= new LoanDaoImpl();
     ObservableList<Loan> list;
 
@@ -58,7 +57,6 @@ private BidDao bidDao=new BidDaoImpl();
         interest.setCellValueFactory(new PropertyValueFactory<>("interest"));
         term.setCellValueFactory(new PropertyValueFactory<>("term"));
         biddingProgress.setCellValueFactory(new PropertyValueFactory<>("biddingProgress"));
-
         purpose.setCellValueFactory(new PropertyValueFactory<>("purpose"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
@@ -66,6 +64,7 @@ private BidDao bidDao=new BidDaoImpl();
             Button deleteButton = new Button("Delete");
             Button editButton = new Button("Edit");
             Button bidButton = new Button("Bid");
+            //deleteButton.getStyleClass().setAll("btn","btn-danger");
             TableCell<Loan, Loan> cell = new ButtonGroupTableCell<>(bidButton, editButton, deleteButton);
             editButton.setOnAction(event ->
                 new CreateLoanDialog(Optional.of(actions.getTableView().getItems().get(cell.getIndex())))
@@ -80,17 +79,18 @@ private BidDao bidDao=new BidDaoImpl();
             });
             return cell ;
         });
-        biddingProgress.setCellFactory(col -> {
-            TableCell<Loan,Double> cell=new ProgressBarTableCell<>();
-            Loan loan = biddingProgress.getTableView().getItems().get(cell.getIndex());
-            List<Bid> bids = bidDao.findByLoanId(loan.getId()) ;
-            ((ProgressBarTableCell) cell).updateItem(0.5 , false);
-            return cell ;
 
-        });
+        // TODO set biddingProgress when fetching the loan
+        // TODO or use DAO within the model to provide a function that calculates the progress
+        loans.stream().forEach(
+                loan -> loan.setBiddingProgress(
+                        bidDao.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue()
+                )
+        );
+
+        biddingProgress.setCellFactory( LoanProgressTableCell.forTableColumn());
 
         table.setItems(list);
-
         /****/
         initializeBidsManagementTab();
 
@@ -119,6 +119,8 @@ private BidDao bidDao=new BidDaoImpl();
     }
 
 /******************* bids management section move to separate fxml / controller *******************/
+// TODO separate controller and FXML for bids (check the provided workshop for loading separate views)
+
     @FXML private TableView<Bid> bidsTable;
     @FXML private TableColumn<Bid, Integer> bidId;
     @FXML private TableColumn<Bid, BigDecimal> bidAmount;

@@ -1,7 +1,5 @@
-package com.safespot.fx.utils;
+package com.safespot.fx.components;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
 
 public class ComponentsUtils {

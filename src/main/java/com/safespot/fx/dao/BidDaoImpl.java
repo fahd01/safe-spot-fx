@@ -13,37 +13,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BidDaoImpl implements BidDao{
+public class BidDaoImpl implements BidDao {
     @Override
     public List<Bid> findAll() throws SQLException {
-        List<Bid> bids=new ArrayList<>();
-            Connection connection= DatabaseConnection.getConnection();
-            PreparedStatement ps =connection.prepareStatement("select * from bid");
-            ResultSet rs=ps.executeQuery();
-            while (rs.next()){
-              Bid b= new Bid(
-                        rs.getInt("id"),
-                        rs.getBigDecimal("amount"),
-                        BidStatus.valueOf(rs.getString("status")),
-                        rs.getInt("bidder_id"),
-                        rs.getInt("loan_id"),
-                        rs.getInt("automation_id")
-                      );
-            bids.add(b);
-            }
-
-        return bids;
-    }
-
-    @Override
-    public List<Bid> findByLoanId(int loanId) throws SQLException {
-        List<Bid> bids=new ArrayList<>();
-        Connection connection= DatabaseConnection.getConnection();
-        PreparedStatement ps =connection.prepareStatement("SELECT * FROM bid WHERE loan_id =?");
-        ps.setInt(1, loanId);
-        ResultSet rs=ps.executeQuery();
-        while (rs.next()){
-            Bid b= new Bid(
+        List<Bid> bids = new ArrayList<>();
+        Connection connection = DatabaseConnection.getConnection();
+        PreparedStatement ps = connection.prepareStatement("select * from bid");
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Bid b = new Bid(
                     rs.getInt("id"),
                     rs.getBigDecimal("amount"),
                     BidStatus.valueOf(rs.getString("status")),
@@ -53,6 +31,31 @@ public class BidDaoImpl implements BidDao{
             );
             bids.add(b);
         }
+
         return bids;
+    }
+
+    @Override
+    public List<Bid> findByLoanId(int loanId) {
+        List<Bid> bids = new ArrayList<>();
+        Connection connection = DatabaseConnection.getConnection();
+        try (PreparedStatement ps = connection.prepareStatement("SELECT * FROM bid WHERE loan_id =?");) {
+            ps.setInt(1, loanId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Bid bid = new Bid(
+                    rs.getInt("id"),
+                    rs.getBigDecimal("amount"),
+                    BidStatus.valueOf(rs.getString("status")),
+                    rs.getInt("bidder_id"),
+                    rs.getInt("loan_id"),
+                    rs.getInt("automation_id")
+                );
+                bids.add(bid);
+            }
+            return bids;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

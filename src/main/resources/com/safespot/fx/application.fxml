@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -41,6 +42,10 @@
                                     <StackPane.margin>
                                         <Insets right="5.0" top="5.0" />
                                     </StackPane.margin>
+                                   <styleClass>
+                                      <String fx:value="btn" />
+                                      <String fx:value="btn-primary" />
+                                   </styleClass>
                                 </Button>
                             </StackPane>
                         </Tab>

@@ -7,6 +7,16 @@
 ## Run Locally
 An IntelliJ IDEA run configuration is provided `Safe Spot FX`
 
+## Tasks
+- [ ] Use bootstrap CSS classes to style JavaFX elements
+  - add classes from the Scene builder
+  - programmatically: `button.getStyleClass().setAll("btn","btn-danger");`
+  - elements to style:
+    - Buttons
+    - Progress bar
+    - Tables
+- [ ] Add tooltips
+
 ## Additional JavaFX libraries
 - [bootstrapfx](https://github.com/kordamp/bootstrapfx)
 - [controlsfx](https://controlsfx.github.io)

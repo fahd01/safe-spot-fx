@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface BidDao {
     public List<Bid> findAll() throws SQLException;
-    public List<Bid> findByLoanId(int loanId) throws SQLException;
+    public List<Bid> findByLoanId(int loanId);
 }

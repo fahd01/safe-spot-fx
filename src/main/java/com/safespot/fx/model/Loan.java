@@ -11,6 +11,9 @@ public class Loan {
     private String purpose;
     private LoanStatus status = LoanStatus.IN_BIDDING;
 
+    // TODO set when fetching the loan from DB
+    private Double biddingProgress;
+
     public Loan(){}
 
     public Loan(BigDecimal amount, BigDecimal interest, int term, String purpose) {
@@ -76,6 +79,14 @@ public class Loan {
 
     public void setStatus(LoanStatus status) {
         this.status = status;
+    }
+
+    public Double getBiddingProgress() {
+        return biddingProgress;
+    }
+
+    public void setBiddingProgress(Double biddingProgress) {
+        this.biddingProgress = biddingProgress;
     }
 
     @Override
