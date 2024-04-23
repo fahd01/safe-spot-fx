@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e04dda2-a51c-424c-afa9-719494ced631" name="Changes" comment="ADDED EXCEPTION HANDLER">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/WarningDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Safe_Spot_FX.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Safe_Spot_FX.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/ErrorDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/ErrorDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/LoanManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/LoanManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/BidDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/BidDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/BidDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/dao/BidDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/application.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/application.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713708985260</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Set loans progress bar values, style progress bar based on progress, load bootstrap CSS for the App">
+      <created>1713884842954</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713884842954</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +165,8 @@
     <MESSAGE value="Merge branch 'main' of https://github.com/fahd01/safe-spot-fx" />
     <MESSAGE value="ADD DatabaseConnection, dao packages" />
     <MESSAGE value="ADDED EXCEPTION HANDLER" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADDED EXCEPTION HANDLER" />
+    <MESSAGE value="Set loans progress bar values, style progress bar based on progress, load bootstrap CSS for the App" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set loans progress bar values, style progress bar based on progress, load bootstrap CSS for the App" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
