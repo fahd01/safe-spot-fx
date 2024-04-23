@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e04dda2-a51c-424c-afa9-719494ced631" name="Changes" comment="ADDED EXCEPTION HANDLER">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Safe_Spot_FX.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Safe_Spot_FX.xml" afterDir="false" />
+    <list default="true" id="1e04dda2-a51c-424c-afa9-719494ced631" name="Changes" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/safespot/fx/ErrorDialog.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/LoanManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/LoanManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/application.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/application.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +107,10 @@
       <workItem from="1713537813865" duration="44000" />
       <workItem from="1713538097036" duration="1760000" />
       <workItem from="1713705307176" duration="3681000" />
-      <workItem from="1713805785034" duration="3895000" />
+      <workItem from="1713805785034" duration="4012000" />
+      <workItem from="1713889997795" duration="1463000" />
+      <workItem from="1713891474259" duration="325000" />
+      <workItem from="1713891811882" duration="3016000" />
     </task>
     <task id="LOCAL-00001" summary="ADD DatabaseConnection, dao packages">
       <option name="closed" value="true" />
@@ -136,14 +143,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713708985260</updated>
     </task>
-    <task id="LOCAL-00005" summary="Set loans progress bar values, style progress bar based on progress, load bootstrap CSS for the App">
-      <created>1713884842954</created>
+    <task id="LOCAL-00005" summary="Added warning dialog &amp; loan progress bar">
+      <option name="closed" value="true" />
+      <created>1713809738065</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1713884842954</updated>
+      <updated>1713809738065</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/safespot/fx/ErrorDialog.java">
+      <option name="closed" value="true" />
+      <created>1713809792313</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713809792313</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,8 +181,9 @@
     <MESSAGE value="Merge branch 'main' of https://github.com/fahd01/safe-spot-fx" />
     <MESSAGE value="ADD DatabaseConnection, dao packages" />
     <MESSAGE value="ADDED EXCEPTION HANDLER" />
-    <MESSAGE value="Set loans progress bar values, style progress bar based on progress, load bootstrap CSS for the App" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set loans progress bar values, style progress bar based on progress, load bootstrap CSS for the App" />
+    <MESSAGE value="Added warning dialog &amp; loan progress bar" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/safespot/fx/ErrorDialog.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/safespot/fx/ErrorDialog.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

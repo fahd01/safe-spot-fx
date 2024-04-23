@@ -62,9 +62,16 @@ public class LoanManagementController implements Initializable {
 
         actions.setCellFactory(col -> {
             Button deleteButton = new Button("Delete");
+            deleteButton.getStyleClass().setAll("btn","btn-danger");
+            /*img = image("src/code/media/logo.png")
+            button_login.setGraphic ImageView.new(img)*/
+            deleteButton.setTooltip(new Tooltip("Delete this loan"));
             Button editButton = new Button("Edit");
+            editButton.getStyleClass().setAll("btn","btn-info");
+            editButton.setTooltip(new Tooltip("Edit this loan"));
             Button bidButton = new Button("Bid");
-            //deleteButton.getStyleClass().setAll("btn","btn-danger");
+            bidButton.getStyleClass().setAll("btn","btn-success");
+            bidButton.setTooltip(new Tooltip("Place a bid on this loan"));
             TableCell<Loan, Loan> cell = new ButtonGroupTableCell<>(bidButton, editButton, deleteButton);
             editButton.setOnAction(event ->
                 new CreateLoanDialog(Optional.of(actions.getTableView().getItems().get(cell.getIndex())))
