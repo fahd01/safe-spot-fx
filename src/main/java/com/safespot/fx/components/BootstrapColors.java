@@ -1,9 +1,21 @@
 package com.safespot.fx.components;
 
-public class BootstrapColors {
-    public static final String PRIMARY = "#337ab7s";
-    public static final String INFO = "#d9edf7";
-    public static final String DANGER = "#f2dede";
-    public static final String WARNING = "#fcf8e3";
-    public static final String SUCCESS = "#dff0d8";
+import javafx.scene.paint.Color;
+
+public enum BootstrapColors {
+    PRIMARY("#337ab7"),
+    INFO("#d9edf7"),
+    DANGER("#f2dede"),
+    WARNING("#fcf8e3"),
+    SUCCESS("#dff0d8");
+
+    public final String hexValue;
+
+    BootstrapColors(String hexValue) {
+        this.hexValue = hexValue;
+    }
+
+    public Color asColor(){
+        return Color.valueOf(this.hexValue);
+    }
 }

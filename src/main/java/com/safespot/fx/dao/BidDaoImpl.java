@@ -6,12 +6,10 @@ import com.safespot.fx.model.Loan;
 import com.safespot.fx.model.LoanStatus;
 import com.safespot.fx.utils.DatabaseConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class BidDaoImpl implements BidDao {
     @Override
@@ -54,6 +52,34 @@ public class BidDaoImpl implements BidDao {
                 bids.add(bid);
             }
             return bids;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Bid persist(Bid bid) {
+        Connection connection = DatabaseConnection.getConnection();
+        try (
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "INSERT INTO bid (amount, status, bidder_id, loan_id, automation_id) VALUES (?, ?, ?, ?, ?)",
+                        PreparedStatement.RETURN_GENERATED_KEYS
+                )
+        ) {
+            preparedStatement.setBigDecimal(1, bid.getAmount());
+            preparedStatement.setString(2, bid.getStatus().toString());
+            // TODO set bidder id to current user
+            preparedStatement.setInt(3, bid.getBidderId());
+            preparedStatement.setInt(4, bid.getLoanId());
+            // Using setObject instead of setInt as automationId could be null
+            // and setInt does not support null values
+            preparedStatement.setObject(5, bid.getAutomationId(), java.sql.Types.INTEGER);
+            preparedStatement.executeUpdate();
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            rs.next();
+            int lastInsertId = rs.getInt(1);
+            bid.setId(lastInsertId);
+            return bid;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

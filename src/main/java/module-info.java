@@ -19,4 +19,6 @@ module com.safespot.safespotfx {
     exports com.safespot.fx;
     exports com.safespot.fx.components;
     opens com.safespot.fx.components to javafx.base, javafx.fxml;
+    exports com.safespot.fx.controller;
+    opens com.safespot.fx.controller to javafx.base, javafx.fxml;
 }

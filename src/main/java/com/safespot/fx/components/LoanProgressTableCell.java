@@ -13,11 +13,11 @@ public class LoanProgressTableCell extends ProgressBarTableCell<Loan> {
     public void updateItem(Double progress, boolean empty) {
         super.updateItem(progress, empty);
         if(progress != null && !empty){
-            String color = BootstrapColors.SUCCESS;
+            String color = BootstrapColors.SUCCESS.hexValue;
             if(progress < 0.4){
-                color = BootstrapColors.DANGER;
+                color = BootstrapColors.DANGER.hexValue;
             }else if(progress < 0.8){
-                color = BootstrapColors.WARNING;
+                color = BootstrapColors.WARNING.hexValue;
             }
             setStyle(String.format("-fx-accent: %s;", color));
             setTooltip(new Tooltip(String.format("%.2f %%", progress * 100)));

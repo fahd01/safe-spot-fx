@@ -8,6 +8,10 @@
 An IntelliJ IDEA run configuration is provided `Safe Spot FX`
 
 ## Tasks
+- Place bid
+  - [x] Add
+  - [ ] Trim last bid
+  - [ ] Disable place bid button for ACTIVE loans
 - [ ] Use bootstrap CSS classes to style JavaFX elements
   - add classes from the Scene builder
   - programmatically: `button.getStyleClass().setAll("btn","btn-danger");`

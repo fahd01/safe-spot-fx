@@ -1,8 +1,7 @@
-package com.safespot.fx;
+package com.safespot.fx.components;
 
 import com.safespot.fx.dao.LoanDaoImpl;
 import com.safespot.fx.model.Loan;
-import com.safespot.fx.components.ComponentsUtils;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
