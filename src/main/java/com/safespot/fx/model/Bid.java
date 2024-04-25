@@ -9,7 +9,7 @@ public class Bid {
     private BidStatus status = BidStatus.PENDING;
     private int bidderId;
     private int loanId;
-    private int automationId;
+    private Integer automationId;
 
     public Bid() {}
 
@@ -20,6 +20,14 @@ public class Bid {
         this.bidderId = bidderId;
         this.loanId = loanId;
         this.automationId = automationId;
+    }
+
+    public Bid(BigDecimal amount, int bidderId, int loanId) {
+        this.amount = amount;
+        this.status = BidStatus.PENDING;
+        this.bidderId = bidderId;
+        this.loanId = loanId;
+        this.automationId = null;
     }
 
     public int getId() {
@@ -62,11 +70,11 @@ public class Bid {
         this.loanId = loanId;
     }
 
-    public int getAutomationId() {
+    public Integer getAutomationId() {
         return automationId;
     }
 
-    public void setAutomationId(int automationId) {
+    public void setAutomationId(Integer automationId) {
         this.automationId = automationId;
     }
 }

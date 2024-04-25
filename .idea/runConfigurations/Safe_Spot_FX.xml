@@ -2,6 +2,10 @@
   <configuration default="false" name="Safe Spot FX" type="Application" factoryName="Application">
     <option name="ALTERNATIVE_JRE_PATH" value="jbr-17" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <envs>
+      <env name="DB_USERNAME" value="root" />
+      <env name="DB_PASSWORD" value="root_password" />
+    </envs>
     <option name="MAIN_CLASS_NAME" value="com.safespot.fx.SafeSpotApplication" />
     <module name="safe-spot-fx" />
     <method v="2">

@@ -1,6 +1,11 @@
-package com.safespot.fx;
+package com.safespot.fx.controller;
 
+import com.safespot.fx.components.CreateLoanDialog;
+import com.safespot.fx.components.ErrorDialog;
+import com.safespot.fx.components.WarningDialog;
+import com.safespot.fx.components.BootstrapColors;
 import com.safespot.fx.components.LoanProgressTableCell;
+import com.safespot.fx.components.PlaceBidPopOver;
 import com.safespot.fx.dao.BidDao;
 import com.safespot.fx.dao.BidDaoImpl;
 import com.safespot.fx.dao.LoanDao;
@@ -15,15 +20,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import org.kordamp.ikonli.fontawesome.FontAwesome;
+import org.kordamp.ikonli.javafx.FontIcon;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class LoanManagementController implements Initializable {
     @FXML private Button createLoanBtn;
@@ -61,17 +64,18 @@ public class LoanManagementController implements Initializable {
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         actions.setCellFactory(col -> {
-            Button deleteButton = new Button("Delete");
-            deleteButton.getStyleClass().setAll("btn","btn-danger");
-            /*img = image("src/code/media/logo.png")
-            button_login.setGraphic ImageView.new(img)*/
+            Button deleteButton = new Button();
+            //deleteButton.getStyleClass().setAll("btn","btn-danger", "btn-sm");
+            deleteButton.setGraphic(FontIcon.of(FontAwesome.TRASH, 16, BootstrapColors.DANGER.asColor()));
             deleteButton.setTooltip(new Tooltip("Delete this loan"));
-            Button editButton = new Button("Edit");
-            editButton.getStyleClass().setAll("btn","btn-info");
+            Button editButton = new Button();
+            //editButton.getStyleClass().setAll("btn","btn-info");
             editButton.setTooltip(new Tooltip("Edit this loan"));
-            Button bidButton = new Button("Bid");
-            bidButton.getStyleClass().setAll("btn","btn-success");
+            editButton.setGraphic(FontIcon.of(FontAwesome.EDIT, 16, BootstrapColors.SUCCESS.asColor()));
+            Button bidButton = new Button();
+            //bidButton.getStyleClass().setAll("btn","btn-success");
             bidButton.setTooltip(new Tooltip("Place a bid on this loan"));
+            bidButton.setGraphic(FontIcon.of(FontAwesome.PLUS_CIRCLE, 16, BootstrapColors.PRIMARY.asColor()));
             TableCell<Loan, Loan> cell = new ButtonGroupTableCell<>(bidButton, editButton, deleteButton);
             editButton.setOnAction(event ->
                 new CreateLoanDialog(Optional.of(actions.getTableView().getItems().get(cell.getIndex())))
@@ -84,15 +88,22 @@ public class LoanManagementController implements Initializable {
                 Loan loan = actions.getTableView().getItems().get(cell.getIndex());
                 deleteLoan(loan);
             });
+            bidButton.setOnAction(e -> {
+                Loan loan = actions.getTableView().getItems().get(cell.getIndex());
+                PlaceBidPopOver popOver = new PlaceBidPopOver(list.get(list.indexOf(loan)));
+                popOver.show(bidButton);
+                // TODO updated the loan bidding progress then had to refresh table
+                // bind data properly, getting a reference to the Observable loan passed to the table
+                // should be enough to reflect POJO changes into the table view
+                popOver.setOnHidden(v->table.refresh());
+            });
             return cell ;
         });
 
         // TODO set biddingProgress when fetching the loan
         // TODO or use DAO within the model to provide a function that calculates the progress
         loans.stream().forEach(
-                loan -> loan.setBiddingProgress(
-                        bidDao.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue()
-                )
+                loan -> loan.setBiddingProgress(fetchBiddingProgress(loan))
         );
 
         biddingProgress.setCellFactory( LoanProgressTableCell.forTableColumn());
@@ -124,7 +135,10 @@ public class LoanManagementController implements Initializable {
 
         }
     }
-
+    // TODO move to service layer
+    private Double fetchBiddingProgress(Loan loan){
+        return bidDao.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue();
+    }
 /******************* bids management section move to separate fxml / controller *******************/
 // TODO separate controller and FXML for bids (check the provided workshop for loading separate views)
 

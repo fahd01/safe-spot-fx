@@ -1,4 +1,4 @@
-package com.safespot.fx;
+package com.safespot.fx.components;
 
 import javafx.scene.control.*;
 
