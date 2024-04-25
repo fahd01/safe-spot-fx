@@ -1,6 +1,6 @@
-package com.safespot.fx.components;
+package com.safespot.fx.uicomponents;
 
-import com.safespot.fx.model.Loan;
+import com.safespot.fx.models.Loan;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.Tooltip;

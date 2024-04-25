@@ -1,19 +1,19 @@
-package com.safespot.fx.controller;
+package com.safespot.fx.controllers;
 
-import com.safespot.fx.components.CreateLoanDialog;
-import com.safespot.fx.components.ErrorDialog;
-import com.safespot.fx.components.WarningDialog;
-import com.safespot.fx.components.BootstrapColors;
-import com.safespot.fx.components.LoanProgressTableCell;
-import com.safespot.fx.components.PlaceBidPopOver;
-import com.safespot.fx.dao.BidDao;
-import com.safespot.fx.dao.BidDaoImpl;
-import com.safespot.fx.dao.LoanDao;
-import com.safespot.fx.dao.LoanDaoImpl;
-import com.safespot.fx.model.Bid;
-import com.safespot.fx.model.Loan;
-import com.safespot.fx.model.LoanStatus;
-import com.safespot.fx.components.ButtonGroupTableCell;
+import com.safespot.fx.interfaces.IBidService;
+import com.safespot.fx.interfaces.ILoanService;
+import com.safespot.fx.uicomponents.CreateLoanDialog;
+import com.safespot.fx.uicomponents.ErrorDialog;
+import com.safespot.fx.uicomponents.WarningDialog;
+import com.safespot.fx.uicomponents.BootstrapColors;
+import com.safespot.fx.uicomponents.LoanProgressTableCell;
+import com.safespot.fx.uicomponents.PlaceBidPopOver;
+import com.safespot.fx.services.BidService;
+import com.safespot.fx.services.LoanService;
+import com.safespot.fx.models.Bid;
+import com.safespot.fx.models.Loan;
+import com.safespot.fx.models.LoanStatus;
+import com.safespot.fx.uicomponents.ButtonGroupTableCell;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -40,8 +40,8 @@ public class LoanManagementController implements Initializable {
     @FXML private TableColumn<Loan, Double> biddingProgress;
 
     @FXML private TableColumn<Loan, Loan> actions;
-    private BidDao bidDao=new BidDaoImpl();
-    private LoanDao loanDao= new LoanDaoImpl();
+    private IBidService bidDao=new BidService();
+    private ILoanService loanDao= new LoanService();
     ObservableList<Loan> list;
 
     @Override
@@ -154,7 +154,7 @@ public class LoanManagementController implements Initializable {
 
     public void initializeBidsManagementTab() {
         List<Bid> bids = new ArrayList<>();
-        try { bids = new BidDaoImpl().findAll(); } catch (SQLException e) { e.printStackTrace(); }
+        try { bids = new BidService().findAll(); } catch (SQLException e) { e.printStackTrace(); }
         bidsList = FXCollections.observableArrayList(bids);
 
         bidId.setCellValueFactory(new PropertyValueFactory<>("id"));

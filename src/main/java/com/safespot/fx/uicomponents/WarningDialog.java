@@ -1,4 +1,4 @@
-package com.safespot.fx.components;
+package com.safespot.fx.uicomponents;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

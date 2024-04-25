@@ -1,9 +1,13 @@
-package com.safespot.fx.components;
+package com.safespot.fx.uicomponents;
 
-import com.safespot.fx.dao.BidDao;
-import com.safespot.fx.dao.BidDaoImpl;
-import com.safespot.fx.model.Bid;
-import com.safespot.fx.model.Loan;
+import com.safespot.fx.interfaces.IBidService;
+import com.safespot.fx.interfaces.IUserService;
+import com.safespot.fx.services.BidService;
+import com.safespot.fx.services.UserService;
+import com.safespot.fx.models.Bid;
+import com.safespot.fx.models.Loan;
+import com.safespot.fx.models.User;
+import com.safespot.fx.utils.EmailSender;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -16,7 +20,8 @@ import java.math.BigDecimal;
 
 public class PlaceBidPopOver extends PopOver {
 
-    private BidDao bidDao = new BidDaoImpl();
+    private IBidService bidDao = new BidService();
+    private IUserService userDao = new UserService();
 
     public PlaceBidPopOver (Loan loan) {
         super();
@@ -40,11 +45,17 @@ public class PlaceBidPopOver extends PopOver {
             // TODO use current user instead
             int currentUserId = 1;
             // TODO handle persist exceptions into an ErrorDialog
-            bidDao.persist(new Bid(amount, currentUserId, loan.getId()));
+            Bid newBid = new Bid(amount, currentUserId, loan.getId());
+            bidDao.persist(newBid);
             loan.setBiddingProgress(
                     bidDao.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue()
             );
             this.hide();
+            // TODO Reactively on Bid persisted event
+            User loanOwner = userDao.findById(loan.getBorrowerId());
+            // TODO sending email blocks the main thread for a second, send async
+            EmailSender.getInstance().sendPlacedBidEmail(loanOwner.getEmail(), newBid, loan);
+
         });
         VBox vBox = new VBox(amountTf, submitBtn);
         vBox.setSpacing(5);
