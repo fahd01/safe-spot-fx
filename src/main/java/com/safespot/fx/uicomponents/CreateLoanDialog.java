@@ -1,7 +1,7 @@
-package com.safespot.fx.components;
+package com.safespot.fx.uicomponents;
 
-import com.safespot.fx.dao.LoanDaoImpl;
-import com.safespot.fx.model.Loan;
+import com.safespot.fx.services.LoanService;
+import com.safespot.fx.models.Loan;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -71,8 +71,8 @@ public class CreateLoanDialog extends Dialog<Loan> {
         loan.setTerm(term);
         loan.setPurpose(purpose);
         if (loan.getId() == 0)
-            this.loan = new LoanDaoImpl().persist(loan);
+            this.loan = new LoanService().persist(loan);
         else
-            this.loan = new LoanDaoImpl().update(loan);
+            this.loan = new LoanService().update(loan);
     }
 }

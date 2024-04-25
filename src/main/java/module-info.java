@@ -13,12 +13,13 @@ module com.safespot.safespotfx {
     requires org.kordamp.bootstrapfx.core;
     //requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires java.mail;
 
     opens com.safespot.fx to javafx.fxml, javafx.base;
-    opens com.safespot.fx.model to javafx.base;
+    opens com.safespot.fx.models to javafx.base;
     exports com.safespot.fx;
-    exports com.safespot.fx.components;
-    opens com.safespot.fx.components to javafx.base, javafx.fxml;
-    exports com.safespot.fx.controller;
-    opens com.safespot.fx.controller to javafx.base, javafx.fxml;
+    exports com.safespot.fx.uicomponents;
+    opens com.safespot.fx.uicomponents to javafx.base, javafx.fxml;
+    exports com.safespot.fx.controllers;
+    opens com.safespot.fx.controllers to javafx.base, javafx.fxml;
 }

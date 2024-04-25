@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e04dda2-a51c-424c-afa9-719494ced631" name="Changes" comment="apply bootstrap styling to buttons and adjust the dependencies">
+    <list default="true" id="1e04dda2-a51c-424c-afa9-719494ced631" name="Changes" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/safespot/fx/ErrorDialog.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safespot/fx/LoanManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safespot/fx/LoanManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/application.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/safespot/fx/application.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,12 +110,7 @@
       <workItem from="1713805785034" duration="4012000" />
       <workItem from="1713889997795" duration="1463000" />
       <workItem from="1713891474259" duration="325000" />
-      <workItem from="1713891811882" duration="3145000" />
-      <workItem from="1713895184065" duration="785000" />
-      <workItem from="1714032426298" duration="707000" />
-      <workItem from="1714033149160" duration="744000" />
-      <workItem from="1714049395366" duration="158000" />
-      <workItem from="1714054102974" duration="606000" />
+      <workItem from="1713891811882" duration="3016000" />
     </task>
     <task id="LOCAL-00001" summary="ADD DatabaseConnection, dao packages">
       <option name="closed" value="true" />
@@ -159,31 +159,7 @@
       <option name="project" value="LOCAL" />
       <updated>1713809792313</updated>
     </task>
-    <task id="LOCAL-00007" summary="apply bootstrap styling to buttons and adjust the dependencies">
-      <option name="closed" value="true" />
-      <created>1713894938011</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1713894938011</updated>
-    </task>
-    <task id="LOCAL-00008" summary="apply bootstrap styling to buttons and adjust the dependencies">
-      <option name="closed" value="true" />
-      <created>1714033370109</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1714033370109</updated>
-    </task>
-    <task id="LOCAL-00009" summary="apply bootstrap styling to buttons and adjust the dependencies">
-      <option name="closed" value="true" />
-      <created>1714033390147</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1714033390147</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,8 +183,7 @@
     <MESSAGE value="ADDED EXCEPTION HANDLER" />
     <MESSAGE value="Added warning dialog &amp; loan progress bar" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/safespot/fx/ErrorDialog.java" />
-    <MESSAGE value="apply bootstrap styling to buttons and adjust the dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="apply bootstrap styling to buttons and adjust the dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/safespot/fx/ErrorDialog.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
