@@ -1,0 +1,9 @@
+
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üÒİŸıÿÿÿÿ8ôé‚Éñ1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ç‹ìŸıÿÿÿÿ8ØÚƒÉñ1
+r	java:S117F"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÆ“ùÿÿÿÿÿ8Øò„Éñ1
+r	java:S116	"QRename this field "prix_a" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØĞÚñúÿÿÿÿ8ÁàÿÈñ1
+b	java:S107"AConstructor has 9 parameters, which is greater than 7 authorized.(üÒİŸıÿÿÿÿ8öé‚Éñ1
+b	java:S107"AConstructor has 8 parameters, which is greater than 7 authorized.(ç‹ìŸıÿÿÿÿ8ÚÚƒÉñ1
+o	java:S100B"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚ªä©şÿÿÿÿ8Üò„Éñ1
+o	java:S100F"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÆ“ùÿÿÿÿÿ8İò„Éñ1

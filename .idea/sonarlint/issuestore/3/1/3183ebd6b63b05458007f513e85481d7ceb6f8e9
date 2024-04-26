@@ -1,0 +1,6 @@
+
+k
+java:S1192("IDefine a constant instead of duplicating this literal "password" 3 times.(—ÖÛ†ûÿÿÿÿ8ùóÇñ1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÅêîŒ8¸ËªÇñ1
+L	java:S106"+Replace this use of System.out by a logger.(¨‚’úÿÿÿÿ8ÃËªÇñ1
+M	java:S106Ÿ"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ8ÉËªÇñ1
