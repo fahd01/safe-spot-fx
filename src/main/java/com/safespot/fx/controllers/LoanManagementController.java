@@ -2,20 +2,13 @@ package com.safespot.fx.controllers;
 
 import com.safespot.fx.interfaces.IBidService;
 import com.safespot.fx.interfaces.ILoanService;
-import com.safespot.fx.uicomponents.CreateLoanDialog;
-import com.safespot.fx.uicomponents.ErrorDialog;
-import com.safespot.fx.uicomponents.WarningDialog;
-import com.safespot.fx.uicomponents.BootstrapColors;
-import com.safespot.fx.uicomponents.LoanProgressTableCell;
-import com.safespot.fx.uicomponents.PlaceBidPopOver;
+import com.safespot.fx.uicomponents.*;
 import com.safespot.fx.services.BidService;
 import com.safespot.fx.services.LoanService;
-import com.safespot.fx.models.Bid;
 import com.safespot.fx.models.Loan;
 import com.safespot.fx.models.LoanStatus;
-import com.safespot.fx.uicomponents.ButtonGroupTableCell;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -27,9 +20,11 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class LoanManagementController implements Initializable {
     @FXML private Button createLoanBtn;
+    @FXML private TextField filterTf;
     @FXML private TableView<Loan> table;
     @FXML private TableColumn<Loan, Integer> id;
     @FXML private TableColumn<Loan, BigDecimal> amount;
@@ -42,7 +37,7 @@ public class LoanManagementController implements Initializable {
     @FXML private TableColumn<Loan, Loan> actions;
     private IBidService bidDao=new BidService();
     private ILoanService loanDao= new LoanService();
-    ObservableList<Loan> list;
+    FilteredList<Loan> list;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,15 +45,20 @@ public class LoanManagementController implements Initializable {
         createLoanBtn.setOnAction(event -> {
             new CreateLoanDialog(Optional.empty()).showAndWait().ifPresent(loan -> list.add(loan));
         });
+        filterTf.setOnKeyReleased(event -> list.setPredicate(searchPredicate(filterTf.getText())));
 
         List<Loan> loans = new ArrayList<>();
         try { loans = loanDao.findAll(); } catch (SQLException e) { e.printStackTrace(); }
-        list = FXCollections.observableArrayList(loans);
+        list = new FilteredList<>(FXCollections.observableArrayList(loans));
+
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        amount.setCellFactory(col -> new SuffixedValueTableCell<>("TND"));
         interest.setCellValueFactory(new PropertyValueFactory<>("interest"));
+        interest.setCellFactory(col -> new SuffixedValueTableCell<>("%"));
         term.setCellValueFactory(new PropertyValueFactory<>("term"));
+        term.setCellFactory(col -> new SuffixedValueTableCell<>("months"));
         biddingProgress.setCellValueFactory(new PropertyValueFactory<>("biddingProgress"));
         purpose.setCellValueFactory(new PropertyValueFactory<>("purpose"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
@@ -109,9 +109,6 @@ public class LoanManagementController implements Initializable {
         biddingProgress.setCellFactory( LoanProgressTableCell.forTableColumn());
 
         table.setItems(list);
-        /****/
-        initializeBidsManagementTab();
-
     }
 
     public void deleteLoan(Loan loan) {
@@ -139,37 +136,15 @@ public class LoanManagementController implements Initializable {
     private Double fetchBiddingProgress(Loan loan){
         return bidDao.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue();
     }
-/******************* bids management section move to separate fxml / controller *******************/
-// TODO separate controller and FXML for bids (check the provided workshop for loading separate views)
 
-    @FXML private TableView<Bid> bidsTable;
-    @FXML private TableColumn<Bid, Integer> bidId;
-    @FXML private TableColumn<Bid, BigDecimal> bidAmount;
-    @FXML private TableColumn<Bid, LoanStatus> bidStatus;
-    @FXML private TableColumn<Bid, Integer> bidLoan;
-    @FXML private TableColumn<Bid, Integer> bidBidder;
-    @FXML private TableColumn<Bid, Bid> bidActions;
-
-    ObservableList<Bid> bidsList;
-
-    public void initializeBidsManagementTab() {
-        List<Bid> bids = new ArrayList<>();
-        try { bids = new BidService().findAll(); } catch (SQLException e) { e.printStackTrace(); }
-        bidsList = FXCollections.observableArrayList(bids);
-
-        bidId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        bidAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        bidStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-        bidLoan.setCellValueFactory(new PropertyValueFactory<>("loanId"));
-        bidBidder.setCellValueFactory(new PropertyValueFactory<>("bidderId"));
-
-        bidActions.setCellFactory(col -> {
-            Button deleteButton = new Button("Delete");
-            Button editButton = new Button("Edit");
-            TableCell<Bid, Bid> cell = new ButtonGroupTableCell<>(editButton, deleteButton);
-            return cell ;
-        });
-
-        bidsTable.setItems(bidsList);
+    // TODO DB filtering ??
+    private Predicate<Loan> searchPredicate(String value) {
+        return loan ->
+                loan.getAmount().toString().contains(value) ||
+                loan.getInterest().toString().contains(value) ||
+                String.valueOf(loan.getTerm()).contains(value) ||
+                loan.getPurpose().contains(value) ||
+                loan.getStatus().toString().contains(value);
     }
+
 }
