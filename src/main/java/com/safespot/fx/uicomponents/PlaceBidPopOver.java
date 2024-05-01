@@ -7,7 +7,7 @@ import com.safespot.fx.services.UserService;
 import com.safespot.fx.models.Bid;
 import com.safespot.fx.models.Loan;
 import com.safespot.fx.models.User;
-import com.safespot.fx.utils.EmailSender;
+import com.safespot.fx.integrations.EmailSender;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;

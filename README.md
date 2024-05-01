@@ -12,6 +12,13 @@ An IntelliJ IDEA run configuration is provided `Safe Spot FX`
   - [x] Add
   - [ ] Trim last bid
   - [ ] Disable place bid button for ACTIVE loans
+- FilteredList does not support add()
+- Remove ID's from tables
+  - Popover for loan details
+  - Popover for user ditails
+- [ ] Reuse loans.fxml for find a loan and loan management same fxml with include wrapper
+- Use the same Status cell for loan and bid
+- [ ] deleting bids should be reflected in loan progress
 - [ ] Use bootstrap CSS classes to style JavaFX elements
   - add classes from the Scene builder
   - programmatically: `button.getStyleClass().setAll("btn","btn-danger");`

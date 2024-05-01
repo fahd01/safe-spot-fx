@@ -1,4 +1,4 @@
-package com.safespot.fx.utils;
+package com.safespot.fx.integrations;
 
 import com.safespot.fx.models.Bid;
 import com.safespot.fx.models.Loan;

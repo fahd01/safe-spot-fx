@@ -1,4 +1,12 @@
 package com.safespot.fx.models;
-public enum LoanStatus {
+
+import com.safespot.fx.interfaces.Themeable;
+
+public enum LoanStatus implements Themeable {
       IN_BIDDING, ACTIVE, PAID;
+
+      @Override
+      public String getThemeStyle() {
+            return null;
+      }
 }

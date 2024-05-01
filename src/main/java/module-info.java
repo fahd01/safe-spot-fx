@@ -14,6 +14,9 @@ module com.safespot.safespotfx {
     //requires eu.hansolo.tilesfx;
     requires java.sql;
     requires java.mail;
+    requires api;
+    requires service;
+    requires rxjava;
 
     opens com.safespot.fx to javafx.fxml, javafx.base;
     opens com.safespot.fx.models to javafx.base;
