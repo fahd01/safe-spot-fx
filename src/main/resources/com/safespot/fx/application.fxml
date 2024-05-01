@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.safespot.fx.controllers.LoanManagementController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" >
     <tabs>
         <Tab text="Account Area">
             <content>
@@ -21,47 +21,17 @@
             <content>
                 <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
+
                         <Tab text="Loan Management">
-                            <StackPane>
-                                <TableView fx:id="table" layoutX="14.0" layoutY="14.0" prefHeight="280.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <columns>
-                                        <TableColumn fx:id="id" prefWidth="-1.0" text="ID" />
-                                        <TableColumn fx:id="amount" minWidth="120.0" prefWidth="-1.0" text="Amount" />
-                                        <TableColumn fx:id="interest" minWidth="75.0" prefWidth="-1.0" text="Interest" />
-                                        <TableColumn fx:id="term" minWidth="75.0" prefWidth="-1.0" text="Term" />
-                                        <TableColumn fx:id="status" minWidth="100.0" prefWidth="100.0" text="Status" />
-                                        <TableColumn fx:id="biddingProgress" minWidth="196.0" prefWidth="196.0" text="Progress" />
-                                        <TableColumn fx:id="purpose" minWidth="196.0" prefWidth="196.0" text="Purpose" />
-                                        <TableColumn fx:id="actions" minWidth="210.0" prefWidth="210" sortable="false" text="Actions" />
-                                    </columns>
-                                    <padding>
-                                        <Insets top="35.0" />
-                                    </padding>
-                                </TableView>
-                                <TextField fx:id="filterTf" maxWidth="300.0" prefWidth="300.0" promptText="Search" StackPane.alignment="TOP_LEFT">
-                                    <StackPane.margin>
-                                        <Insets right="5.0" top="5.0" left="5.0" />
-                                    </StackPane.margin>
-                                </TextField>
-                                <Button fx:id="createLoanBtn" text="Create Loan" StackPane.alignment="TOP_RIGHT">
-                                   <!--
-                                    <graphic>
-                                        <FontIcon iconLiteral="fa-trash" iconSize="16" iconColor="white"/>
-                                    </graphic>
-                                    -->
-                                    <StackPane.margin>
-                                        <Insets right="5.0" top="5.0" />
-                                    </StackPane.margin>
-                                   <styleClass>
-                                      <String fx:value="btn" />
-                                      <String fx:value="btn-primary" />
-                                   </styleClass>
-                                </Button>
-                            </StackPane>
+                            <fx:include fx:id="loans" source="loans.fxml" />
                         </Tab>
                         <Tab text="Bids Management">
                             <fx:include fx:id="bidsTable" source="bids.fxml" />
                         </Tab>
+                        <Tab text="Find a Loan">
+                            <fx:include fx:id="myLoans" source="findALoan.fxml" />
+                        </Tab>
+
                         <Tab text="My Loans">
 
                         </Tab>

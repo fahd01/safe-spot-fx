@@ -4,26 +4,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TableView
-        xmlns="http://javafx.com/javafx/11.0.14-internal"
-        xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="com.safespot.fx.controllers.BidManagementController"
-        fx:id="bidsTable"
-        layoutX="14.0"
-        layoutY="14.0"
-        prefHeight="280.0"
-        prefWidth="600.0"
-        AnchorPane.bottomAnchor="0.0"
-        AnchorPane.leftAnchor="0.0"
-        AnchorPane.rightAnchor="0.0"
-        AnchorPane.topAnchor="0.0">
+<TableView fx:id="bidsTable" layoutX="14.0" layoutY="14.0" prefHeight="280.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.safespot.fx.controllers.BidManagementController">
     <columns>
         <TableColumn fx:id="bidId" prefWidth="-1.0" text="ID" />
-        <TableColumn fx:id="bidAmount" minWidth="75.0" prefWidth="-1.0" text="Amount" />
-        <TableColumn fx:id="bidStatus" minWidth="75.0" prefWidth="-1.0" text="Status" />
-        <TableColumn fx:id="bidLoan" minWidth="75.0" prefWidth="-1.0" text="Loan ID" />
+        <TableColumn fx:id="bidAmount" minWidth="75.0" prefWidth="104.66667175292969" text="Amount" />
+        <TableColumn fx:id="bidStatus" minWidth="42.66667175292969" prefWidth="74.33332824707031" text="Status" />
+        <TableColumn fx:id="bidLoan" minWidth="48.333343505859375" prefWidth="48.333343505859375" text="Loan ID" />
         <TableColumn fx:id="bidBidder" minWidth="75.0" prefWidth="79.0" text="Bidder ID" />
-        <TableColumn fx:id="bidActions" minWidth="140.0" prefWidth="-1.0" text="Actions" />
+        <TableColumn fx:id="bidActions" minWidth="106.0" prefWidth="106.0" text="Actions" />
     </columns>
     <padding>
         <Insets top="5.0" />

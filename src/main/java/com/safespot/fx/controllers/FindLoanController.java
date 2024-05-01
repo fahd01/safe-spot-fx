@@ -2,11 +2,11 @@ package com.safespot.fx.controllers;
 
 import com.safespot.fx.interfaces.IBidService;
 import com.safespot.fx.interfaces.ILoanService;
-import com.safespot.fx.uicomponents.*;
-import com.safespot.fx.services.BidService;
-import com.safespot.fx.services.LoanService;
 import com.safespot.fx.models.Loan;
 import com.safespot.fx.models.LoanStatus;
+import com.safespot.fx.services.BidService;
+import com.safespot.fx.services.LoanService;
+import com.safespot.fx.uicomponents.*;
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
@@ -15,14 +15,18 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.kordamp.ikonli.fontawesome.FontAwesome;
 import org.kordamp.ikonli.javafx.FontIcon;
+
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
-public class LoanManagementController implements Initializable {
+public class FindLoanController implements Initializable {
     @FXML private Button createLoanBtn;
     @FXML private TextField filterTf;
     @FXML private TableView<Loan> table;
@@ -62,34 +66,13 @@ public class LoanManagementController implements Initializable {
         biddingProgress.setCellValueFactory(new PropertyValueFactory<>("biddingProgress"));
         purpose.setCellValueFactory(new PropertyValueFactory<>("purpose"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
-        status.setCellFactory(col->new LoanStatusTableCell());
-
 
         actions.setCellFactory(col -> {
-            Button deleteButton = new Button();
-            //deleteButton.getStyleClass().setAll("btn","btn-danger", "btn-sm");
-            deleteButton.setGraphic(FontIcon.of(FontAwesome.TRASH, 16, BootstrapColors.DANGER.asColor()));
-            deleteButton.setTooltip(new Tooltip("Delete this loan"));
-            Button editButton = new Button();
-            //editButton.getStyleClass().setAll("btn","btn-info");
-            editButton.setTooltip(new Tooltip("Edit this loan"));
-            editButton.setGraphic(FontIcon.of(FontAwesome.EDIT, 16, BootstrapColors.SUCCESS.asColor()));
-            Button bidButton = new Button();
-            //bidButton.getStyleClass().setAll("btn","btn-success");
+            Button bidButton = new Button("Place Bid");
+            bidButton.getStyleClass().setAll("btn", "btn-primary", "btn-sm");
             bidButton.setTooltip(new Tooltip("Place a bid on this loan"));
-            bidButton.setGraphic(FontIcon.of(FontAwesome.PLUS_CIRCLE, 16, BootstrapColors.PRIMARY.asColor()));
-            TableCell<Loan, Loan> cell = new ButtonGroupTableCell<>(bidButton, editButton, deleteButton);
-            editButton.setOnAction(event ->
-                new CreateLoanDialog(Optional.of(actions.getTableView().getItems().get(cell.getIndex())))
-                        .showAndWait()
-                        .ifPresent(
-                            loan -> { if(list.contains(loan)) list.set(list.indexOf(loan), loan); else list.add(loan); }
-                        )
-            );
-            deleteButton.setOnAction(e -> {
-                Loan loan = actions.getTableView().getItems().get(cell.getIndex());
-                deleteLoan(loan);
-            });
+            //bidButton.setGraphic(FontIcon.of(FontAwesome.PLUS_CIRCLE, 16, BootstrapColors.PRIMARY.asColor()));
+            TableCell<Loan, Loan> cell = new ButtonGroupTableCell<>(bidButton);
             bidButton.setOnAction(e -> {
                 Loan loan = actions.getTableView().getItems().get(cell.getIndex());
                 PlaceBidPopOver popOver = new PlaceBidPopOver(list.get(list.indexOf(loan)));
@@ -113,27 +96,7 @@ public class LoanManagementController implements Initializable {
         table.setItems(list);
     }
 
-    public void deleteLoan(Loan loan) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this loan?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
-        alert.showAndWait();
 
-        if (alert.getResult() == ButtonType.YES) {
-            try {
-                loanDao.delete(loan);
-                list.remove(loan);
-            }
-            catch (SQLIntegrityConstraintViolationException e) {
-                new WarningDialog("You can not delete this loan, it already has assigned bids!");
-                throw new RuntimeException(e);
-            }
-
-            catch (SQLException e) {
-                new ErrorDialog(e.getMessage());
-                throw new RuntimeException(e);
-            }
-
-        }
-    }
     // TODO move to service layer
     private Double fetchBiddingProgress(Loan loan){
         return bidDao.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue();

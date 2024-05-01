@@ -51,7 +51,6 @@ public class PlaceBidPopOver extends PopOver {
                     bidDao.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue()
             );
             this.hide();
-            // TODO Reactively on Bid persisted event
             User loanOwner = userDao.findById(loan.getBorrowerId());
             // TODO sending email blocks the main thread for a second, send async
             EmailSender.getInstance().sendPlacedBidEmail(loanOwner.getEmail(), newBid, loan);
