@@ -82,4 +82,15 @@ public class BidService implements IBidService {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void delete(Bid bid) throws SQLException {
+        Connection connection = DatabaseConnection.getConnection();
+
+        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM bid WHERE id = ?");
+
+        preparedStatement.setInt(1, bid.getId());
+        preparedStatement.executeUpdate();
+
+    }
 }

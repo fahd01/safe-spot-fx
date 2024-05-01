@@ -67,8 +67,7 @@ public class LoanService implements ILoanService {
         Connection connection = DatabaseConnection.getConnection();
         try (
                 PreparedStatement preparedStatement = connection.prepareStatement(
-                        "UPDATE loan SET amount=?, interest=?, term=?, purpose=? WHERE id =?",
-                        PreparedStatement.RETURN_GENERATED_KEYS
+                        "UPDATE loan SET amount=?, interest=?, term=?, purpose=? WHERE id =?"
                 )
         ) {
             preparedStatement.setBigDecimal(1, loan.getAmount());

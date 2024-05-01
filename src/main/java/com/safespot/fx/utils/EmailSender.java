@@ -39,11 +39,11 @@ public class EmailSender {
         this.session = Session.getInstance(properties, new Authenticator(){
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(NOTIFICATION_EMAIL_ADDRESS, NOTIFICATION_EMAIL_APP_TOKEN);
+
             }
         });
         try {
             this.placedBidEmailBody = Files.readString(Paths.get(getClass().getResource("bid-placed-email-body.html").toURI()));
-                    //new String(in.readAllBytes(), StandardCharsets.UTF_8);
         } catch (URISyntaxException | IOException e) { throw new RuntimeException(e);}
     }
 
