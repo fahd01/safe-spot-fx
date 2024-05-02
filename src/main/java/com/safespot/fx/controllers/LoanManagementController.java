@@ -2,12 +2,13 @@ package com.safespot.fx.controllers;
 
 import com.safespot.fx.interfaces.IBidService;
 import com.safespot.fx.interfaces.ILoanService;
+import com.safespot.fx.interfaces.Status;
 import com.safespot.fx.uicomponents.*;
 import com.safespot.fx.services.BidService;
 import com.safespot.fx.services.LoanService;
 import com.safespot.fx.models.Loan;
-import com.safespot.fx.models.LoanStatus;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,25 +32,27 @@ public class LoanManagementController implements Initializable {
     @FXML private TableColumn<Loan, BigDecimal> interest;
     @FXML private TableColumn<Loan, Integer> term;
     @FXML private TableColumn<Loan, String> purpose;
-    @FXML private TableColumn<Loan, LoanStatus> status;
+    @FXML private TableColumn<Loan, Status> status;
     @FXML private TableColumn<Loan, Double> biddingProgress;
 
     @FXML private TableColumn<Loan, Loan> actions;
-    private IBidService bidDao=new BidService();
-    private ILoanService loanDao= new LoanService();
-    FilteredList<Loan> list;
+    private final IBidService bidService = new BidService();
+    private final ILoanService loanService = new LoanService();
+    ObservableList<Loan> observableList;
+    FilteredList<Loan> filteredList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         createLoanBtn.setOnAction(event -> {
-            new CreateLoanDialog(Optional.empty()).showAndWait().ifPresent(loan -> list.add(loan));
+            new CreateLoanDialog(Optional.empty()).showAndWait().ifPresent(loan -> observableList.add(loan));
         });
-        filterTf.setOnKeyReleased(event -> list.setPredicate(searchPredicate(filterTf.getText())));
+        filterTf.setOnKeyReleased(event -> filteredList.setPredicate(searchPredicate(filterTf.getText())));
 
         List<Loan> loans = new ArrayList<>();
-        try { loans = loanDao.findAll(); } catch (SQLException e) { e.printStackTrace(); }
-        list = new FilteredList<>(FXCollections.observableArrayList(loans));
+        try { loans = loanService.findAll(); } catch (SQLException e) { e.printStackTrace(); }
+        observableList = FXCollections.observableArrayList(loans);
+        filteredList = new FilteredList<>(observableList);
 
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -62,7 +65,7 @@ public class LoanManagementController implements Initializable {
         biddingProgress.setCellValueFactory(new PropertyValueFactory<>("biddingProgress"));
         purpose.setCellValueFactory(new PropertyValueFactory<>("purpose"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
-        status.setCellFactory(col->new LoanStatusTableCell());
+        status.setCellFactory(col -> new StatusTableCell<>());
 
 
         actions.setCellFactory(col -> {
@@ -83,7 +86,7 @@ public class LoanManagementController implements Initializable {
                 new CreateLoanDialog(Optional.of(actions.getTableView().getItems().get(cell.getIndex())))
                         .showAndWait()
                         .ifPresent(
-                            loan -> { if(list.contains(loan)) list.set(list.indexOf(loan), loan); else list.add(loan); }
+                            loan -> { if(observableList.contains(loan)) observableList.set(observableList.indexOf(loan), loan); else observableList.add(loan); }
                         )
             );
             deleteButton.setOnAction(e -> {
@@ -92,7 +95,7 @@ public class LoanManagementController implements Initializable {
             });
             bidButton.setOnAction(e -> {
                 Loan loan = actions.getTableView().getItems().get(cell.getIndex());
-                PlaceBidPopOver popOver = new PlaceBidPopOver(list.get(list.indexOf(loan)));
+                PlaceBidPopOver popOver = new PlaceBidPopOver(filteredList.get(filteredList.indexOf(loan)));
                 popOver.show(bidButton);
                 // TODO updated the loan bidding progress then had to refresh table
                 // bind data properly, getting a reference to the Observable loan passed to the table
@@ -104,13 +107,13 @@ public class LoanManagementController implements Initializable {
 
         // TODO set biddingProgress when fetching the loan
         // TODO or use DAO within the model to provide a function that calculates the progress
-        loans.stream().forEach(
+        loans.forEach(
                 loan -> loan.setBiddingProgress(fetchBiddingProgress(loan))
         );
 
         biddingProgress.setCellFactory( LoanProgressTableCell.forTableColumn());
 
-        table.setItems(list);
+        table.setItems(filteredList);
     }
 
     public void deleteLoan(Loan loan) {
@@ -119,8 +122,8 @@ public class LoanManagementController implements Initializable {
 
         if (alert.getResult() == ButtonType.YES) {
             try {
-                loanDao.delete(loan);
-                list.remove(loan);
+                loanService.delete(loan);
+                observableList.remove(loan);
             }
             catch (SQLIntegrityConstraintViolationException e) {
                 new WarningDialog("You can not delete this loan, it already has assigned bids!");
@@ -136,7 +139,7 @@ public class LoanManagementController implements Initializable {
     }
     // TODO move to service layer
     private Double fetchBiddingProgress(Loan loan){
-        return bidDao.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue();
+        return bidService.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue();
     }
 
     // TODO DB filtering ??

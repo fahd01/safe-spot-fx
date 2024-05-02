@@ -1,7 +1,5 @@
 package com.safespot.fx.utils;
 
-import javafx.scene.chart.PieChart;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,10 +13,10 @@ public class DatabaseConnection {
         String user = System.getenv(DB_USERNAME);
         String password = System.getenv(DB_PASSWORD);
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, password);
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (/*ClassNotFoundException |*/ SQLException e) {
             throw new RuntimeException(e);
         }
     }

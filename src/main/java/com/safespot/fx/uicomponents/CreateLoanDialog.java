@@ -28,7 +28,7 @@ public class CreateLoanDialog extends Dialog<Loan> {
 
     public CreateLoanDialog(Optional<Loan> providedLoan) {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/com/safespot/fx/create-loan.fxml"));
+            loader.setLocation(getClass().getResource("/com/safespot/fx/P2PLendingArea/create-loan.fxml"));
             loader.setController(this);
 
             DialogPane dialogPane;

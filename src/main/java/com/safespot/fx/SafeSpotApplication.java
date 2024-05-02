@@ -23,7 +23,6 @@ public class SafeSpotApplication extends Application {
         stage.getIcons().add(new Image(faviconUrl.toString()));
         stage.setScene(scene);
         stage.show();
-
     }
 
     public static void main(String[] args) {

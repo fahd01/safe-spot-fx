@@ -40,7 +40,23 @@ public class UserService implements IUserService {
         return Arrays.stream(unwrap(value).split(",")).map(this::unwrap).toList();
     }
 
+    /**
+     * <p>Trims the given string and removed the first and last chars.</p>
+     * <p>Used to remove any wrappings like quotes, brackets, parenthesis, etc...</p>
+     *
+     * Examples:
+     * <blockquote><pre>
+     * "'some value'".unwrap returns "some value"
+     * "[some value]".unwrap returns "some value"
+     * "(some value)".unwrap returns "some value"
+     * </pre></blockquote>
+     *
+     *  @param value
+     * @return unwrapped string
+     */
     private String unwrap(String value) {
-        return value.trim().substring(1, value.length() - 1);
+        return value
+                .trim()
+                .transform(trimmed -> trimmed.substring(1, trimmed.length() - 1));
     }
 }

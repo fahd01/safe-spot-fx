@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane
+        xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="com.safespot.fx.controllers.P2PLendingAreaMasterController"
+        AnchorPane.topAnchor="0.0"
+        AnchorPane.bottomAnchor="0.0"
+        AnchorPane.leftAnchor="0.0"
+        AnchorPane.rightAnchor="0.0" >
+
+
+    <TabPane fx:id="lendingAreaTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+
+            <Tab fx:id="loanManagementTab" text="Loan Management">
+                <fx:include fx:id="loans" source="loans.fxml" />
+            </Tab>
+            <Tab fx:id="bidsManagementTab" text="Bids Management">
+                <fx:include fx:id="bidsTable" source="bids.fxml" />
+            </Tab>
+            <Tab fx:id="findLoanTab" text="Find a Loan">
+                <fx:include fx:id="findLoan" source="findALoan.fxml" />
+            </Tab>
+            <Tab fx:id="myLoansTab" text="My Loans">
+
+            </Tab>
+            <Tab fx:id="myBidsTab" text="My Bids">
+
+            </Tab>
+            <Tab fx:id="reportTab" text="Report">
+
+            </Tab>
+        </tabs>
+    </TabPane>
+</StackPane>

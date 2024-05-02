@@ -2,24 +2,22 @@ package com.safespot.fx.controllers;
 
 import com.safespot.fx.interfaces.IBidService;
 import com.safespot.fx.interfaces.ILoanService;
+import com.safespot.fx.interfaces.Status;
 import com.safespot.fx.models.Loan;
-import com.safespot.fx.models.LoanStatus;
 import com.safespot.fx.services.BidService;
 import com.safespot.fx.services.LoanService;
 import com.safespot.fx.uicomponents.*;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.kordamp.ikonli.fontawesome.FontAwesome;
-import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -35,25 +33,27 @@ public class FindLoanController implements Initializable {
     @FXML private TableColumn<Loan, BigDecimal> interest;
     @FXML private TableColumn<Loan, Integer> term;
     @FXML private TableColumn<Loan, String> purpose;
-    @FXML private TableColumn<Loan, LoanStatus> status;
+    @FXML private TableColumn<Loan, Status> status;
     @FXML private TableColumn<Loan, Double> biddingProgress;
 
     @FXML private TableColumn<Loan, Loan> actions;
-    private IBidService bidDao=new BidService();
-    private ILoanService loanDao= new LoanService();
-    FilteredList<Loan> list;
+    private final IBidService bidDao = new BidService();
+    private final ILoanService loanDao = new LoanService();
+    ObservableList<Loan> observableList;
+    FilteredList<Loan> filteredList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         createLoanBtn.setOnAction(event -> {
-            new CreateLoanDialog(Optional.empty()).showAndWait().ifPresent(loan -> list.add(loan));
+            new CreateLoanDialog(Optional.empty()).showAndWait().ifPresent(loan -> observableList.add(loan));
         });
-        filterTf.setOnKeyReleased(event -> list.setPredicate(searchPredicate(filterTf.getText())));
+        filterTf.setOnKeyReleased(event -> filteredList.setPredicate(searchPredicate(filterTf.getText())));
 
         List<Loan> loans = new ArrayList<>();
         try { loans = loanDao.findAll(); } catch (SQLException e) { e.printStackTrace(); }
-        list = new FilteredList<>(FXCollections.observableArrayList(loans));
+        observableList = FXCollections.observableArrayList(loans);
+        filteredList = new FilteredList<>(observableList);
 
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -66,6 +66,7 @@ public class FindLoanController implements Initializable {
         biddingProgress.setCellValueFactory(new PropertyValueFactory<>("biddingProgress"));
         purpose.setCellValueFactory(new PropertyValueFactory<>("purpose"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        status.setCellFactory(col -> new StatusTableCell<>());
 
         actions.setCellFactory(col -> {
             Button bidButton = new Button("Place Bid");
@@ -75,7 +76,7 @@ public class FindLoanController implements Initializable {
             TableCell<Loan, Loan> cell = new ButtonGroupTableCell<>(bidButton);
             bidButton.setOnAction(e -> {
                 Loan loan = actions.getTableView().getItems().get(cell.getIndex());
-                PlaceBidPopOver popOver = new PlaceBidPopOver(list.get(list.indexOf(loan)));
+                PlaceBidPopOver popOver = new PlaceBidPopOver(filteredList.get(filteredList.indexOf(loan)));
                 popOver.show(bidButton);
                 // TODO updated the loan bidding progress then had to refresh table
                 // bind data properly, getting a reference to the Observable loan passed to the table
@@ -87,13 +88,13 @@ public class FindLoanController implements Initializable {
 
         // TODO set biddingProgress when fetching the loan
         // TODO or use DAO within the model to provide a function that calculates the progress
-        loans.stream().forEach(
+        loans.forEach(
                 loan -> loan.setBiddingProgress(fetchBiddingProgress(loan))
         );
 
         biddingProgress.setCellFactory( LoanProgressTableCell.forTableColumn());
 
-        table.setItems(list);
+        table.setItems(filteredList);
     }
 
 

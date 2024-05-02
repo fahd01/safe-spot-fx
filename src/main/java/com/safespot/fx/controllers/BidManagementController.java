@@ -1,14 +1,10 @@
 package com.safespot.fx.controllers;
 
 import com.safespot.fx.interfaces.IBidService;
+import com.safespot.fx.interfaces.Status;
 import com.safespot.fx.models.Bid;
-import com.safespot.fx.models.Loan;
-import com.safespot.fx.models.LoanStatus;
 import com.safespot.fx.services.BidService;
-import com.safespot.fx.uicomponents.ButtonGroupTableCell;
-import com.safespot.fx.uicomponents.ErrorDialog;
-import com.safespot.fx.uicomponents.SuffixedValueTableCell;
-import com.safespot.fx.uicomponents.WarningDialog;
+import com.safespot.fx.uicomponents.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,7 +15,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -30,13 +25,13 @@ public class BidManagementController implements Initializable {
     private TableView<Bid> bidsTable;
     @FXML private TableColumn<Bid, Integer> bidId;
     @FXML private TableColumn<Bid, BigDecimal> bidAmount;
-    @FXML private TableColumn<Bid, LoanStatus> bidStatus;
+    @FXML private TableColumn<Bid, Status> bidStatus;
     @FXML private TableColumn<Bid, Integer> bidLoan;
     @FXML private TableColumn<Bid, Integer> bidBidder;
     @FXML private TableColumn<Bid, Bid> bidActions;
 
     ObservableList<Bid> bidsList;
-    private IBidService bidService=new BidService();
+    private final IBidService bidService = new BidService();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeBidsManagementTab();
@@ -51,6 +46,7 @@ public class BidManagementController implements Initializable {
         bidAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         bidAmount.setCellFactory(col -> new SuffixedValueTableCell<>("TND"));
         bidStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        bidStatus.setCellFactory(col -> new StatusTableCell<>());
         bidLoan.setCellValueFactory(new PropertyValueFactory<>("loanId"));
         bidBidder.setCellValueFactory(new PropertyValueFactory<>("bidderId"));
 

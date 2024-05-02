@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" >
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" >
     <tabs>
         <Tab text="Account Area">
             <content>
@@ -19,27 +17,7 @@
         </Tab>
         <Tab text="P2P Lending Area">
             <content>
-                <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
-                    <tabs>
-
-                        <Tab text="Loan Management">
-                            <fx:include fx:id="loans" source="loans.fxml" />
-                        </Tab>
-                        <Tab text="Bids Management">
-                            <fx:include fx:id="bidsTable" source="bids.fxml" />
-                        </Tab>
-                        <Tab text="Find a Loan">
-                            <fx:include fx:id="myLoans" source="findALoan.fxml" />
-                        </Tab>
-
-                        <Tab text="My Loans">
-
-                        </Tab>
-                        <Tab text="Statistics">
-
-                        </Tab>
-                    </tabs>
-                </TabPane>
+                <fx:include source="P2PLendingArea/P2PLendingArea.fxml" />
             </content>
         </Tab>
         <Tab text="Reclamation Area">
