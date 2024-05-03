@@ -70,17 +70,14 @@ public class LoanManagementController implements Initializable {
 
         actions.setCellFactory(col -> {
             Button deleteButton = new Button();
-            //deleteButton.getStyleClass().setAll("btn","btn-danger", "btn-sm");
-            deleteButton.setGraphic(FontIcon.of(FontAwesome.TRASH, 16, BootstrapColors.DANGER.asColor()));
+            deleteButton.setGraphic(FontIcon.of(FontAwesome.TRASH, 16, BootstrapFxColors.DANGER.color));
             deleteButton.setTooltip(new Tooltip("Delete this loan"));
             Button editButton = new Button();
-            //editButton.getStyleClass().setAll("btn","btn-info");
             editButton.setTooltip(new Tooltip("Edit this loan"));
-            editButton.setGraphic(FontIcon.of(FontAwesome.EDIT, 16, BootstrapColors.SUCCESS.asColor()));
+            editButton.setGraphic(FontIcon.of(FontAwesome.EDIT, 16, BootstrapFxColors.SUCCESS.color));
             Button bidButton = new Button();
-            //bidButton.getStyleClass().setAll("btn","btn-success");
             bidButton.setTooltip(new Tooltip("Place a bid on this loan"));
-            bidButton.setGraphic(FontIcon.of(FontAwesome.PLUS_CIRCLE, 16, BootstrapColors.PRIMARY.asColor()));
+            bidButton.setGraphic(FontIcon.of(FontAwesome.PLUS_CIRCLE, 16, BootstrapFxColors.PRIMARY.color));
             TableCell<Loan, Loan> cell = new ButtonGroupTableCell<>(bidButton, editButton, deleteButton);
             editButton.setOnAction(event ->
                 new CreateLoanDialog(Optional.of(actions.getTableView().getItems().get(cell.getIndex())))

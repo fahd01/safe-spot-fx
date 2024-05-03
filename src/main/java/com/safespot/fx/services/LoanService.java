@@ -1,6 +1,8 @@
 package com.safespot.fx.services;
 
 import com.safespot.fx.interfaces.ILoanService;
+import com.safespot.fx.models.Bid;
+import com.safespot.fx.models.BidStatus;
 import com.safespot.fx.models.Loan;
 import com.safespot.fx.models.LoanStatus;
 import com.safespot.fx.utils.DatabaseConnection;
@@ -33,6 +35,31 @@ public class LoanService implements ILoanService {
         }
 
         return loans;
+    }
+
+    @Override
+    public List<Loan> findByBorrowerId(int borrowerId) {
+        List<Loan> loans = new ArrayList<>();
+        Connection connection = DatabaseConnection.getConnection();
+        try (PreparedStatement ps = connection.prepareStatement("SELECT * FROM loan WHERE borrower_id =?");) {
+            ps.setInt(1, borrowerId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Loan l = new Loan(
+                        rs.getInt("id"),
+                        rs.getBigDecimal("amount"),
+                        rs.getBigDecimal("interest"),
+                        rs.getInt("term"),
+                        rs.getString("purpose"),
+                        LoanStatus.valueOf(rs.getString("status")),
+                        rs.getInt("borrower_id")
+                );
+                loans.add(l);
+            }
+            return loans;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

@@ -26,7 +26,7 @@
                 <fx:include fx:id="findLoan" source="findALoan.fxml" />
             </Tab>
             <Tab fx:id="myLoansTab" text="My Loans">
-
+                <fx:include source="myLoans.fxml" fx:id="myLoans" />
             </Tab>
             <Tab fx:id="myBidsTab" text="My Bids">
 

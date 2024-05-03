@@ -10,8 +10,8 @@ public class DatabaseConnection {
     private static Connection connection;
     private DatabaseConnection() {
         String url = "jdbc:mysql://localhost:3306/safe-spot";
-        String user = System.getenv(DB_USERNAME);
-        String password = System.getenv(DB_PASSWORD);
+        String user = "root";//System.getenv(DB_USERNAME);
+        String password = "root_password";//System.getenv(DB_PASSWORD);
         try {
             //Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, password);

@@ -14,11 +14,9 @@ public class StatusTableCell<T> extends TableCell<T, Status> {
         super.updateItem(status, empty);
         this.setAlignment(Pos.CENTER);
         if (!empty) {
-            Label label = new Label(status.toString());
-            label.getStyleClass().addAll("lbl", "lbl-" + status.getThemeStyle());
+            Label label = new StatusLabel(status);
             setGraphic(label);
         } else {
-            //setText(null);
             setGraphic(null);
         }
 

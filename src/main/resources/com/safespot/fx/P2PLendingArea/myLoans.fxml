@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.ScrollPane?>
+<StackPane fx:id="myLoansStackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.safespot.fx.controllers.MyLoansController">
+   <ScrollPane fitToWidth="true">
+      <TilePane fx:id="myLoansTilePane" hgap="10" prefHeight="500" prefWidth="500" vgap="10">
+         <padding>
+            <Insets left="10.0" top="10.0" bottom="10" right="10"/>
+         </padding>
+      </TilePane>
+   </ScrollPane>
+</StackPane>

@@ -2,6 +2,7 @@ module com.safespot.safespotfx {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
+    //requires javafx.swing;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
@@ -11,7 +12,9 @@ module com.safespot.safespotfx {
     // add icon pack modules
     requires org.kordamp.ikonli.fontawesome;
     requires org.kordamp.bootstrapfx.core;
+    //tilesFx modules
     //requires eu.hansolo.tilesfx;
+
     requires java.sql;
     requires java.mail;
     requires api;

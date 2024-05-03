@@ -14,6 +14,12 @@ An IntelliJ IDEA run configuration is provided `Safe Spot FX`
   - [ ] Disable place bid button for ACTIVE loans
   - [ ] Loan changes are not reflected between manage loans and find a loan
 - [x] FilteredList does not support add(): change should be done to the source list (Observable list)
+- myLoans
+  - Bids / Loan
+    - [ ] Cover accept, reject buttons state per bid statuses
+    - [ ] Accepting / Rejecting bids should change the buttons state
+  - Progress bar
+    - [ ] Accepting / Rejecting bids should change progress bar
 - Remove ID's from tables
   - Popover for loan details
   - Popover for user details
@@ -38,10 +44,13 @@ An IntelliJ IDEA run configuration is provided `Safe Spot FX`
 - [ikonli](https://kordamp.org/ikonli/#_introduction): Icons
 ## Resources
 - [JDBC Workshop](https://gitlab.com/mohamed.hosni.isi/workshopjdbc-3a)
-- ## Git commands
+## Git commands
 - ``git checkout -b branch_name``
 - ``git checkout branch_name``
 - ``git branch``checks your current position
 - ``git add . `` add files to commit index
 - ``git commit -m "commit message " ``
 - ``git push origin branch_name``
+
+## Issues
+- [TilesFX module issue](https://stackoverflow.com/questions/75250066/javafx-missing-eu-hansolo-module)
