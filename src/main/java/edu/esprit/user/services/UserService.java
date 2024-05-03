@@ -86,6 +86,19 @@ public class UserService implements IUserService{
         return false;
     }
 
+    public boolean resetPassword(String pass) {
+        String sql = "UPDATE user SET password = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, hashPassword(pass));
+            statement.setInt(2, SessionManager.getInstance().getCurrentUser().getId());
+            int result = statement.executeUpdate();
+            return result > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     @Override
     public boolean updateAccount(User user) {
         String sql = "UPDATE user SET email = ?, password = ?, nom = ?, prenom = ?, date_de_naissance = ?, num_tlph = ?, adresse = ? WHERE id = ?";
@@ -159,5 +172,34 @@ public class UserService implements IUserService{
             System.out.println(e.getMessage());
         }
         return users;
+    }
+
+    public User getUserByEmail(String mail) {
+        String sql = "SELECT * FROM user WHERE email = ?";
+        User user = null;
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, mail);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                user = new User(
+                        rs.getInt("id"),
+                        rs.getString("email"),
+                        rs.getString("roles"),
+                        rs.getString("password"),
+                        rs.getString("nom"),
+                        rs.getString("prenom"),
+                        rs.getDate("date_de_naissance"),
+                        rs.getString("num_tlph"),
+                        rs.getString("adresse"),
+                        rs.getBoolean("is_verified"),
+                        rs.getString("etat"),
+                        rs.getString("image_name"),
+                        rs.getString("updated_at")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println("Error when trying to retrieve user: " + e.getMessage());
+        }
+        return user;
     }
 }

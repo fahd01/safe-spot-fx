@@ -13,6 +13,10 @@ module edu.esprit.user {
     requires com.gluonhq.charm.glisten;
     requires java.sql;
     requires jbcrypt;
+    requires restfb;
+    requires commons.email;
+    requires javax.mail.api;
+
 
     opens edu.esprit.user to javafx.fxml;
     exports edu.esprit.user.controllers to javafx.fxml;

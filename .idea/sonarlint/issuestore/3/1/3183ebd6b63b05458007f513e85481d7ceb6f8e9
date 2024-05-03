@@ -1,6 +1,25 @@
 
 k
-java:S1192("IDefine a constant instead of duplicating this literal "password" 3 times.(—ÖÛ†ûÿÿÿÿ8ùóÇñ1
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÅêîŒ8¸ËªÇñ1
-L	java:S106"+Replace this use of System.out by a logger.(¨‚’úÿÿÿÿ8ÃËªÇñ1
-M	java:S106Ÿ"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ8ÉËªÇñ1
+java:S11922"IDefine a constant instead of duplicating this literal "num_tlph" 3 times.(Ùµ÷÷øÿÿÿÿ8ø§ìİó1
+h
+java:S1192-"FDefine a constant instead of duplicating this literal "roles" 3 times.(¹‹²×ùÿÿÿÿ8ù§ìİó1
+t
+java:S11921"RDefine a constant instead of duplicating this literal "date_de_naissance" 3 times.(Œ ìøÿÿÿÿ8ù§ìİó1
+i
+java:S11924"LDefine a constant instead of duplicating this literal "is_verified" 3 times.(…€€Ù8ù§ìİó1
+h
+java:S11926"KDefine a constant instead of duplicating this literal "image_name" 3 times.(À“”¹8ù§ìİó1
+k
+java:S1192("IDefine a constant instead of duplicating this literal "password" 4 times.(—ÖÛ†ûÿÿÿÿ8ù§ìİó1
+m
+java:S11927"KDefine a constant instead of duplicating this literal "updated_at" 3 times.(†ÀÌ¦ıÿÿÿÿ8ù§ìİó1
+j
+java:S11923"HDefine a constant instead of duplicating this literal "adresse" 3 times.(ëü÷éıÿÿÿÿ8ù§ìİó1
+d
+java:S11920"GDefine a constant instead of duplicating this literal "prenom" 3 times.(­¢ç8ù§ìİó1
+c
+java:S1192,"FDefine a constant instead of duplicating this literal "email" 3 times.(ø©ôÊ8ú§ìİó1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÅêîŒ8ú§ìİó1
+L	java:S106"+Replace this use of System.out by a logger.(¨‚’úÿÿÿÿ8Œ¨ìİó1
+M	java:S106¬"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ8’¨ìİó1
+H	java:S106É"+Replace this use of System.out by a logger.(ı×Û“8“¨ìİó1

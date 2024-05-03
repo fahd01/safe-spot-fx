@@ -3,21 +3,27 @@ package edu.esprit.user.controllers;
 import com.gluonhq.charm.glisten.control.CardPane;
 import edu.esprit.user.entities.User;
 import edu.esprit.user.services.UserService;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class userList {
     @javafx.fxml.FXML
     private CardPane listUsers;
     UserService userService = new UserService();
+    @FXML
+    private TextField searchText;
+    @FXML
+    private Button tri;
 
     @FXML
     public void initialize() {
@@ -52,5 +58,30 @@ public class userList {
         userContainer.getChildren().addAll(nameLabel, emailLabel);
         card.getChildren().addAll(userContainer,actionButton);
         return card;
+    }
+
+    @FXML
+    public void search(Event event) {
+        String searchTerm = searchText.getText().trim().toLowerCase();
+        List<User> users = userService.getAllUsers();
+        List<User> searchRes = new ArrayList<>();
+        for (User user:users){
+            if (user.getNom().toLowerCase().contains(searchTerm))
+                searchRes.add(user);
+        }
+        listUsers.getItems().clear();
+        for (User user : searchRes) {
+            listUsers.getItems().add(createUserCard(user));
+        }
+    }
+
+    @FXML
+    public void sort(ActionEvent actionEvent) {
+        List<User> users = userService.getAllUsers();
+        users.sort(Comparator.comparing(User::getEmail, Comparator.nullsFirst(String::compareTo)));
+        listUsers.getItems().clear();
+        for (User user : users) {
+            listUsers.getItems().add(createUserCard(user));
+        }
     }
 }

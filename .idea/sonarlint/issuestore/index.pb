@@ -35,3 +35,11 @@ f
 6src/main/java/edu/esprit/user/services/DonService.java,a\a\aa47b9f0561264ebe298fb5fea4ff25774995b7f
 _
 /src/main/java/edu/esprit/user/entities/Don.java,f\6\f6e76e28a718c65c4df4e2cfb338455423c6f90e
+f
+6src/main/java/edu/esprit/user/controllers/resetPW.java,c\f\cf7642056c8488232f844e4d49b3e19a3665c4b3
+p
+@src/main/java/edu/esprit/user/services/resetPasswordService.java,6\5\65ab8e2096c384eab1bee476ff81d2bbe06852a2
+p
+@src/main/java/edu/esprit/user/services/ResetPasswordService.java,a\f\af1c728f78079a691bbf56e6e11f8bef524a8e70
+d
+4src/main/java/edu/esprit/user/controllers/newPW.java,5\b\5b0e850d98a45fa085c1fa537050fb36d299f304

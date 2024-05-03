@@ -40,7 +40,6 @@ public class signup
     private TextField emailInput;
     @javafx.fxml.FXML
     private TextField prenomInput;
-
     UserService userService = new UserService();
 
     @javafx.fxml.FXML

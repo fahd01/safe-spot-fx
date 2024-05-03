@@ -14,8 +14,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -32,7 +32,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/21692/Downloads/user/user&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/21692/Downloads/user (2)/user&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -82,13 +82,28 @@
       <updated>1714082070611</updated>
       <workItem from="1714082071646" duration="27215000" />
       <workItem from="1714120919512" duration="17000" />
-      <workItem from="1714128846921" duration="163000" />
-      <workItem from="1714129018471" duration="6000" />
-      <workItem from="1714129194403" duration="104000" />
+      <workItem from="1714659051904" duration="8285000" />
+      <workItem from="1714681423294" duration="9003000" />
+      <workItem from="1714725998367" duration="1874000" />
+      <workItem from="1714728520927" duration="381000" />
+      <workItem from="1714742169959" duration="1806000" />
+      <workItem from="1714748207621" duration="27000" />
+      <workItem from="1714748238691" duration="1177000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/esprit/user/controllers/login.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
