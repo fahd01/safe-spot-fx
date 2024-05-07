@@ -11,4 +11,5 @@ public interface ILoanService {
     Loan persist(Loan loan);
     Loan update(Loan loan);
     void delete(Loan loan) throws SQLException;
+    void activate(int id);
 }

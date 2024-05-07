@@ -17,4 +17,8 @@ public enum BidStatus implements Status {
             return "warning";
         return "secondary";
     }
+
+    public Boolean isAccepted() {
+        return this.equals(BidStatus.APPROVED) || this.equals(BidStatus.ACTIVE) || this.equals(BidStatus.PAID);
+    }
 }

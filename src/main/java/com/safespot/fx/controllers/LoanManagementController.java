@@ -7,6 +7,7 @@ import com.safespot.fx.uicomponents.*;
 import com.safespot.fx.services.BidService;
 import com.safespot.fx.services.LoanService;
 import com.safespot.fx.models.Loan;
+import com.safespot.fx.utils.BiddingUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -95,8 +96,7 @@ public class LoanManagementController implements Initializable {
                 PlaceBidPopOver popOver = new PlaceBidPopOver(filteredList.get(filteredList.indexOf(loan)));
                 popOver.show(bidButton);
                 // TODO updated the loan bidding progress then had to refresh table
-                // bind data properly, getting a reference to the Observable loan passed to the table
-                // should be enough to reflect POJO changes into the table view
+                // TODO remove the bid progress does not change when placing a bid but when accepting them
                 popOver.setOnHidden(v->table.refresh());
             });
             return cell ;
@@ -105,7 +105,7 @@ public class LoanManagementController implements Initializable {
         // TODO set biddingProgress when fetching the loan
         // TODO or use DAO within the model to provide a function that calculates the progress
         loans.forEach(
-                loan -> loan.setBiddingProgress(fetchBiddingProgress(loan))
+                loan -> loan.setBiddingProgress(BiddingUtils.calculateBiddingProgress(loan))
         );
 
         biddingProgress.setCellFactory( LoanProgressTableCell.forTableColumn());
@@ -133,10 +133,6 @@ public class LoanManagementController implements Initializable {
             }
 
         }
-    }
-    // TODO move to service layer
-    private Double fetchBiddingProgress(Loan loan){
-        return bidService.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue();
     }
 
     // TODO DB filtering ??

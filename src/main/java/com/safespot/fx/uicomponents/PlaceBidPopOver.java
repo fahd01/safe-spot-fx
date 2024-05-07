@@ -20,8 +20,8 @@ import java.math.BigDecimal;
 
 public class PlaceBidPopOver extends PopOver {
 
-    private IBidService bidDao = new BidService();
-    private IUserService userDao = new UserService();
+    private IBidService bidService = new BidService();
+    private IUserService userService = new UserService();
 
     public PlaceBidPopOver (Loan loan) {
         super();
@@ -46,12 +46,12 @@ public class PlaceBidPopOver extends PopOver {
             int currentUserId = 1;
             // TODO handle persist exceptions into an ErrorDialog
             Bid newBid = new Bid(amount, currentUserId, loan.getId());
-            bidDao.persist(newBid);
+            bidService.persist(newBid);
             loan.setBiddingProgress(
-                    bidDao.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue()
+                    bidService.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue()
             );
             this.hide();
-            User loanOwner = userDao.findById(loan.getBorrowerId());
+            User loanOwner = userService.findById(loan.getBorrowerId());
             // TODO sending email blocks the main thread for a second, send async
             EmailSender.getInstance().sendPlacedBidEmail(loanOwner.getEmail(), newBid, loan);
 

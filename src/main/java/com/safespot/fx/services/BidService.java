@@ -93,4 +93,69 @@ public class BidService implements IBidService {
         preparedStatement.executeUpdate();
 
     }
+
+    @Override
+    public void update(Bid bid) {
+        Connection connection = DatabaseConnection.getConnection();
+        try (
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "UPDATE bid SET amount=?, status=? WHERE id =?"
+                )
+        ) {
+            preparedStatement.setBigDecimal(1, bid.getAmount());
+            preparedStatement.setString(2, bid.getStatus().toString());
+            preparedStatement.setInt(3, bid.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void acceptBid(int id) {
+        Connection connection = DatabaseConnection.getConnection();
+        try (
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "UPDATE bid SET status=? WHERE id =?"
+                )
+        ) {
+            preparedStatement.setString(1, BidStatus.APPROVED.toString());
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void activateBid(int id) {
+        Connection connection = DatabaseConnection.getConnection();
+        try (
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "UPDATE bid SET status=? WHERE id =?"
+                )
+        ) {
+            preparedStatement.setString(1, BidStatus.ACTIVE.toString());
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void rejectBid(int id) {
+        Connection connection = DatabaseConnection.getConnection();
+        try (
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "UPDATE bid SET status=? WHERE id =?"
+                )
+        ) {
+            preparedStatement.setString(1, BidStatus.REJECTED.toString());
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

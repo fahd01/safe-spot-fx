@@ -118,4 +118,20 @@ public class LoanService implements ILoanService {
         preparedStatement.setInt(1, loan.getId());
         preparedStatement.executeUpdate();
     }
+
+    @Override
+    public void activate(int id) {
+        Connection connection = DatabaseConnection.getConnection();
+        try (
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "UPDATE loan SET status=? WHERE id =?"
+                )
+        ) {
+            preparedStatement.setString(1, LoanStatus.ACTIVE.toString());
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
