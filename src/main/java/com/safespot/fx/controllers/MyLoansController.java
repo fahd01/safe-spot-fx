@@ -8,11 +8,9 @@ import com.safespot.fx.models.Loan;
 import com.safespot.fx.models.User;
 import com.safespot.fx.services.BidService;
 import com.safespot.fx.services.LoanService;
-import com.safespot.fx.uicomponents.BootstrapColors;
 import com.safespot.fx.uicomponents.BootstrapFxColors;
 import com.safespot.fx.uicomponents.StatusLabel;
 import com.safespot.fx.utils.SecurityUtils;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -28,8 +26,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class MyLoansController implements Initializable {
-    private static final double TILE_WIDTH  = 200;
-    private static final double TILE_HEIGHT = 300;
 
     @FXML
     private StackPane myLoansStackPane;
