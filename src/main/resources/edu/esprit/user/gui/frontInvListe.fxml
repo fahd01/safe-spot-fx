@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.CardPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.user.controllers.frontInvListe">
+    <left>
+        <VBox spacing="10" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            <DatePicker fx:id="dateInput" promptText="Date" />
+            <TextField fx:id="dureeInput" promptText="Duration" />
+            <TextField fx:id="prixInput" promptText="Price" />
+            <TextArea fx:id="descriptionInput" promptText="Description" />
+            <TextField fx:id="emailInput" promptText="Email" />
+            <TextField fx:id="nameInput" promptText="Name" />
+            <TextField fx:id="imageInput" promptText="Image URL" />
+
+            <!-- A simple color picker for the color -->
+            <ColorPicker fx:id="colorInput" />
+        </VBox>
+    </left>
+    <center>
+        <VBox spacing="10" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            <TextField fx:id="searchTextField" onKeyReleased="#search" promptText="Rechercher..." />
+            <CardPane fx:id="listDons" prefHeight="300.0" prefWidth="426.0">
+                <HBox.margin>
+                    <Insets bottom="30.0" top="30.0" />
+                </HBox.margin>
+            </CardPane>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            <Button fx:id="btnSave" onAction="#save" style="-fx-background-color: green; -fx-text-fill: white;" text="Add" />
+            <Button fx:id="btnListeInv" onAction="#gotoDons" style="-fx-background-color: blue; -fx-text-fill: white;" text="Liste Dons" />
+        </HBox>
+    </bottom>
+</BorderPane>

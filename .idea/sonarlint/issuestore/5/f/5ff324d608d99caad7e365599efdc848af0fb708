@@ -1,0 +1,25 @@
+
+L
+java:S3740,"/Provide the parametrized type for this generic.(§³€ü8®×”óó1
+}
+java:S1104*"[Make searchTextField a static final constant or non-public and provide accessors if needed.(äº´şÿÿÿÿ8»˜ Áõ1
+n	java:S101("MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÏÕŒ£ıÿÿÿÿ8¯×”óó1
+c
+java:S1172["FRemove these unused method parameters "outputPath", "investissements".(´œ“Ì8âşÉÁõ1
+L	java:S106t"+Replace this use of System.out by a logger.(’³·Ãúÿÿÿÿ8üèÌÁõ1
+Œ
+java:S1130’"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(åÕ‡Î8ıèÌÁõ1
+V
+java:S1128	"9Remove this unused import 'edu.esprit.user.entities.Don'.(«Ä¹È8İÑÌÁõ1
+\
+java:S1128"@Remove this unused import 'edu.esprit.user.services.DonService'.(œ§àS8ŞÑÌÁõ1
+Z
+java:S1128"8Remove this unused import 'javafx.scene.input.KeyEvent'.(¦¶ Æøÿÿÿÿ8ŞÑÌÁõ1
+^
+java:S1128"ARemove this unused import 'org.apache.pdfbox.pdmodel.PDDocument'.(“ò€í8ŞÑÌÁõ1
+_
+java:S1128"=Remove this unused import 'org.apache.pdfbox.pdmodel.PDPage'.(³‹Ìÿÿÿÿÿ8ŞÑÌÁõ1
+q
+java:S1128"TRemove this unused import 'org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject'.(Ü§Ø8ŞÑÌÁõ1
+F
+java:S1128!")Remove this unused import 'java.io.File'.(†Ğ¥Å8ŞÑÌÁõ1

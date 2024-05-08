@@ -1,0 +1,42 @@
+.login-form {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+    -fx-background-radius: 10;
+}
+
+.login-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.login-input {
+    -fx-pref-width: 300px;
+    -fx-margin-bottom: 10px;
+}
+
+.remember-me {
+    -fx-font-size: 12px;
+}
+
+.login-button {
+    -fx-background-color: #0078D7;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+    -fx-padding: 10 20;
+    -fx-margin-top: 10px;
+}
+
+.back-home, .signup-link {
+    -fx-font-size: 12px;
+    -fx-fill: #333;
+    -fx-underline: true;
+}
+
+.signup-link {
+    -fx-font-size: 12px;
+    -fx-fill: #333;
+    -fx-cursor: hand;
+    -fx-padding: 5 0;
+}

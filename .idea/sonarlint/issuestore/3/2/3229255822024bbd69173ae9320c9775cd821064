@@ -1,0 +1,14 @@
+
+Q
+java:S3740"/Provide the parametrized type for this generic.(¹î¿¬şÿÿÿÿ8Ùÿ­Ëñ1
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(“íÄ‰
+£
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(·òşÿÿÿÿ8ÊØ³Ëñ1
+
+java:S1186&"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(·¦”q8ôÃ«æó1
+V
+java:S1128"9Remove this unused import 'edu.esprit.user.entities.Don'.(«Ä¹È8ËØ³Ëñ1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ËØ³Ëñ1
+T
+java:S1144"2Remove this unused private "createInvCard" method.(ÃèÒ³ÿÿÿÿÿ8‚«æó1

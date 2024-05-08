@@ -1,0 +1,14 @@
+
+L
+java:S3740"/Provide the parametrized type for this generic.(§³€ü8²ÊËËñ1
+d
+java:S1192„"FDefine a constant instead of duplicating this literal "duree" 3 times.(Ğéı½8ÙÓËñ1
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÁœÑõûÿÿÿÿ8²ÊËËñ1
+o
+java:S3776z"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(øÏà8§ÙÓËñ1
+j
+java:S5998¤"LRefactor this repetition that can lead to a stack overflow for large inputs.(¬¨Š8æ ÕËñ1
+V
+java:S1128"9Remove this unused import 'edu.esprit.user.entities.Don'.(«Ä¹È8ğ½õòó1
+W
+java:S1128":Remove this unused import 'edu.esprit.user.entities.User'.(½ãÚè8ğ½õòó1
