@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
 
 <AnchorPane maxHeight="500.0" maxWidth="500.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-image: url('edu/esprit/user/gui/assets/about_2.jpg');" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.user.controllers.login">
     <ImageView fitHeight="502.0" fitWidth="500.0" pickOnBounds="true">
@@ -22,8 +23,10 @@
         <PasswordField fx:id="pwdInput" promptText="Password" styleClass="login-input" />
         <HBox alignment="CENTER_LEFT" />
         <Button fx:id="loginBtn" onAction="#login" styleClass="login-button" text="Login" />
+      <Button mnemonicParsing="false" onAction="#loginfb1" text="fb" />
       <Button fx:id="fbLogin" mnemonicParsing="false" onAction="#fbLogin" text="Login with Facebook" />
         <Text fx:id="signUpbtn" onMouseClicked="#signUp" styleClass="signup-link" text="Not a member? Signup" />
         <Text fx:id="gotoReset" onMouseClicked="#reset" styleClass="signup-link" text="Forgot password!!" />
     </VBox>
+   <WebView fx:id="facebookWebView" layoutX="140.0" layoutY="544.0" prefHeight="58.0" prefWidth="200.0" />
 </AnchorPane>

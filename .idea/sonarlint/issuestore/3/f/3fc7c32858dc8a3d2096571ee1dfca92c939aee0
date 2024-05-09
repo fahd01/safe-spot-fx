@@ -1,18 +1,18 @@
 
-m	java:S117}"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±ıæ¢8³–µİó1
-n	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“ÙıÉ8³–µİó1
-n	java:S101!"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(‡Ñ»İûÿÿÿÿ8´–µİó1
+m	java:S117}"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±ıæ¢8–§é½õ1
+n	java:S117€"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“ÙıÉ8—§é½õ1
+n	java:S101!"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(‡Ñ»İûÿÿÿÿ8—§é½õ1
 i
-java:S1223="LRename this method to prevent any misunderstanding or make it a constructor.(î¥€›8µ–µİó1
-r	java:S116+"QRename this field "app_Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹º²êøÿÿÿÿ8Å–µİó1
-q	java:S116,"URename this field "app_Secret" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÜäÄ™8Å–µİó1
-x	java:S116-"WRename this field "redirect_url" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õä‚òıÿÿÿÿ8Å–µİó1
-z	java:S116/"^Rename this field "redirect_url_encode" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²¬©8Å–µİó1
+java:S1223="LRename this method to prevent any misunderstanding or make it a constructor.(î¥€›8™§é½õ1
+r	java:S116+"QRename this field "app_Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìóÓûÿÿÿÿ8°§é½õ1
+v	java:S116,"URename this field "app_Secret" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶ó†£ûÿÿÿÿ8°§é½õ1
+x	java:S116-"WRename this field "redirect_url" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õä‚òıÿÿÿÿ8°§é½õ1
+z	java:S116/"^Rename this field "redirect_url_encode" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²¬©8°§é½õ1
 £
-java:S11869"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(·òşÿÿÿÿ8Æ–µİó1
-L	java:S106z"+Replace this use of System.out by a logger.(ç¥ì´øÿÿÿÿ8Ô–µİó1
+java:S11869"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(·òşÿÿÿÿ8°§é½õ1
+L	java:S106z"+Replace this use of System.out by a logger.(ç¥ì´øÿÿÿÿ8Å§é½õ1
 N
-java:S1481"0Remove this unused "profile_pic" local variable.(“ÙıÉ8×–µİó1
-M	java:S106ƒ"+Replace this use of System.out by a logger.(¡Ï³÷ûÿÿÿÿ8×–µİó1
+java:S1481€"0Remove this unused "profile_pic" local variable.(“ÙıÉ8È§é½õ1
+M	java:S106ƒ"+Replace this use of System.out by a logger.(¡Ï³÷ûÿÿÿÿ8É§é½õ1
 R
-java:S1068-"0Remove this unused "redirect_url" private field.(õä‚òıÿÿÿÿ8Ø–µİó1
+java:S1068-"0Remove this unused "redirect_url" private field.(õä‚òıÿÿÿÿ8Ë§é½õ1

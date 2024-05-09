@@ -24,6 +24,12 @@ public class userList {
     private TextField searchText;
     @FXML
     private Button tri;
+    @FXML
+    private Button triPrenom;
+    @FXML
+    private Button triNom;
+    @FXML
+    private Button triTel;
 
     @FXML
     public void initialize() {
@@ -53,9 +59,11 @@ public class userList {
         userContainer.setStyle("-fx-padding: 10; -fx-border-style: solid inside; -fx-border-width: 2; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: blue;");
 
         Label nameLabel = new Label("Name: " + user.getNom());
+        Label prenomLabel = new Label("Prenom: " + user.getPrenom());
+        Label telLabel = new Label("Tel: " + user.getNumTlph());
         Label emailLabel = new Label("Email: " + user.getEmail());
 
-        userContainer.getChildren().addAll(nameLabel, emailLabel);
+        userContainer.getChildren().addAll(nameLabel, prenomLabel, emailLabel, telLabel);
         card.getChildren().addAll(userContainer,actionButton);
         return card;
     }
@@ -79,6 +87,36 @@ public class userList {
     public void sort(ActionEvent actionEvent) {
         List<User> users = userService.getAllUsers();
         users.sort(Comparator.comparing(User::getEmail, Comparator.nullsFirst(String::compareTo)));
+        listUsers.getItems().clear();
+        for (User user : users) {
+            listUsers.getItems().add(createUserCard(user));
+        }
+    }
+
+    @FXML
+    public void sortPrenom(ActionEvent actionEvent) {
+        List<User> users = userService.getAllUsers();
+        users.sort(Comparator.comparing(User::getPrenom, Comparator.nullsFirst(String::compareTo)));
+        listUsers.getItems().clear();
+        for (User user : users) {
+            listUsers.getItems().add(createUserCard(user));
+        }
+    }
+
+    @FXML
+    public void sortNom(ActionEvent actionEvent) {
+        List<User> users = userService.getAllUsers();
+        users.sort(Comparator.comparing(User::getNom, Comparator.nullsFirst(String::compareTo)));
+        listUsers.getItems().clear();
+        for (User user : users) {
+            listUsers.getItems().add(createUserCard(user));
+        }
+    }
+
+    @FXML
+    public void sortTel(ActionEvent actionEvent) {
+        List<User> users = userService.getAllUsers();
+        users.sort(Comparator.comparing(User::getNumTlph, Comparator.nullsFirst(String::compareTo)));
         listUsers.getItems().clear();
         for (User user : users) {
             listUsers.getItems().add(createUserCard(user));

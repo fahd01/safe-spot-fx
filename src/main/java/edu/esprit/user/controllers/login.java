@@ -9,6 +9,7 @@ import edu.esprit.user.services.UserService;
 import edu.esprit.user.utils.SessionManager;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -40,13 +41,18 @@ public class login
     private PasswordField pwdInput;
     @javafx.fxml.FXML
     private TextField emailInput;
-    private String app_Id="775250501250411";
-    private String app_Secret="8fe07a181649b3462cf10035e40a71b2";
+    private String app_Id="982889916101422";
+    private String app_Secret="9b6d09487d1d435f1a648acc8be764e9";
     private String redirect_url="http://localhost/";
     private String state="9812";
     private String redirect_url_encode="http%3A%2F%2Flocalhost%2F";
-    private String authentication="https://www.facebook.com/v9.0/dialog/oauth?client_id="+app_Id+"&redirect_uri="+redirect_url_encode+"&state="+state;
+    private String authentication="https://www.facebook.com/v12.0/dialog/oauth?client_id="+app_Id+"&redirect_uri="+redirect_url_encode+"&state="+state;
     UserService userService = new UserService();
+
+    private FacebookLogin customAuth;
+
+    @FXML
+    private WebView facebookWebView;
     ResetPasswordService resetPasswordService = new ResetPasswordService();
     @javafx.fxml.FXML
     private Button fbLogin;
@@ -120,14 +126,14 @@ public class login
                 int stateOffset = newlocation.indexOf("&state=");
                 String code = newlocation.substring(codeOffset + "code=".length(),stateOffset);
                 System.out.println(code);
-                DefaultFacebookClient facebookClient = new DefaultFacebookClient(Version.VERSION_9_0);
+                DefaultFacebookClient facebookClient = new DefaultFacebookClient(Version.LATEST);
                 FacebookClient.AccessToken accessToken = facebookClient.obtainUserAccessToken(app_Id,app_Secret,"http://localhost/",code);
                 String access_token = accessToken.getAccessToken();
 
-                FacebookClient fbClient = new DefaultFacebookClient(access_token,Version.VERSION_9_0);
-                fbClient.createClientWithAccessToken(access_token);
+                FacebookClient fbClient = new DefaultFacebookClient(access_token,Version.LATEST);
                 JsonObject profile_pic = fbClient.fetchObject("me/picture",JsonObject.class, Parameter.with("redirect","false"));
-                User user = fbClient.fetchObject("me",User.class);
+                User user = fbClient.fetchObject("me", User.class,
+                        com.restfb.Parameter.with("fields", "id,email,name,first_name,last_name,picture"));
                 System.out.println(user.getEmail());
             }
         });
@@ -141,5 +147,21 @@ public class login
         Stage stage = (Stage) source.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+    }
+    @FXML
+    void loginfb1(ActionEvent event) {
+        customAuth = new FacebookLogin(facebookWebView);
+
+        // Démarrer la connexion avec Facebook
+        customAuth.loginWithFacebook();
+
+        // Ajouter un écouteur aux changements d'URL dans la WebView
+        customAuth.getWebEngine().locationProperty().addListener((observable, oldValue, newValue) -> {
+            edu.esprit.user.entities.User user = customAuth.handleRedirect(newValue);
+            if (user != null) {
+                // Faire quelque chose avec l'utilisateur récupéré, par exemple, l'enregistrer dans une session
+                System.out.println("Utilisateur récupéré: " + user);
+            }
+        });
     }
 }

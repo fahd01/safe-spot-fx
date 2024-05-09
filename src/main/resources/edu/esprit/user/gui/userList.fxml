@@ -41,7 +41,10 @@
                         <Insets bottom="30.0" top="30.0" />
                     </HBox.margin>
                 </CardPane>
-            <Button fx:id="tri" mnemonicParsing="false" onAction="#sort" text="Sort" />
+            <Button fx:id="tri" mnemonicParsing="false" onAction="#sort" text="Sort By mail" />
+            <Button fx:id="triNom" mnemonicParsing="false" onAction="#sortNom" text="Sort By name" />
+            <Button fx:id="triTel" mnemonicParsing="false" onAction="#sortTel" text="Sort By num Tel" />
+            <Button fx:id="triPrenom" mnemonicParsing="false" onAction="#sortPrenom" text="Sort By Prenom" />
             </children>
         </HBox>
     </VBox>
