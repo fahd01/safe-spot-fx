@@ -9,7 +9,6 @@ import edu.esprit.user.services.UserService;
 import edu.esprit.user.utils.SessionManager;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -48,11 +47,6 @@ public class login
     private String redirect_url_encode="http%3A%2F%2Flocalhost%2F";
     private String authentication="https://www.facebook.com/v12.0/dialog/oauth?client_id="+app_Id+"&redirect_uri="+redirect_url_encode+"&state="+state;
     UserService userService = new UserService();
-
-    private FacebookLogin customAuth;
-
-    @FXML
-    private WebView facebookWebView;
     ResetPasswordService resetPasswordService = new ResetPasswordService();
     @javafx.fxml.FXML
     private Button fbLogin;
@@ -147,21 +141,5 @@ public class login
         Stage stage = (Stage) source.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-    }
-    @FXML
-    void loginfb1(ActionEvent event) {
-        customAuth = new FacebookLogin(facebookWebView);
-
-        // Démarrer la connexion avec Facebook
-        customAuth.loginWithFacebook();
-
-        // Ajouter un écouteur aux changements d'URL dans la WebView
-        customAuth.getWebEngine().locationProperty().addListener((observable, oldValue, newValue) -> {
-            edu.esprit.user.entities.User user = customAuth.handleRedirect(newValue);
-            if (user != null) {
-                // Faire quelque chose avec l'utilisateur récupéré, par exemple, l'enregistrer dans une session
-                System.out.println("Utilisateur récupéré: " + user);
-            }
-        });
     }
 }

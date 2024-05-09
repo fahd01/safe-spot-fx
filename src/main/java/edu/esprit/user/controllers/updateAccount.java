@@ -122,13 +122,4 @@ public class updateAccount
 
         return validationErrors;
     }
-    public updateAccount(User user) {
-        this.user = user;
-    }
-    public void setUser(edu.esprit.user.entities.User user) {
-        this.user = user;
-        fullName.setText(user.getNom());
-        adrMail.setText(user.getEmail());
-    }
-
 }
