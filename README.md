@@ -39,6 +39,9 @@ An IntelliJ IDEA run configuration is provided `Safe Spot FX`
 - [ikonli](https://kordamp.org/ikonli/#_introduction): Icons
 ## Resources
 - [JDBC Workshop](https://gitlab.com/mohamed.hosni.isi/workshopjdbc-3a)
+- [Google Vertex AI (PaLM 2) Example](https://docs.langchain4j.dev/integrations/language-models/google-palm/)
+- [Embeddings from SQL data example](https://github.com/langchain4j/langchain4j-examples/blob/main/rag-examples/src/main/java/_3_advanced/_05_Advanced_RAG_with_Metadata_Filtering_Examples.java) 
+
 ## Git commands
 - ``git checkout -b branch_name``
 - ``git checkout branch_name``

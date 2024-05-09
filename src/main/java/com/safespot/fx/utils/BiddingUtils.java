@@ -20,4 +20,20 @@ public class BiddingUtils {
         return loan.getAmount().doubleValue() - calculateAcceptedBids(loan);
     }
 
+    public static long totalBidsCount(Loan loan) {
+        return new BidService().findByLoanId(loan.getId()).stream().count();
+    }
+
+    public static double acceptedBidsCount(Loan loan) {
+        return new BidService().findByLoanId(loan.getId()).stream()
+                .filter(bid -> bid.getStatus().isAccepted())
+                .count();
+    }
+
+    public static double rejectedBidsCount(Loan loan) {
+        return new BidService().findByLoanId(loan.getId()).stream()
+                .filter(bid -> !bid.getStatus().isAccepted())
+                .count();
+    }
+
 }

@@ -27,8 +27,6 @@ public class P2PLendingAreaMasterController implements Initializable {
     private Tab aiAssistantTab;
     @FXML
     private Tab myBidsTab;
-    @FXML
-    private Tab reportTab;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,7 +42,6 @@ public class P2PLendingAreaMasterController implements Initializable {
             lendingAreaTabPane.getTabs().remove(myLoansTab);
             lendingAreaTabPane.getTabs().remove(myBidsTab);
             lendingAreaTabPane.getTabs().remove(aiAssistantTab);
-            lendingAreaTabPane.getTabs().remove(reportTab);
         }
 
         lendingAreaTabPane.getTabs().forEach(

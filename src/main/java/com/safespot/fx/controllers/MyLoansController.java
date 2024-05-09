@@ -1,5 +1,6 @@
 package com.safespot.fx.controllers;
 
+import com.safespot.fx.integrations.ExcelExporter;
 import com.safespot.fx.interfaces.IBidService;
 import com.safespot.fx.interfaces.ILoanService;
 import com.safespot.fx.models.*;
@@ -17,9 +18,12 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import org.kordamp.ikonli.fontawesome.FontAwesome;
 import org.kordamp.ikonli.javafx.FontIcon;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.SQLException;
@@ -37,6 +41,8 @@ public class MyLoansController implements Initializable {
     private StackPane myLoansStackPane;
     @FXML
     private TilePane myLoansTilePane;
+    @FXML
+    private Button reportButton;
 
     private final ILoanService loanService = new LoanService();
     private final IBidService bidService = new BidService();
@@ -47,6 +53,22 @@ public class MyLoansController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         render();
+
+        reportButton.setOnAction(event -> {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files", "*.xlsx"));
+            File file = fileChooser.showSaveDialog(myLoansStackPane.getScene().getWindow());
+            if (file != null) {
+                try {
+                    ExcelExporter.exportToExcel("Loans Report", file.getAbsolutePath());
+                } catch (IOException e) {
+                    new ErrorDialog("An error occured while generating the financial report for your loans");
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+
         /*
         User currentUser = SecurityUtils.getCurrentUser();
         List<Loan> loans = loanService.findByBorrowerId(currentUser.getId());

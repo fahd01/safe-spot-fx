@@ -34,9 +34,6 @@
             <Tab fx:id="myBidsTab" text="My Bids">
 
             </Tab>
-            <Tab fx:id="reportTab" text="Report">
-
-            </Tab>
         </tabs>
     </TabPane>
 </StackPane>

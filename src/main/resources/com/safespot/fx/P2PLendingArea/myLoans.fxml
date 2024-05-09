@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.ScrollPane?>
+<?import java.lang.String?>
 <StackPane fx:id="myLoansStackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.safespot.fx.controllers.MyLoansController">
    <ScrollPane fitToWidth="true">
       <TilePane fx:id="myLoansTilePane" hgap="10" prefHeight="500" prefWidth="500" vgap="10">
          <padding>
-            <Insets left="10.0" top="10.0" bottom="10" right="10"/>
+            <Insets bottom="10" left="10.0" right="10" top="10.0" />
          </padding>
       </TilePane>
+      <padding>
+         <Insets top="30.0" />
+      </padding>
    </ScrollPane>
+   <Button fx:id="reportButton" alignment="TOP_RIGHT" text="Financial Report" StackPane.alignment="TOP_RIGHT">
+      <StackPane.margin>
+         <Insets right="20.0" top="5.0" />
+      </StackPane.margin>
+      <styleClass>
+         <String fx:value="btn" />
+         <String fx:value="btn-success" />
+         <String fx:value="btn-sm" />
+      </styleClass>
+   </Button>
 </StackPane>

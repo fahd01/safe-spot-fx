@@ -1,22 +1,18 @@
 package com.safespot.fx.integrations;
 
 import com.safespot.fx.services.LoanService;
-import dev.langchain4j.data.embedding.Embedding;
 import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.model.chat.ChatLanguageModel;
-import dev.langchain4j.model.embedding.AllMiniLmL6V2EmbeddingModel;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.embedding.bge.small.en.v15.BgeSmallEnV15QuantizedEmbeddingModel;
 import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.rag.content.retriever.EmbeddingStoreContentRetriever;
-import dev.langchain4j.store.embedding.EmbeddingMatch;
 import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.filter.builder.sql.LanguageModelSqlFilterBuilder;
 import dev.langchain4j.store.embedding.filter.builder.sql.TableDefinition;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import static dev.langchain4j.data.document.Metadata.metadata;
 
@@ -60,11 +56,10 @@ public class InMemoryEmbeddingStoreManager {
             throw new RuntimeException(e);
         }
 
-        ContentRetriever contentRetriever = EmbeddingStoreContentRetriever.builder()
+        return EmbeddingStoreContentRetriever.builder()
                 .embeddingStore(embeddingStore)
                 .embeddingModel(embeddingModel)
                 .dynamicFilter(query -> sqlFilterBuilder.build(query)) // LLM will generate the filter dynamically
                 .build();
-        return contentRetriever;
     }
 }
