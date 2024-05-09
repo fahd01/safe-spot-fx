@@ -28,6 +28,9 @@
             <Tab fx:id="myLoansTab" text="My Loans">
                 <fx:include source="myLoans.fxml" fx:id="myLoans" />
             </Tab>
+            <Tab fx:id="aiAssistantTab" text="AI Assistant">
+                <fx:include source="aiAssistant.fxml" fx:id="aiAssistant"/>
+            </Tab>
             <Tab fx:id="myBidsTab" text="My Bids">
 
             </Tab>

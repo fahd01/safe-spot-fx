@@ -12,8 +12,14 @@ module com.safespot.safespotfx {
     // add icon pack modules
     requires org.kordamp.ikonli.fontawesome;
     requires org.kordamp.bootstrapfx.core;
-    //tilesFx modules
-    //requires eu.hansolo.tilesfx;
+
+    //langchain4j modules
+    //requires langchain4j;
+    requires langchain4j.open.ai;
+    requires langchain4j.core;
+    requires langchain4j.embedding.store.filter.parser.sql;
+    requires langchain4j.embeddings.bge.small.en.v15.q;
+    requires langchain4j.vertex.ai;
 
     requires java.sql;
     requires java.mail;

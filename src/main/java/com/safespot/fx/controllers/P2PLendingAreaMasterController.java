@@ -24,6 +24,8 @@ public class P2PLendingAreaMasterController implements Initializable {
     @FXML
     private Tab myLoansTab;
     @FXML
+    private Tab aiAssistantTab;
+    @FXML
     private Tab myBidsTab;
     @FXML
     private Tab reportTab;
@@ -41,6 +43,7 @@ public class P2PLendingAreaMasterController implements Initializable {
             lendingAreaTabPane.getTabs().remove(findLoanTab);
             lendingAreaTabPane.getTabs().remove(myLoansTab);
             lendingAreaTabPane.getTabs().remove(myBidsTab);
+            lendingAreaTabPane.getTabs().remove(aiAssistantTab);
             lendingAreaTabPane.getTabs().remove(reportTab);
         }
 

@@ -114,10 +114,10 @@ public class Loan {
 
     @Override
     public String toString() {
-        return "[ id=" + id +
-                ", amount=" + amount +
-                ", interest=" + interest +
-                ", term=" + term +
+        return "loan: [ id=" + id +
+                ", amount=" + amount + " TND" +
+                ", interest=" + interest + " %" +
+                ", term=" + term + " months" +
                 ", purpose='" + purpose + '\'' +
                 ", status=" + status +
                 ']';

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import java.lang.String?>
+<StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.safespot.fx.controllers.AiAssistantController">
+
+    <VBox spacing="20" fx:id="containerVbox">
+        <Label text="Powered By Google PaLM 2 LLM">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="23" />
+            </font>
+        </Label>
+        <Label text="We provide an AI assistant to help you through with your P2P lending journey on our platform." />
+        <Label text="Specify your strategy for bidding and the AI will find the best loans for you to bid on!" />
+        <Label text="Example: As an investor recommend me a profitable loan to bid for (bid means lending the loan owner the needed amount or part of it)" />
+        <ScrollPane fx:id="mainSp" fitToWidth="true">
+            <content>
+                <VBox fx:id="messagesVbox" prefHeight="300" />
+            </content>
+        </ScrollPane>
+
+        <HBox spacing="5" fx:id="searchHbox">
+            <TextField fx:id="messageTf" promptText="How can I help you ?" />
+            <Button fx:id="sendButton" styleClass="btn btn-primary" text="Ask">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-primary" />
+                    <String fx:value="btn-sm" />
+                </styleClass>
+            </Button>
+            <Button fx:id="clearButton" styleClass="btn btn-info" text="Clear Chat">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-dangers" />
+                    <String fx:value="btn-sm" />
+                </styleClass>
+            </Button>
+        </HBox>
+        <padding>
+            <Insets bottom="20" left="20" right="20" top="20" />
+        </padding>
+    </VBox>
+
+</StackPane>
