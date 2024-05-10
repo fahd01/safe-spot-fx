@@ -7,7 +7,7 @@
       <env name="DB_PASSWORD" value="root_password" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="com.safespot.fx.SafeSpotApplication" />
-    <module name="user" />
+    <module name="safe-spot-fx" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

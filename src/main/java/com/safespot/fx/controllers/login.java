@@ -25,6 +25,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -75,9 +76,11 @@ public class login
 
             Node source = (Node) actionEvent.getSource();
             Stage stage = (Stage) source.getScene().getWindow();
+            Scene scene = new Scene(root, 1200, 700);
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setWidth(1200);
             stage.setHeight(700);
-            stage.setScene(new Scene(root, 1200, 700));
+            stage.setScene(scene);
             stage.show();
         } else if (resetPasswordService.verifyPasswordRequestByUserId(emailInput.getText(),pwdInput.getText())){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/safespot/fx/newPassword.fxml"));

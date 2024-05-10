@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<StackPane
+        xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+        >
+
+
+    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+
+            <Tab text="List Investments">
+                <fx:include fx:id="backInvListe" source="backInvListe.fxml" />
+            </Tab>
+            <Tab text="List Dons">
+                <fx:include fx:id="backDonListe" source="backDonListe.fxml" />
+            </Tab>
+        </tabs>
+    </TabPane>
+</StackPane>

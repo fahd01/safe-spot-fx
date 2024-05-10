@@ -13,13 +13,15 @@ public class ApplicationController implements Initializable {
     @FXML
     private TabPane mainTabPane;
     @FXML
-    private Tab investmentAreaTab;
-    @FXML
     private Tab lendingAreaTab;
     @FXML
     private Tab reclamationAreaTab;
     @FXML
     private Tab userManagementAreaTab;
+    @FXML
+    private Tab investmentAreaTab;
+    @FXML
+    private Tab investmentManagementAreaTab;
     @FXML
     private Tab profileAreaTab;
 
@@ -27,6 +29,9 @@ public class ApplicationController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (SecurityUtils.getCurrentUser().isAdmin() == false) {
             mainTabPane.getTabs().remove(userManagementAreaTab);
+            mainTabPane.getTabs().remove(investmentManagementAreaTab);
+        } else {
+            mainTabPane.getTabs().remove(investmentAreaTab);
         }
     }
 }

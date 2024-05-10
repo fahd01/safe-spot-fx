@@ -18,6 +18,9 @@ public class SafeSpotApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(SafeSpotApplication.class.getResource("application.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
         -*/
+        /*
+        FXMLLoader fxmlLoader = new FXMLLoader(SafeSpotApplication.class.getResource("/com/safespot/fx/frontDonListe.fxml"));
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(SafeSpotApplication.class.getResource("/com/safespot/fx/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
