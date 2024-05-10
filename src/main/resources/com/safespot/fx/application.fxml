@@ -3,26 +3,40 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" >
+<TabPane
+        fx:id="mainTabPane"
+        fx:controller="com.safespot.fx.controllers.ApplicationController"
+        maxHeight="-Infinity"
+        maxWidth="-Infinity"
+        minHeight="-Infinity"
+        minWidth="-Infinity"
+        tabClosingPolicy="UNAVAILABLE"
+        xmlns="http://javafx.com/javafx/17.0.2-ea"
+        xmlns:fx="http://javafx.com/fxml/1" >
     <tabs>
-        <Tab text="Account Area">
+        <Tab text="Investment Area" fx:id="investmentAreaTab">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
         </Tab>
-        <Tab text="Investment Area">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-        </Tab>
-        <Tab text="P2P Lending Area">
+        <Tab text="P2P Lending Area" fx:id="lendingAreaTab">
             <content>
                 <fx:include source="P2PLendingArea/P2PLendingArea.fxml" />
             </content>
         </Tab>
-        <Tab text="Reclamation Area">
+        <Tab text="Reclamation Area" fx:id="reclamationAreaTab">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+        </Tab>
+        <Tab text="User Management" fx:id="userManagementAreaTab">
+            <content>
+                <fx:include source="userList.fxml" />
+            </content>
+        </Tab>
+        <Tab text="Profile" fx:id="profileAreaTab">
+            <content>
+                <fx:include source="updateAccount.fxml" />
             </content>
         </Tab>
     </tabs>

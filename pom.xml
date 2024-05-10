@@ -139,6 +139,37 @@
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.5</version>
         </dependency>
+
+        <!-- User extra dependencies -->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.3m</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.gluonhq/charm-glisten -->
+        <dependency>
+            <groupId>com.gluonhq</groupId>
+            <artifactId>charm-glisten</artifactId>
+            <version>6.1.0</version>
+        </dependency>
+        <!-- Apache HttpClient for making HTTP requests -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.restfb/restfb -->
+        <dependency>
+            <groupId>com.restfb</groupId>
+            <artifactId>restfb</artifactId>
+            <version>2023.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.5</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -178,6 +209,12 @@
         <repository>
             <id>java-net-repo</id>
             <url>https://maven.java.net/content/repositories/public/</url>
+        </repository>
+        <repository>
+            <id>charm-glisten</id>
+            <name>charm-glisten Repository</name>
+            <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+            <layout>default</layout>
         </repository>
     </repositories>
 </project>

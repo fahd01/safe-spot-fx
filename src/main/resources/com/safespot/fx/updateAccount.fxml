@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="350.0" maxWidth="700.0" minHeight="350.0" minWidth="700.0" prefHeight="350.0" prefWidth="700.0" style="-fx-background-color: #f4f5fa;" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.safespot.fx.controllers.updateAccount">
+    <VBox alignment="CENTER_LEFT" spacing="0" xmlns:fx="http://javafx.com/fxml/1">
+        <!-- Header with Background Color -->
+        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="700.0" spacing="20" styleClass="header">
+            <!-- Dashboard Title -->
+            <Text styleClass="header-title" text="Dashboard" />
+            <Text styleClass="header-subtitle" text="Home » Update account" />
+
+            <!-- Spacer to push the search to the right -->
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- Search Box -->
+            <TextField editable="true" promptText="Search..." styleClass="search-box" />
+
+            <!-- Search Button with Magnifying Glass Icon -->
+            <StackPane alignment="CENTER" styleClass="search-button" />
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+            <padding>
+                <Insets left="20.0" />
+            </padding>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="300.0" prefWidth="700.0" spacing="35.0">
+            <children>
+                <!-- User Profile Section -->
+                <HBox alignment="BOTTOM_LEFT" maxHeight="200.0" maxWidth="270.0" minHeight="200.0" minWidth="250.0" prefHeight="200.0" prefWidth="270.0" spacing="20.0" style="-fx-background-color: white; -fx-border-radius: 3;" styleClass="user-profile" HBox.hgrow="NEVER">
+                    <ImageView fitHeight="50" fitWidth="50">
+                        <Image url="https://bootdey.com/img/Content/avatar/avatar6.png" />
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                    </ImageView>
+                    <VBox alignment="CENTER" prefHeight="232.0" prefWidth="205.0" spacing="10.0" styleClass="user-details" HBox.hgrow="NEVER">
+                        <Text fx:id="fullName" text="Kéfi Mohamed" VBox.vgrow="NEVER" />
+                        <Text fx:id="adrMail" text="test5@gmail.com" VBox.vgrow="NEVER" />
+                        <HBox alignment="CENTER">
+                            <Button fx:id="updatePasswordbtn" onAction="#updatePassword" styleClass="text-button" text="changer mot de passe" />
+                            <Button fx:id="logoutbtn" onAction="#logout" styleClass="text-button" text="logout" />
+                        </HBox>
+                    </VBox>
+                    <HBox.margin>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                    </HBox.margin>
+                </HBox>
+
+                <!-- Info Form -->
+                <VBox alignment="CENTER" fillWidth="false" maxHeight="286.0" maxWidth="250.0" minHeight="200.0" minWidth="250.0" prefHeight="246.0" prefWidth="250.0" spacing="20.0" style="-fx-background-color: white; -fx-border-radius: 3;" styleClass="info-form" HBox.hgrow="NEVER">
+                    <TextField fx:id="nom" promptText="Nom" />
+                    <TextField fx:id="prenom" promptText="Prenom" />
+                    <TextField fx:id="adresse" promptText="Adresse" />
+                    <TextField fx:id="numTel" promptText="Numéro Téléphone" />
+                    <Button fx:id="editbtn" onAction="#edit" styleClass="save-button" text="Save Changes" />
+                    <HBox.margin>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                    </HBox.margin>
+                </VBox>
+            </children>
+        </HBox>
+    </VBox>
+</AnchorPane>
