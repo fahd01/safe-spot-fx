@@ -191,6 +191,18 @@
             <version>7.2.0</version>
             <type>pom</type>
         </dependency>
+
+        <!-- Reclamation extra dependencies -->
+        <dependency>
+            <groupId>net.sourceforge.tess4j</groupId>
+            <artifactId>tess4j</artifactId>
+            <version>5.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.cognitiveservices.speech</groupId>
+            <artifactId>client-sdk</artifactId>
+            <version>1.35.0</version>
+        </dependency>
     </dependencies>
 
     <build>

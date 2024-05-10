@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<?import javafx.scene.control.Tab?>
+<StackPane
+        xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+        >
+
+    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+
+            <Tab text="Reclamations">
+                <fx:include fx:id="reclamation" source="Reclamation.fxml" />
+            </Tab>
+            <Tab text="Responses">
+                <fx:include fx:id="reponse" source="Reponse.fxml" />
+            </Tab>
+            <Tab text="Stats">
+                <fx:include fx:id="stat" source="Stat.fxml" />
+            </Tab>
+        </tabs>
+    </TabPane>
+</StackPane>

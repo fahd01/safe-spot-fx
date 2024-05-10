@@ -30,6 +30,7 @@ public class ApplicationController implements Initializable {
         if (SecurityUtils.getCurrentUser().isAdmin() == false) {
             mainTabPane.getTabs().remove(userManagementAreaTab);
             mainTabPane.getTabs().remove(investmentManagementAreaTab);
+            mainTabPane.getTabs().remove(investmentAreaTab);
         } else {
             mainTabPane.getTabs().remove(investmentAreaTab);
         }

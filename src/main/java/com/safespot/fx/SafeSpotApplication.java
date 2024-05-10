@@ -2,6 +2,7 @@ package com.safespot.fx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -21,6 +22,10 @@ public class SafeSpotApplication extends Application {
         /*
         FXMLLoader fxmlLoader = new FXMLLoader(SafeSpotApplication.class.getResource("/com/safespot/fx/frontDonListe.fxml"));
          */
+        /*
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/Reclamation.fxml"));
+        */
+
         FXMLLoader fxmlLoader = new FXMLLoader(SafeSpotApplication.class.getResource("/com/safespot/fx/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 

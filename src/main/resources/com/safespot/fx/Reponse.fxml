@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="557.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.safespot.fx.controllers.ReponseController">
+   <children>
+      <ListView fx:id="listviewRep" layoutX="269.0" layoutY="64.0" onMouseClicked="#selected" prefHeight="200.0" prefWidth="396.0" style="-fx-border-color: #447b9c; -fx-background-color: #f0f0f0; -fx-border-radius: 10px;" />
+      <TextArea fx:id="Repid" layoutX="17.0" layoutY="41.0" opacity="0.0" prefHeight="46.0" prefWidth="144.0" />
+      <Button fx:id="ajouterrep" layoutX="679.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#addrep" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="supprimerrep" layoutX="679.0" layoutY="389.0" mnemonicParsing="false" onMouseClicked="#deleterep" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="modifierrep" layoutX="679.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#updaterep" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #b3971d;" text="Update" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <TextArea fx:id="reprecoldid" layoutX="17.0" layoutY="381.0" opacity="0.0" prefHeight="46.0" prefWidth="144.0" />
+      <VBox layoutX="283.0" layoutY="307.0" prefHeight="230.0" prefWidth="332.0" style="-fx-border-color: #447b9c; -fx-border-radius: 10px;">
+         <children>
+            <Text fill="#447b9c" strokeType="OUTSIDE" strokeWidth="0.0" text="choisir la réclamation">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="15.0" top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="comboidRec" prefHeight="38.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Text fill="#447b9c" strokeType="OUTSIDE" strokeWidth="0.0" text="Réponse de la réclamation">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="15.0" top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Text>
+            <TextArea fx:id="Repreponse" prefHeight="74.0" prefWidth="300.0">
+               <VBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </VBox.margin>
+            </TextArea>
+         </children>
+      </VBox>
+      <VBox prefHeight="557.0" prefWidth="242.0" style="-fx-background-color: #447b9c;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@admin.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="45.0" top="75.0" />
+               </VBox.margin>
+            </ImageView>
+            <HBox prefHeight="56.0" prefWidth="242.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@fichier.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Gestion des réclamations" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="3.0" top="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="56.0" prefWidth="242.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@repondre-a-tous.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="35.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Répondre" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="686.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@plus.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="686.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@remove.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="686.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@rafraichir.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="gotoreclamation" layoutX="746.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#gotorec" prefHeight="30.0" prefWidth="100.0" text="MyRecs" />
+      <TextArea fx:id="recid" layoutX="665.0" layoutY="472.0" opacity="0.0" prefHeight="46.0" prefWidth="200.0" />
+      <Button fx:id="gotorating" layoutX="746.0" layoutY="139.0" mnemonicParsing="false" onMouseClicked="#gotorat" prefHeight="30.0" prefWidth="100.0" text="Rating" />
+      <Button fx:id="parlerbouton" layoutX="746.0" layoutY="195.0" mnemonicParsing="false" onMouseClicked="#stt" prefHeight="30.0" prefWidth="100.0" text="SpeachToText" />
+   </children>
+</AnchorPane>
