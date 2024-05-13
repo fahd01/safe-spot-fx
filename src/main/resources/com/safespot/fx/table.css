@@ -1,0 +1,15 @@
+.table-view {
+    -fx-background-color: #f0f0f0; /* Couleur de fond */
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
+
+/* Style des titres de colonnes */
+.table-view .column-header {
+    -fx-background-color: #447b9c; /* Couleur de fond bleue */
+    -fx-text-fill: white; /* Couleur du texte en blanc */
+    -fx-font-weight: bold;
+    -fx-cell-size: 40px;/* Texte en gras */
+}
+.table-row-cell {
+    -fx-cell-size: 40px; /* Réglez la hauteur des lignes à 40 pixels */
+}

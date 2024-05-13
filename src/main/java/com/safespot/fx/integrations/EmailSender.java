@@ -22,20 +22,20 @@ public class EmailSender {
     private static final String NOTIFICATION_EMAIL_PASSWORD = "safespotemailpassword";
     private static final String NOTIFICATION_EMAIL_APP_TOKEN = "vqws lotr pjtd xzao";
 
-    private Map<String, String> smtpSessionProperties = Map.of(
-            "mail.smtp.host", "smtp.gmail.com",
-            "mail.smtp.port", "465",
-            "mail.smtp.ssl.enable", "true",
-            "mail.smtp.auth", "true"
-            );
-
     private static EmailSender instance;
     private Session session;
     private String placedBidEmailBody;
 
     private EmailSender() {
         Properties properties = System.getProperties();
-        properties.putAll(smtpSessionProperties);
+        properties.putAll(
+            Map.of(
+                "mail.smtp.host", "smtp.gmail.com",
+                "mail.smtp.port", "465",
+                "mail.smtp.ssl.enable", "true",
+                "mail.smtp.auth", "true"
+            )
+        );
         this.session = Session.getInstance(properties, new Authenticator(){
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(NOTIFICATION_EMAIL_ADDRESS, NOTIFICATION_EMAIL_APP_TOKEN);

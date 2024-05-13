@@ -32,12 +32,12 @@ public class P2PLendingAreaMasterController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         // Sets visible tabs based on whether the current logged-in user is admin or user or both
-        if (SecurityUtils.getCurrentUser().getRoles().contains(ROLE_ADMIN) == false) {
+        if (SecurityUtils.getCurrentUser().isAdmin() == false) {
             lendingAreaTabPane.getTabs().remove(loanManagementTab);
             lendingAreaTabPane.getTabs().remove(bidsManagementTab);
         }
 
-        if (SecurityUtils.getCurrentUser().getRoles().contains(ROLE_USER) == false) {
+        if (SecurityUtils.getCurrentUser().isAdmin() == true) {
             lendingAreaTabPane.getTabs().remove(findLoanTab);
             lendingAreaTabPane.getTabs().remove(myLoansTab);
             lendingAreaTabPane.getTabs().remove(myBidsTab);

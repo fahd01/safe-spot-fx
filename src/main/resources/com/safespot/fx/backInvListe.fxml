@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import com.gluonhq.charm.glisten.control.CardPane?>
+
+<StackPane style="-fx-background-color: #f4f5fa;" stylesheets="@dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.safespot.fx.controllers.invBackList">
+
+    <VBox alignment="TOP_LEFT" fillWidth="true" spacing="0">
+        <HBox alignment="TOP_LEFT" prefHeight="50.0" spacing="20" styleClass="header">
+            <Text styleClass="header-title" text="Dashboard">
+                <HBox.margin>
+                    <Insets top="8.0" />
+                </HBox.margin>
+            </Text>
+            <Text styleClass="header-subtitle" text="Liste des Investissmeents">
+                <HBox.margin>
+                    <Insets top="15.0" />
+                </HBox.margin>
+            </Text>
+
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="pdfBtn" mnemonicParsing="false" onAction="#createPDF" text="Generate PDF">
+            <HBox.margin>
+               <Insets top="9.0" />
+            </HBox.margin></Button>
+
+            <TextField fx:id="searchTextField" editable="true" onKeyReleased="#search" promptText="Search..." styleClass="search-box">
+                <HBox.margin>
+                    <Insets top="8.0" />
+                </HBox.margin>
+            </TextField>
+
+            <StackPane alignment="CENTER" styleClass="search-button" />
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+            <padding>
+                <Insets left="20.0" />
+            </padding>
+        </HBox>
+        <HBox alignment="CENTER" fillHeight="true" spacing="35.0">
+            <children>
+                <CardPane fx:id="listDons" prefWidth="450.0">
+                    <HBox.margin>
+                        <Insets bottom="30.0" top="30.0" />
+                    </HBox.margin>
+                </CardPane>
+            <Button fx:id="sortBtn" mnemonicParsing="false" onAction="#sort" text="Sort" />
+            <Button fx:id="listeDons" mnemonicParsing="false" onAction="#gotoListeDons" text="Liste des dons" />
+            </children>
+        </HBox>
+    </VBox>
+</StackPane>

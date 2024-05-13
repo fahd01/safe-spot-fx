@@ -56,7 +56,7 @@ public class AiAssistantController implements Initializable {
 
                             hBox.getChildren().add(textFlow);
                             messagesVbox.getChildren().add(hBox);
-
+                            // TODO async call
                             String response = llmManager.ask(messageToSend);
                             addLabel(response, messagesVbox);
                             messageTf.clear();

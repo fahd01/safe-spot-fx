@@ -66,7 +66,6 @@ public class BidService implements IBidService {
         ) {
             preparedStatement.setBigDecimal(1, bid.getAmount());
             preparedStatement.setString(2, bid.getStatus().toString());
-            // TODO set bidder id to current user
             preparedStatement.setInt(3, bid.getBidderId());
             preparedStatement.setInt(4, bid.getLoanId());
             // Using setObject instead of setInt as automationId could be null

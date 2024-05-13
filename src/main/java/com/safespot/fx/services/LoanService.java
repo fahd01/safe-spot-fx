@@ -1,8 +1,6 @@
 package com.safespot.fx.services;
 
 import com.safespot.fx.interfaces.ILoanService;
-import com.safespot.fx.models.Bid;
-import com.safespot.fx.models.BidStatus;
 import com.safespot.fx.models.Loan;
 import com.safespot.fx.models.LoanStatus;
 import com.safespot.fx.utils.DatabaseConnection;
@@ -76,8 +74,7 @@ public class LoanService implements ILoanService {
             preparedStatement.setInt(3, loan.getTerm());
             preparedStatement.setString(4, loan.getPurpose());
             preparedStatement.setString(5, loan.getStatus().toString());
-            // TODO set borrower id to current user
-            preparedStatement.setInt(6, 1);
+            preparedStatement.setInt(6, loan.getBorrowerId());
             preparedStatement.executeUpdate();
             ResultSet rs = preparedStatement.getGeneratedKeys();
             rs.next();

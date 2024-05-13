@@ -1,0 +1,82 @@
+.dashboard {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 20px;
+    -fx-spacing: 20px;
+}
+
+.user-profile {
+    -fx-spacing: 15px;
+    -fx-alignment: center-left;
+}
+
+.user-details {
+    -fx-spacing: 5px;
+}
+
+.text-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #4E4E4E;
+}
+
+.text-button:hover {
+    -fx-underline: true;
+}
+
+.info-form {
+    -fx-spacing: 10px;
+}
+
+.text-field {
+    -fx-pref-width: 200px;
+    -fx-pref-height: 30px;
+    -fx-background-color: #F5F5F5;
+    -fx-border-color: #DDDDDD;
+    -fx-border-radius: 5;
+}
+
+.save-button {
+    -fx-background-color: #9C27B0;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.save-button:hover {
+    -fx-background-color: #AB47BC;
+}
+.header {
+    -fx-background-color: #00BFA5;
+    -fx-pref-height: 50px; /* Adjust the height as needed */
+}
+
+.header-content {
+    -fx-padding: 10px;
+}
+
+.header-title {
+    -fx-font-size: 24px;
+    -fx-fill: white;
+    -fx-font-weight: bold;
+}
+
+.header-subtitle {
+    -fx-font-size: 14px;
+    -fx-fill: white;
+    -fx-opacity: 0.7; /* Lower opacity for subtitle */
+}
+
+.search-box {
+    -fx-background-color: white;
+    -fx-background-radius: 15px;
+    -fx-pref-width: 200px; /* Adjust the width as needed */
+}
+
+.search-button {
+    -fx-cursor: hand;
+    -fx-padding: 5px;
+}
+
+.search-button-circle {
+    -fx-fill: red;
+}
+

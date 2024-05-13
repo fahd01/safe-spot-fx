@@ -8,6 +8,7 @@ import com.safespot.fx.models.Bid;
 import com.safespot.fx.models.Loan;
 import com.safespot.fx.models.User;
 import com.safespot.fx.integrations.EmailSender;
+import com.safespot.fx.utils.SecurityUtils;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -42,14 +43,10 @@ public class PlaceBidPopOver extends PopOver {
         Button submitBtn = new Button("Place");
         submitBtn.setOnAction( event -> {
             BigDecimal amount = BigDecimal.valueOf(Double.valueOf(amountTf.getText()));
-            // TODO use current user instead
-            int currentUserId = 1;
+            int currentUserId = SecurityUtils.getCurrentUser().getId();
             // TODO handle persist exceptions into an ErrorDialog
             Bid newBid = new Bid(amount, currentUserId, loan.getId());
             bidService.persist(newBid);
-            loan.setBiddingProgress(
-                    bidService.findByLoanId(loan.getId()).stream().mapToDouble(bid -> bid.getAmount().doubleValue()).sum() / loan.getAmount().doubleValue()
-            );
             this.hide();
             User loanOwner = userService.findById(loan.getBorrowerId());
             // TODO sending email blocks the main thread for a second, send async

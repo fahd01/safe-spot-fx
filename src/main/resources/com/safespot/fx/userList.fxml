@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import com.gluonhq.charm.glisten.control.CardPane?>
+<StackPane style="-fx-background-color: #f4f5fa;" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.safespot.fx.controllers.userList">
+
+    <VBox alignment="TOP_LEFT" fillWidth="true" spacing="0">
+        <HBox alignment="TOP_LEFT" prefHeight="50.0" spacing="20" styleClass="header">
+            <!-- Dashboard Title -->
+            <Text styleClass="header-title" text="Dashboard">
+            <HBox.margin>
+               <Insets top="8.0" />
+            </HBox.margin></Text>
+            <Text styleClass="header-subtitle" text="Home » Accounts List">
+            <HBox.margin>
+               <Insets top="15.0" />
+            </HBox.margin></Text>
+
+            <!-- Spacer to push the search to the right -->
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- Search Box -->
+            <TextField fx:id="searchText" editable="true" onKeyReleased="#search" promptText="Search..." styleClass="search-box">
+            <HBox.margin>
+               <Insets top="8.0" />
+            </HBox.margin></TextField>
+
+            <!-- Search Button with Magnifying Glass Icon -->
+            <StackPane alignment="CENTER" styleClass="search-button" />
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+            <padding>
+                <Insets left="20.0" />
+            </padding>
+        </HBox>
+        <HBox alignment="CENTER" fillHeight="true" spacing="35.0">
+            <children>
+                <CardPane fx:id="listUsers" prefWidth="450">
+                    <HBox.margin>
+                        <Insets bottom="30.0" top="30.0" />
+                    </HBox.margin>
+                </CardPane>
+            <Button fx:id="tri" mnemonicParsing="false" onAction="#sort" text="Sort By mail" />
+            <Button fx:id="triNom" mnemonicParsing="false" onAction="#sortNom" text="Sort By name" />
+            <Button fx:id="triTel" mnemonicParsing="false" onAction="#sortTel" text="Sort By num Tel" />
+            <Button fx:id="triPrenom" mnemonicParsing="false" onAction="#sortPrenom" text="Sort By Prenom" />
+            </children>
+        </HBox>
+    </VBox>
+</StackPane>

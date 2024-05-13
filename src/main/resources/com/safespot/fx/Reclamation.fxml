@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="597.0" prefWidth="1011.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.safespot.fx.controllers.ReclamationController">
+   <children>
+      <TableView fx:id="tableRec" layoutX="481.0" layoutY="147.0" onMouseClicked="#selected" prefHeight="276.0" prefWidth="434.0" stylesheets="@table.css">
+         <columns>
+            <TableColumn fx:id="idreclamation" minWidth="0.0" prefWidth="0.0" text="ID" />
+            <TableColumn fx:id="sujetreclmation" prefWidth="76.79998779296875" text="SUJET" />
+            <TableColumn fx:id="descriptionreclamation" prefWidth="92.0" text="DESCRIPTION" />
+            <TableColumn fx:id="datereclamation" prefWidth="204.7999267578125" text="DATE" />
+            <TableColumn fx:id="verifiedreclamation" prefWidth="66.39990234375" text="VERIFIED" />
+         </columns>
+      </TableView>
+      <TextArea fx:id="recid" layoutX="14.0" layoutY="26.0" opacity="0.0" prefHeight="38.0" prefWidth="131.0" />
+      <Button fx:id="ajouterrec" layoutX="531.0" layoutY="436.0" mnemonicParsing="false" onMouseClicked="#addrec" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="supprimerrec" layoutX="637.0" layoutY="437.0" mnemonicParsing="false" onMouseClicked="#deleterec" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="modifierrec" layoutX="739.0" layoutY="437.0" mnemonicParsing="false" onMouseClicked="#updaterec" prefHeight="35.0" prefWidth="82.0" style="-fx-background-color: #b3971d;" text="Update" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="GoStat" layoutX="834.0" layoutY="437.0" mnemonicParsing="false" onMouseClicked="#gotoStat" prefHeight="35.0" prefWidth="82.0" style="-fx-background-color: #1b2acf;" text="Stats" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <TextArea fx:id="rechercher" layoutX="497.0" layoutY="81.0" prefHeight="39.0" prefWidth="300.0" promptText="Rechercher..." />
+      <VBox layoutX="14.0" layoutY="128.0" prefHeight="330.0" prefWidth="454.0" style="-fx-border-color: #447b9c; -fx-border-radius: 10px;">
+         <children>
+            <HBox prefHeight="89.0" prefWidth="452.0">
+               <children>
+                  <Text fill="#447b9c" strokeType="OUTSIDE" strokeWidth="0.0" text="Sujet">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" right="15.0" top="25.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextArea fx:id="recsujet" prefHeight="59.0" prefWidth="242.0">
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="45.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </TextArea>
+               </children>
+            </HBox>
+            <HBox prefHeight="72.0" prefWidth="452.0">
+               <children>
+                  <Text fill="#447b9c" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="15.0" right="10.0" top="25.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextArea fx:id="recdescription" prefHeight="67.0" prefWidth="244.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="52.0" prefWidth="320.0">
+               <children>
+                  <Text fill="#447b9c" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="25.0" />
+                     </HBox.margin>
+                  </Text>
+                  <DatePicker fx:id="recdate" prefHeight="39.0" prefWidth="249.0">
+                     <HBox.margin>
+                        <Insets left="45.0" top="15.0" />
+                     </HBox.margin>
+                  </DatePicker>
+               </children>
+            </HBox>
+            <HBox prefHeight="52.0" prefWidth="320.0">
+               <children>
+                  <Text fill="#447b9c" strokeType="OUTSIDE" strokeWidth="0.0" text="Verified">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </HBox.margin>
+                  </Text>
+                  <CheckBox fx:id="checkbox" mnemonicParsing="false" prefHeight="26.0" prefWidth="247.0">
+                     <HBox.margin>
+                        <Insets left="40.0" top="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="451.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@search.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="538.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@plus.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="637.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@remove.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="18.0" layoutX="739.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@rafraichir.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="834.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@statistiques.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="gotoreponse" layoutX="808.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#gotorep" prefHeight="26.0" prefWidth="72.0" text="MyReps" />
+      <Button fx:id="buttonocr" layoutX="890.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#ocrapi" prefHeight="26.0" prefWidth="72.0" text="OCR" />
+   </children>
+</AnchorPane>
