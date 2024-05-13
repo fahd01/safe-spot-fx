@@ -52,8 +52,14 @@ public class LargeLanguageModelAssistantManager {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+        gcpCreds=Paths.get("C:/Users/elgay/IdeaProjects/safe-spot-fx/src/main/resources/com/safespot/fx/integrations/gcloud/application_default_credentials.json");
+        System.out.println(System.getenv("GOOGLE_APPLICATION_CREDENTIALS"));
+        System.out.println("credsssss");
+
+        System.out.println(gcpCreds);
 
         setEnvironmentalVariable("GOOGLE_APPLICATION_CREDENTIALS", gcpCreds.toAbsolutePath().toString());
+        System.out.println(System.getenv("GOOGLE_APPLICATION_CREDENTIALS"));
 
         ChatLanguageModel chatLanguageModel = VertexAiChatModel.builder()
                 .endpoint("us-central1-aiplatform.googleapis.com:443")

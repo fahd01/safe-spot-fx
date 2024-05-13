@@ -5,6 +5,7 @@ import com.microsoft.cognitiveservices.speech.SpeechConfig;
 import com.microsoft.cognitiveservices.speech.SpeechRecognitionResult;
 import com.microsoft.cognitiveservices.speech.SpeechRecognizer;
 import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
+import com.safespot.fx.Sendsms.Sendsms;
 import com.safespot.fx.interfaces.IReclamationService;
 import com.safespot.fx.interfaces.IReponseService;
 import com.safespot.fx.models.Reclamation;
@@ -282,10 +283,10 @@ public class ReponseController {
             Repreponse.setText("");
             Repid.setText("");
 
-            /*
+
             Sendsms sm = new Sendsms();
             sm.sendSMS();
-            */
+
         }
 
    }

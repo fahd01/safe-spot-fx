@@ -480,7 +480,7 @@ public class ReclamationController {
 
     private void doOCR(File file) {
         Tesseract tesseract = new Tesseract();
-        tesseract.setDatapath("C:\\Users\\yassin\\Downloads\\Tess4J-3.4.8-src\\Tess4J\\tessdata");
+        tesseract.setDatapath("C:\\Users\\elgay\\Downloads\\Tess4J-3.4.8-src\\Tess4J\\tessdatax");
         try {
             String text = tesseract.doOCR(file);
             // Définir le texte extrait dans le TextArea recsujet
