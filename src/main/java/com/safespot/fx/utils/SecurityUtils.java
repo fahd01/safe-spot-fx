@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class SecurityUtils {
 
-    public static final boolean DEV_MODE = true;
+    public static final boolean DEV_MODE = false;
 
     public static User getCurrentUser(){
         if (DEV_MODE)

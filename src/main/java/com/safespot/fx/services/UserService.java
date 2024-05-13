@@ -170,7 +170,7 @@ public class UserService implements IUserService {
                 users.add(user);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
         }
         return users;
     }
