@@ -8,6 +8,7 @@ import com.restfb.json.JsonObject;
 import com.restfb.types.User;
 import com.safespot.fx.services.ResetPasswordService;
 import com.safespot.fx.services.UserService;
+import com.safespot.fx.utils.SecurityUtils;
 import com.safespot.fx.utils.SessionManager;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -28,7 +29,6 @@ import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class login
 {
@@ -59,21 +59,29 @@ public class login
 
     @javafx.fxml.FXML
     public void login(ActionEvent actionEvent) throws IOException {
+        if (SecurityUtils.DEV_MODE) {
+            Parent root = new FXMLLoader(getClass().getResource("/com/safespot/fx/application.fxml")).load();
+            Node source = (Node) actionEvent.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            Scene scene = new Scene(root, 1200, 700);
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setWidth(1200);
+            stage.setHeight(700);
+            stage.setScene(scene);
+            stage.show();
+            return;
+        }
+
+
+
         if (userService.login(emailInput.getText(),pwdInput.getText())){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Logged in Successfully");
             alert.setHeaderText("Welcome Back:");
             alert.setContentText(emailInput.getText());
             alert.showAndWait();
-            FXMLLoader loader;
-            //if (Objects.equals(SessionManager.getInstance().getCurrentUser().getRoles(), "[\"ROLE_USER\"]")){
-                //loader = new FXMLLoader(getClass().getResource("/com/safespot/fx/updateAccount.fxml"));
-                loader = new FXMLLoader(getClass().getResource("/com/safespot/fx/application.fxml"));
-            //} else {
-            //    loader = new FXMLLoader(getClass().getResource("/com/safespot/fx/userList.fxml"));
-            //}
+            FXMLLoader loader = loader = new FXMLLoader(getClass().getResource("/com/safespot/fx/application.fxml"));
             Parent root = loader.load();
-
             Node source = (Node) actionEvent.getSource();
             Stage stage = (Stage) source.getScene().getWindow();
             Scene scene = new Scene(root, 1200, 700);
