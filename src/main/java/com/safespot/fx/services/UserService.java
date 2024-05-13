@@ -45,8 +45,8 @@ public class UserService implements IUserService {
                             resultSet.getString("email"),
                             resultSet.getString("roles"),
                             resultSet.getString("password"),
-                            resultSet.getString("nom"),
-                            resultSet.getString("prenom"),
+                            resultSet.getString("first_name"),
+                            resultSet.getString("last_name"),
                             resultSet.getDate("date_de_naissance"),
                             resultSet.getString("num_tlph"),
                             resultSet.getString("adresse"),
@@ -67,7 +67,7 @@ public class UserService implements IUserService {
 
     @Override
     public boolean signup(User user) {
-        String sql = "INSERT INTO User (email, roles, password, nom, prenom, date_de_naissance, num_tlph, adresse, etat, is_verified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO User (email, roles, password, first_name, last_name, date_de_naissance, num_tlph, adresse, etat, is_verified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, user.getEmail());
             statement.setString(2, "[\"ROLE_USER\"]");
@@ -102,7 +102,7 @@ public class UserService implements IUserService {
 
     @Override
     public boolean updateAccount(User user) {
-        String sql = "UPDATE User SET email = ?, password = ?, nom = ?, prenom = ?, date_de_naissance = ?, num_tlph = ?, adresse = ? WHERE id = ?";
+        String sql = "UPDATE User SET email = ?, password = ?, first_name = ?, last_name = ?, date_de_naissance = ?, num_tlph = ?, adresse = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
@@ -148,7 +148,7 @@ public class UserService implements IUserService {
     @Override
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT id, email, roles, password, nom, prenom, date_de_naissance, num_tlph, adresse, is_verified, etat, image_name, updated_at FROM User";
+        String sql = "SELECT id, email, roles, password, first_name, last_name, date_de_naissance, num_tlph, adresse, is_verified, etat, image_name, updated_at FROM User";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -157,8 +157,8 @@ public class UserService implements IUserService {
                         rs.getString("email"),
                         rs.getString("roles"),
                         rs.getString("password"),
-                        rs.getString("nom"),
-                        rs.getString("prenom"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
                         rs.getDate("date_de_naissance"),
                         rs.getString("num_tlph"),
                         rs.getString("adresse"),
@@ -170,7 +170,7 @@ public class UserService implements IUserService {
                 users.add(user);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
         }
         return users;
     }
@@ -188,8 +188,8 @@ public class UserService implements IUserService {
                         rs.getString("email"),
                         rs.getString("roles"),
                         rs.getString("password"),
-                        rs.getString("nom"),
-                        rs.getString("prenom"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
                         rs.getDate("date_de_naissance"),
                         rs.getString("num_tlph"),
                         rs.getString("adresse"),
@@ -217,8 +217,8 @@ public class UserService implements IUserService {
                         rs.getString("email"),
                         rs.getString("roles"),
                         rs.getString("password"),
-                        rs.getString("nom"),
-                        rs.getString("prenom"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
                         rs.getDate("date_de_naissance"),
                         rs.getString("num_tlph"),
                         rs.getString("adresse"),

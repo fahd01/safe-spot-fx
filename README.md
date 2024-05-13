@@ -21,6 +21,12 @@ An IntelliJ IDEA run configuration is provided `Safe Spot FX`
   - [ ] Popover for user details
 - [ ] Reuse loans.fxml for find a loan and loan management same fxml with include wrapper
 
+- Divergent tables
+  - Investissement | investissement
+  - Reclamation | reclamation
+  - Response | reponse
+  - [X] User | user => both will use table User
+
 ## Additional JavaFX libraries
 - [bootstrapfx](https://github.com/kordamp/bootstrapfx)
 - [controlsfx](https://controlsfx.github.io)
