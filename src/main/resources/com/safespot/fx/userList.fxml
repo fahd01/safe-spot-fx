@@ -8,7 +8,7 @@
 <?import com.gluonhq.charm.glisten.control.CardPane?>
 <StackPane style="-fx-background-color: #f4f5fa;" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.safespot.fx.controllers.userList">
 
-    <VBox alignment="TOP_LEFT" spacing="0">
+    <VBox alignment="TOP_LEFT" fillWidth="true" spacing="0">
         <HBox alignment="TOP_LEFT" prefHeight="50.0" spacing="20" styleClass="header">
             <!-- Dashboard Title -->
             <Text styleClass="header-title" text="Dashboard">
