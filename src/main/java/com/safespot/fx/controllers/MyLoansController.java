@@ -221,8 +221,7 @@ public class MyLoansController implements Initializable {
             });
         });
 
-        TitledPane titledPane = new TitledPane("Offered Bids", gridView);
-        return titledPane;
+        return new TitledPane("Offered Bids", gridView);
     }
 
     private Node renderLoanBids(List<Bid> bids){
@@ -230,8 +229,7 @@ public class MyLoansController implements Initializable {
         listView.setPrefHeight(300);
         List<Node> items = bids.stream().map(this::renderBidsListItem).toList();
         listView.getItems().addAll(items);
-        TitledPane titledPane = new TitledPane("Offered Bids", listView);
-        return titledPane;
+        return new TitledPane("Offered Bids", listView);
     }
 
     private Node renderBidsListItem(Bid bid) {

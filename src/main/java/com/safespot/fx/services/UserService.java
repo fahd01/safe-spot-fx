@@ -16,9 +16,6 @@ import java.util.List;
 public class UserService implements IUserService {
     private Connection connection = DatabaseConnection.getConnection();
 
-    public UserService() {
-        System.out.println("Connection réussie !");
-    }
     public static boolean verifyUserPassword(String inputPassword, String storedHash) {
         boolean password_verified = false;
 
