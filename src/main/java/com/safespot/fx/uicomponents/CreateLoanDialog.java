@@ -2,6 +2,7 @@ package com.safespot.fx.uicomponents;
 
 import com.safespot.fx.services.LoanService;
 import com.safespot.fx.models.Loan;
+import com.safespot.fx.utils.SecurityUtils;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,9 +71,10 @@ public class CreateLoanDialog extends Dialog<Loan> {
         loan.setInterest(interest);
         loan.setTerm(term);
         loan.setPurpose(purpose);
-        if (loan.getId() == 0)
+        if (loan.getId() == 0) {
+            this.loan.setBorrowerId(SecurityUtils.getCurrentUser().getId());
             this.loan = new LoanService().persist(loan);
-        else
+        } else
             this.loan = new LoanService().update(loan);
     }
 }

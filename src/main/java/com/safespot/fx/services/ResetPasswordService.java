@@ -15,10 +15,6 @@ import java.util.Objects;
 public class ResetPasswordService {
     static Connection connection = DatabaseConnection.getConnection();
 
-    public ResetPasswordService() {
-        System.out.println("Connection réussie !");
-    }
-
     private static final SecureRandom secureRandom = new SecureRandom();
     private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder().withoutPadding();
 
@@ -62,9 +58,9 @@ public class ResetPasswordService {
         User user = new UserService().getUserByEmail(userMail);
         if (user != null){
             String sql = "SELECT id, selector, hashed_token, requested_at, expires_at, user_id FROM reset_password_request WHERE user_id = ? ORDER BY requested_at DESC LIMIT 1";
-            try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-                pstmt.setInt(1, user.getId());
-                ResultSet rs = pstmt.executeQuery();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, user.getId());
+                ResultSet rs = preparedStatement.executeQuery();
                 if (rs.next()) {
                     String pass = rs.getString("hashed_token");
                     if (Objects.equals(pass, token)){

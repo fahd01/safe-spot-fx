@@ -2,6 +2,7 @@ package com.safespot.fx.controllers;
 
 import com.safespot.fx.models.User;
 import com.safespot.fx.services.UserService;
+import com.safespot.fx.utils.SecurityUtils;
 import com.safespot.fx.utils.SessionManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -44,7 +45,7 @@ public class updateAccount
     UserService userService = new UserService();
     @javafx.fxml.FXML
     public void initialize() {
-        user = SessionManager.getInstance().getCurrentUser();
+        user = SecurityUtils.getCurrentUser();
         nom.setText(user.getNom());
         prenom.setText(user.getPrenom());
         numTel.setText(user.getNumTlph());

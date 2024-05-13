@@ -81,8 +81,7 @@ public class LargeLanguageModelAssistantManager {
 
     // This is a peer to peer lending platform, as an investor recommend me a profitable loan to bid for (bid means lending the loan owner the needed amount or part of it
     public String ask(String question) {
-        String answer = assistant.answer(question);
-        return answer;
+        return assistant.answer(question);
     }
 
     private static void setEnvironmentalVariable(final String key, final String value) {

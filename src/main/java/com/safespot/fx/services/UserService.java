@@ -3,6 +3,7 @@ package com.safespot.fx.services;
 import com.safespot.fx.interfaces.IUserService;
 import com.safespot.fx.models.User;
 import com.safespot.fx.utils.DatabaseConnection;
+import com.safespot.fx.utils.SecurityUtils;
 import com.safespot.fx.utils.SessionManager;
 import org.mindrot.jbcrypt.BCrypt;
 import java.sql.Connection;
@@ -15,9 +16,6 @@ import java.util.List;
 public class UserService implements IUserService {
     private Connection connection = DatabaseConnection.getConnection();
 
-    public UserService() {
-        System.out.println("Connection réussie !");
-    }
     public static boolean verifyUserPassword(String inputPassword, String storedHash) {
         boolean password_verified = false;
 
@@ -93,7 +91,7 @@ public class UserService implements IUserService {
         String sql = "UPDATE User SET password = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, hashPassword(pass));
-            statement.setInt(2, SessionManager.getInstance().getCurrentUser().getId());
+            statement.setInt(2, SecurityUtils.getCurrentUser().getId());
             int result = statement.executeUpdate();
             return result > 0;
         } catch (SQLException e) {
@@ -172,7 +170,7 @@ public class UserService implements IUserService {
                 users.add(user);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
         }
         return users;
     }
