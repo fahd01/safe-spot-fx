@@ -41,9 +41,9 @@
                 <Insets left="20.0" />
             </padding>
         </HBox>
-        <HBox alignment="CENTER" prefHeight="300.0" spacing="35.0">
+        <HBox alignment="CENTER" fillHeight="true" spacing="35.0">
             <children>
-                <CardPane fx:id="listDons" prefHeight="300.0" prefWidth="426.0">
+                <CardPane fx:id="listDons" prefWidth="450.0">
                     <HBox.margin>
                         <Insets bottom="30.0" top="30.0" />
                     </HBox.margin>
