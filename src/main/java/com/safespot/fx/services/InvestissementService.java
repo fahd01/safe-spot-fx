@@ -15,7 +15,7 @@ public class InvestissementService implements IService<Investissement> {
 
     @Override
     public void ajout(Investissement i) {
-        String sql = "INSERT INTO Investissement (date, duree, prix_a, description, email, name, image, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO investissement (date, duree, prix_a, description, email, name, image, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setDate(1, new java.sql.Date(i.getDate().getTime()));
             preparedStatement.setInt(2, i.getDuree());
@@ -33,7 +33,7 @@ public class InvestissementService implements IService<Investissement> {
 
     @Override
     public void modifier(Investissement i) {
-        String sql = "UPDATE Investissement SET date=?, duree=?, prix_a=?, description=?, email=?, name=?, image=?, color=? WHERE id=?";
+        String sql = "UPDATE investissement SET date=?, duree=?, prix_a=?, description=?, email=?, name=?, image=?, color=? WHERE id=?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setDate(1, new java.sql.Date(i.getDate().getTime()));
             preparedStatement.setInt(2, i.getDuree());
@@ -52,7 +52,7 @@ public class InvestissementService implements IService<Investissement> {
 
     @Override
     public void supprimer(int id) {
-        String sql = "DELETE FROM Investissement WHERE id=?";
+        String sql = "DELETE FROM investissement WHERE id=?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
@@ -63,7 +63,7 @@ public class InvestissementService implements IService<Investissement> {
 
     @Override
     public Investissement recherche(int id) {
-        String sql = "SELECT * FROM Investissement WHERE id=?";
+        String sql = "SELECT * FROM investissement WHERE id=?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -89,7 +89,7 @@ public class InvestissementService implements IService<Investissement> {
     @Override
     public List<Investissement> liste() {
         List<Investissement> investissements = new ArrayList<>();
-        String sql = "SELECT * FROM Investissement";
+        String sql = "SELECT * FROM investissement";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

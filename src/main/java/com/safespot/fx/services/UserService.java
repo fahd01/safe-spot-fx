@@ -33,7 +33,7 @@ public class UserService implements IUserService {
 
     @Override
     public boolean login(String email, String password) {
-        String sql = "SELECT * FROM User WHERE email = ?";
+        String sql = "SELECT * FROM user WHERE email = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
@@ -67,7 +67,7 @@ public class UserService implements IUserService {
 
     @Override
     public boolean signup(User user) {
-        String sql = "INSERT INTO User (email, roles, password, nom, prenom, date_de_naissance, num_tlph, adresse, etat, is_verified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO user (email, roles, password, nom, prenom, date_de_naissance, num_tlph, adresse, etat, is_verified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, user.getEmail());
             statement.setString(2, "[\"ROLE_USER\"]");
@@ -88,7 +88,7 @@ public class UserService implements IUserService {
     }
 
     public boolean resetPassword(String pass) {
-        String sql = "UPDATE User SET password = ? WHERE id = ?";
+        String sql = "UPDATE user SET password = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, hashPassword(pass));
             statement.setInt(2, SecurityUtils.getCurrentUser().getId());
@@ -102,7 +102,7 @@ public class UserService implements IUserService {
 
     @Override
     public boolean updateAccount(User user) {
-        String sql = "UPDATE User SET email = ?, password = ?, nom = ?, prenom = ?, date_de_naissance = ?, num_tlph = ?, adresse = ? WHERE id = ?";
+        String sql = "UPDATE user SET email = ?, password = ?, nom = ?, prenom = ?, date_de_naissance = ?, num_tlph = ?, adresse = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
@@ -121,7 +121,7 @@ public class UserService implements IUserService {
     }
 
     public boolean banUser(int id) {
-        String sql = "UPDATE User SET etat = ? WHERE id = ?";
+        String sql = "UPDATE user SET etat = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, "banned");
             statement.setInt(2, id);
@@ -133,7 +133,7 @@ public class UserService implements IUserService {
         return false;
     }
     public boolean activateUser(int id) {
-        String sql = "UPDATE User SET etat = ? WHERE id = ?";
+        String sql = "UPDATE user SET etat = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, "active");
             statement.setInt(2, id);
@@ -148,7 +148,7 @@ public class UserService implements IUserService {
     @Override
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT id, email, roles, password, nom, prenom, date_de_naissance, num_tlph, adresse, is_verified, etat, image_name, updated_at FROM User";
+        String sql = "SELECT id, email, roles, password, nom, prenom, date_de_naissance, num_tlph, adresse, is_verified, etat, image_name, updated_at FROM user";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -177,7 +177,7 @@ public class UserService implements IUserService {
 
     @Override
     public User findById(int id) {
-        String sql = "SELECT * FROM User WHERE id = ?";
+        String sql = "SELECT * FROM user WHERE id = ?";
         User user = null;
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, id);
@@ -206,7 +206,7 @@ public class UserService implements IUserService {
     }
 
     public User getUserByEmail(String mail) {
-        String sql = "SELECT * FROM User WHERE email = ?";
+        String sql = "SELECT * FROM user WHERE email = ?";
         User user = null;
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, mail);

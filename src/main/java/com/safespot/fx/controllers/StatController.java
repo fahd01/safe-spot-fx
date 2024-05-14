@@ -88,7 +88,7 @@ public class StatController {
         try {
             // Utilisez un Statement pour exécuter la requête SQL
             try (Statement ste = con.createStatement();
-                 ResultSet resultSet = ste.executeQuery("SELECT  verified, COUNT(*) FROM Reclamation GROUP BY  verified")) {
+                 ResultSet resultSet = ste.executeQuery("SELECT  verified, COUNT(*) FROM reclamation GROUP BY  verified")) {
 
                 // Parcours des résultats et ajout des données au PieChart
                 while (resultSet.next()) {

@@ -88,7 +88,7 @@ public class ReponseController {
     public int getNombreReps(int nombre) {
         int nbReps = 0;
         try {
-            String requete = "SELECT COUNT(*) as nbReps FROM Response WHERE reclamation_id=? ";
+            String requete = "SELECT COUNT(*) as nbReps FROM rec_response WHERE reclamation_id=? ";
             PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(requete);
             ps.setInt(1, nombre);
             ResultSet rs = ps.executeQuery();
@@ -108,7 +108,7 @@ public class ReponseController {
     public String getSujetByReclamationId(int recId) {
         String sujet = null;
         try {
-            String requete = "SELECT sujet FROM Reclamation WHERE id = ?";
+            String requete = "SELECT sujet FROM reclamation WHERE id = ?";
             PreparedStatement pst = DatabaseConnection.getConnection().prepareStatement(requete);
             pst.setInt(1, recId);
             ResultSet rs = pst.executeQuery();
@@ -128,7 +128,7 @@ public class ReponseController {
     public int getReclamationIdBySujet(String sujet) {
         int id = -1; // Valeur par défaut si aucun enregistrement correspondant n'est trouvé
         try {
-            String requete = "SELECT id FROM Reclamation WHERE sujet = ?";
+            String requete = "SELECT id FROM reclamation WHERE sujet = ?";
             PreparedStatement pst = DatabaseConnection.getConnection().prepareStatement(requete);
             pst.setString(1, sujet);
             ResultSet rs = pst.executeQuery();
@@ -149,7 +149,7 @@ public class ReponseController {
     void initialize() {//recuération des id avec le combo box
 
         try {
-            String req = "select sujet from Reclamation";
+            String req = "select sujet from reclamation";
             PreparedStatement pst = DatabaseConnection.getConnection().prepareStatement(req);
             ResultSet rs = pst.executeQuery();
             ObservableList<String> id = null;
@@ -198,7 +198,7 @@ public class ReponseController {
         repList = FXCollections.observableArrayList();
 
         try {
-            String requete = "SELECT * FROM Response r  ";
+            String requete = "SELECT * FROM rec_response r  ";
 
             Statement st = DatabaseConnection.getConnection().createStatement();
 

@@ -110,7 +110,7 @@ public class ReclamationController {
     public int getNombreSujets(String sujet) {
         int NombreSujets = 0;
         try {
-            String requete = "SELECT COUNT(*) as nbSujets FROM Reclamation WHERE sujet=? ";
+            String requete = "SELECT COUNT(*) as nbSujets FROM reclamation WHERE sujet=? ";
             PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(requete);
             ps.setString(1, sujet);
             ResultSet rs = ps.executeQuery();
@@ -142,7 +142,7 @@ public class ReclamationController {
         List<Reponse> Reponses = new ArrayList<>();
         try {
 
-            String requete = "SELECT * FROM Response WHERE reclamation_id = ?";
+            String requete = "SELECT * FROM rec_response WHERE reclamation_id = ?";
 
             PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(requete);
 
@@ -170,7 +170,7 @@ public class ReclamationController {
         RecList = FXCollections.observableArrayList();
 
         try {
-            String requete = "SELECT * FROM Reclamation e ";
+            String requete = "SELECT * FROM reclamation e ";
             Statement st = DatabaseConnection.getConnection().createStatement();
 
             ResultSet rs = st.executeQuery(requete);
@@ -399,7 +399,7 @@ public class ReclamationController {
         RecList = FXCollections.observableArrayList();
 
         try {
-            String requete = "SELECT * FROM Reclamation e ";
+            String requete = "SELECT * FROM reclamation e ";
 
             Statement st = DatabaseConnection.getConnection().createStatement();
 

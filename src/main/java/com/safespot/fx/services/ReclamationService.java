@@ -19,7 +19,7 @@ public class ReclamationService implements IReclamationService<Reclamation> {
 
     public void ajouterReclamation(Reclamation e) {
         try {
-            String requete = "INSERT INTO Reclamation (sujet,description,dt,verified)VALUES (?,?,?,?)";
+            String requete = "INSERT INTO reclamation (sujet,description,dt,verified)VALUES (?,?,?,?)";
             PreparedStatement pst = DatabaseConnection.getConnection().prepareStatement(requete);
 
             pst.setString(1, e.getSujet());
@@ -35,7 +35,7 @@ public class ReclamationService implements IReclamationService<Reclamation> {
     }
     public void supprimerReclamation(Reclamation e) {
         try {
-            String requete = "DELETE FROM Reclamation where id=?";
+            String requete = "DELETE FROM reclamation where id=?";
             PreparedStatement pst = DatabaseConnection.getConnection().prepareStatement(requete);
             pst.setInt(1, e.getId());
             pst.executeUpdate();
@@ -48,7 +48,7 @@ public class ReclamationService implements IReclamationService<Reclamation> {
 
     public void modifierReclamation(Reclamation e) {
         try {
-            String requete = "UPDATE Reclamation SET sujet=?,description=?,dt=?,verified=?  WHERE id=?";
+            String requete = "UPDATE reclamation SET sujet=?,description=?,dt=?,verified=?  WHERE id=?";
             PreparedStatement pst = DatabaseConnection.getConnection().prepareStatement(requete);
             pst.setString(1, e.getSujet());
             pst.setString(2, e.getDescription());
@@ -67,7 +67,7 @@ public class ReclamationService implements IReclamationService<Reclamation> {
         List<Reclamation> reclamationsList = new ArrayList();
 
         try {
-            String requete = "SELECT * FROM Reclamation r ";
+            String requete = "SELECT * FROM reclamation r ";
             Statement st = DatabaseConnection.getConnection().createStatement();
             ResultSet rs = st.executeQuery(requete);
 
@@ -94,7 +94,7 @@ public class ReclamationService implements IReclamationService<Reclamation> {
     public Reclamation getReclamationById(int id) {
         Reclamation reclamation = null;
         try {
-            String requete = "SELECT * FROM Reclamation WHERE id = ?";
+            String requete = "SELECT * FROM reclamation WHERE id = ?";
             PreparedStatement pst = DatabaseConnection.getConnection().prepareStatement(requete);
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();

@@ -18,7 +18,7 @@ public class ReponseService implements IReponseService<Reponse> {
 
     public void ajouterReponse(Reponse r) {
         try {
-            String requete = "INSERT INTO Response (id,reponse,reclamation_id)VALUES (?,?,?)";
+            String requete = "INSERT INTO rec_response (id,reponse,reclamation_id)VALUES (?,?,?)";
             PreparedStatement pst = DatabaseConnection.getConnection().prepareStatement(requete);
             pst.setInt(1, r.getId());
             pst.setString(2, r.getReponse());
@@ -33,7 +33,7 @@ public class ReponseService implements IReponseService<Reponse> {
 
     public void supprimerReponse(Reponse r) {
         try {
-            String requete = "DELETE FROM Response where id=?";
+            String requete = "DELETE FROM rec_response where id=?";
             PreparedStatement pst = DatabaseConnection.getConnection().prepareStatement(requete);
             pst.setInt(1, r.getId());
             pst.executeUpdate();
@@ -46,7 +46,7 @@ public class ReponseService implements IReponseService<Reponse> {
 
     public void modifierReponse(Reponse r) {
         try {
-            String requete = "UPDATE Response SET reponse=?,reclamation_id=? WHERE id=?";
+            String requete = "UPDATE rec_response SET reponse=?,reclamation_id=? WHERE id=?";
             PreparedStatement pst = DatabaseConnection.getConnection().prepareStatement(requete);
 
             pst.setString(1, r.getReponse());
@@ -64,7 +64,7 @@ public class ReponseService implements IReponseService<Reponse> {
         List<Reponse>ReponsesList = new ArrayList();
 
         try {
-            String requete = "SELECT * FROM Response r ";
+            String requete = "SELECT * FROM rec_response r ";
             Statement st = DatabaseConnection.getConnection().createStatement();
             ResultSet rs = st.executeQuery(requete);
 
