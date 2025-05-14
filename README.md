@@ -29,3 +29,6 @@ An IntelliJ IDEA run configuration is provided `Safe Spot FX`
 
 ## Issues
 - [TilesFX module issue](https://stackoverflow.com/questions/75250066/javafx-missing-eu-hansolo-module)
+
+## Tasks
+[See](./TASKS.md)
